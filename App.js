@@ -1,20 +1,43 @@
+import * as React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NativeBaseProvider, Center } from "native-base";
 
-export default function App() {
+import MenuAuthentication from "./src/routes/MenuAuthentication";
+import Home from "./src/views/home/Home"
+
+
+
+const Stack = createNativeStackNavigator();
+
+
+export default function App() 
+{
+
+  // Valores iniciales del state
+  const inicializarState = 
+  {
+    isLoading: true,
+    isLogueado: false,
+    cliente: null
+  }
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NativeBaseProvider>
+      <Center flex={1} borderColor_="blue.700" borderWidth_="3">
+        <Home />
+      </Center>
+    </NativeBaseProvider>
   );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  // return (
+  //   <NavigationContainer>
+  //     {/* <Stack.Navigator headerMode ="none"> */}
+  //     <Stack.Navigator>
+  //       <Stack.Screen name="MenuAutenticacion" component={MenuAuthentication} />
+  //     </Stack.Navigator>
+  //   </NavigationContainer>
+  // );
+}
