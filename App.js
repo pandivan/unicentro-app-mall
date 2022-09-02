@@ -7,6 +7,7 @@ import { NativeBaseProvider, Center } from "native-base";
 
 import MenuAuthentication from "./src/routes/MenuAuthentication";
 import Home from "./src/views/home/Home"
+import MyResponsivePie from "./src/views/home/MyResponsivePie"
 
 
 
@@ -24,10 +25,12 @@ export default function App()
     cliente: null
   }
 
+  
+
   return (
     <NativeBaseProvider>
-      <Center flex={1} borderColor_="blue.700" borderWidth_="3">
-        <Home />
+      <Center flex={1} borderColor="blue.700" borderWidth="3">
+        <Home/>
       </Center>
     </NativeBaseProvider>
   );
