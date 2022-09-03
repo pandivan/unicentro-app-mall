@@ -1,38 +1,30 @@
-import { VictoryChart, VictoryBar, VictoryTheme, VictoryContainer,VictoryLabel, VictoryHistogram } from "victory-native";
+import { VictoryChart, VictoryBar, VictoryTheme, VictoryLegend,VictoryLabel, VictoryPie } from "victory-native";
 import { VStack, HStack, Center, useTheme, Box, Heading, Text, Pressable, Spacer, Image, ScrollView } from "native-base";
 import { Dimensions, StyleSheet } from 'react-native';
 
-//debo pasar la data ordenada para el eje X
-const data = 
-[
-    {x: "ene", y: 1},
-    {x: "feb", y: 2},
-    {x: "mar", y: 3},
-    {x: "abr", y: 5},
-    {x: "may", y: 4}
-];
+import data from './data';
+
 
 const MyResponsivePie = () => 
 {
 
   return (
-    <Box borderColor="yellow.300" borderWidth="3"
-        justifyContent="flex-end" height="220px">
-        <VictoryBar 
-            data={data} 
-            // categories={{x: ["birds", "cats", "dogs", "fish", "frogs"]}} 
-            cornerRadius={2} 
-            animate={{ duration: 300 }}
-            alignment="end"
-            // labels={({ datum }) => datum.y}
-            // barWidth={5}
-            // domainPadding={{ x: 30, y: 20 }}
-            // height={115} 
-            // width={120}
-            // padding={{ top: 2, bottom: 2, left: 10, right: 10 }}
-            // style={{data: { fill: "#43bc43" }}}
-        />
-    </Box>
+    // <Center borderColor="yellow.300" borderWidth="3" >
+    <Center backgroundColor_="black" width="100%" borderColor="red.500" borderWidth="3">
+    
+      <VictoryPie
+        data={data.dataPie}
+        padAngle={5}
+        // innerRadius={100}
+        cornerRadius={18}
+        // animate={true}
+        theme={VictoryTheme.material}
+        // height={180}
+        // width={180}
+        // origin={{ y: 100 }}
+        padding={{ top:130, bottom:130, left:80, right:80 }}
+      />
+    </Center>
   );
 }
 
