@@ -1,46 +1,21 @@
-import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { Alert } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NativeBaseProvider, Center } from "native-base";
-
-import MenuAuthentication from "./src/routes/MenuAuthentication";
-import Home from "./src/views/home/Home"
-import MyResponsivePie from "./src/views/home/MyResponsivePie"
+import * as React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import "react-native-gesture-handler";
+import MenuHome from "./src/routes/MenuHome";
 
 
-
-const Stack = createNativeStackNavigator();
+//Creando Menu de Navegación
+const Stack = createStackNavigator();
 
 
 export default function App() 
 {
-
-  // Valores iniciales del state
-  const inicializarState = 
-  {
-    isLoading: true,
-    isLogueado: false,
-    cliente: null
-  }
-
-  
-
   return (
-    <NativeBaseProvider>
-      <Center flex={1} borderColor="blue.700" borderWidth="3">
-        <Home/>
-      </Center>
-    </NativeBaseProvider>
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="MenuHome" component={MenuHome} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-
-  // return (
-  //   <NavigationContainer>
-  //     {/* <Stack.Navigator headerMode ="none"> */}
-  //     <Stack.Navigator>
-  //       <Stack.Screen name="MenuAutenticacion" component={MenuAuthentication} />
-  //     </Stack.Navigator>
-  //   </NavigationContainer>
-  // );
 }
