@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Dimensions, StyleSheet } from "react-native";
-import { NativeBaseProvider, VStack, HStack, Center, Box, Heading, Text, Pressable, Image, ScrollView } from "native-base";
+import { Dimensions } from "react-native";
+import { NativeBaseProvider, VStack, HStack, Center, Box, Heading, Text, Pressable, Image, ScrollView, StatusBar } from "native-base";
 import { VictoryTheme, VictoryBar, VictoryPie, VictoryLabel } from "victory-native";
 
 
@@ -19,6 +19,7 @@ const Home = () =>
 
   return (
     <NativeBaseProvider>
+      <StatusBar barStyle="light-content" backgroundColor="black" />
       <Center flex={1} borderColor_="green.500" borderWidth_="3">
         <Center px="2" backgroundColor="black" justifyContent={"flex-start"} alignItems="flex-start" width="100%" borderColor_="red.500" borderWidth_="3">
           <ScrollView maxW="100%" height="100%" pt="1" _contentContainerStyle_={{borderColor:"blue.500", borderWidth:"5"}}>            
@@ -198,34 +199,5 @@ const Home = () =>
   );
 }
 
-
-const styles = StyleSheet.create(
-  {
-    contentUI: 
-    {
-      backgroundColor: "blue",
-      width: width,
-      height: height,
-      borderColor: "red",
-      borderWidth: 4
-    },
-    imageProducto: 
-    {
-      width: ((width/2)-20)-10,
-      height: ((width/2)-20)-30,
-      borderColor: "blue",
-      borderWidth: 3
-    },
-    viewEspacioProducto: 
-    {
-      height: ((width/2)-20)-90, 
-      width:((width/2)-20)-10
-    },
-    contentContainer: {
-      centerContent:true, 
-      _borderColor:"blue", 
-      _borderWidth:5
-    }
-  });
 
 export default Home;

@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Feed from "../views/insight/Feed";
 import Insight from "../views/insight/Insight";
+import Insight2 from "../views/insight/Insight2";
 import Home from "../views/home/Home"
 
 
@@ -15,24 +15,26 @@ const MenuHome = () =>
 {
   return (
     <Tab.Navigator
-      initialRouteName="Homeeee"
+      initialRouteName="Home"
       screenOptions=
       {{
         tabBarActiveTintColor:"tomato",
         tabBarLabelStyle:{fontSize: 16},
         // headerShown:false,
-        headerStyle: { backgroundColor: "yellow" },
-        tabBarStyle:{ backgroundColor: "#303030", borderTopColor:"blue", borderTopWidth:0},
+        headerStyle: { backgroundColor: "black", borderBottomWidth:5, borderBottomColor:"black"},
+        tabBarStyle:{ backgroundColor: "#303030", borderTopWidth:0 },
         // tabBarInactiveBackgroundColor:"#303030",
         // tabBarActiveBackgroundColor:"blue",
       }}
     >
       <Tab.Screen
-        name="Homeeee"
+        name="Home"
         component={Home}
         options=
         {{
           tabBarLabel:"Home",
+          title: "Cassandra",
+          headerTintColor: "#afafaf",
           tabBarIcon:({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           )
@@ -45,6 +47,20 @@ const MenuHome = () =>
         options=
         {{
           tabBarLabel:"Insight",
+          tabBarIcon:({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          )
+        }}
+      />
+
+      <Tab.Screen
+        name="Insight2"
+        component={Insight2}
+        options=
+        {{
+          tabBarLabel:"Insight2",
+          title: "Insight",
+          headerTintColor: "#afafaf",
           tabBarIcon:({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           )
