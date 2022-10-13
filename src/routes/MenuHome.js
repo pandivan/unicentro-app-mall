@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Insight from "../views/insight/Insight";
-import Insight2 from "../views/insight/Insight2";
-import Home from "../views/home/Home"
+import Insight from "../screens/insight/Insight";
+import Insight2 from "../screens/insight/Insight2";
+import Home from "../screens/home/Home"
 
 
 const Tab = createBottomTabNavigator();

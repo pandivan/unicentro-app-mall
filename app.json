@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "prescriptiva-app",
-    "slug": "prescriptiva-app",
+    "name": "unicentro-app-mall",
+    "slug": "unicentro-app-mall",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -31,5 +31,5 @@
     },
     "sdkVersion": "46.0.0"
   },
-  "name": "prescriptiva-app"
+  "name": "unicentro-app-mall"
 }

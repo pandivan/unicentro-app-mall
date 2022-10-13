@@ -2,10 +2,10 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "native-base";
 
-import StaticChart from "../views/insight/StaticChart";
-import Insight from "../views/insight/Insight";
-import Home from "../views/home/Home"
-import Settings from "../views/configuration/Settings";
+import StaticChart from "../screens/insight/StaticChart";
+import Insight from "../screens/insight/Insight";
+import Home from "../screens/home/Home"
+import Settings from "../screens/configuration/Settings";
 
 
 
@@ -31,7 +31,7 @@ const RouteHome = ({ navigation, route }) =>
         tabBarLabelStyle:{fontSize: 13},
         headerStyle:{ backgroundColor:"#1b2028"},
         tabBarStyle:{ height:50, paddingBottom:4, paddingTop:4, backgroundColor:"#0F1319", borderTopColor:"white", borderTopWidth:0.2 },
-        headerLeft: () => (<Image ml={3} source={require('../../assets/LogoHeader.png')} alt="Alternate Text" resizeMode="contain" width={32} height={9}/>)
+        headerLeft: () => (<Image ml={3} source={require('../../assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={9}/>)
       }}
     >
       <Tab.Screen

@@ -3,7 +3,7 @@ const BACKEND_URL = "http://192.168.1.8:7788/api/cliente/barrio";
 
 import axios from "axios";
 
-import data from "../views/home/data";
+import data from "../screens/home/data";
 
 
 /**

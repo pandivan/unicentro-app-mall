@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 // import Registro from "../containers/login/Registro";
-import Login from "../views/login/Login";
+import Login from "../screens/login/Login";
 
 
 const Stack = createStackNavigator();

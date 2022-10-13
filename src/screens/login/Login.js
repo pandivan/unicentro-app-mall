@@ -24,6 +24,7 @@ const Login = ({navigation}) =>
   const { signIn } = useContext(AuthContext);
 
 
+
   /**
    * Función que permite validar los datos del formulario
    */
@@ -56,22 +57,22 @@ const Login = ({navigation}) =>
 
   return (
     <Box flex={1}>
-      <StatusBar barStyle="light-content" backgroundColor="#1B2028" />
-      <Center flex={1} backgroundColor="#1b2028" borderColor_="green.500" borderWidth_="3">
+      <StatusBar barStyle_="light-content" backgroundColor_="#1B2028" />
+      <Center flex={1} backgroundColor_="#1b2028" borderColor_="green.500" borderWidth_="3">
         <Box safeArea p="2" width="90%" mb="20" maxW="290" borderColor_="red.500" borderWidth_="1">
           
           <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
-            <Image source={require('../../../assets/Logo_Login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={32}/>
+            <Image source={require('../../../assets/logo_login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={20}/>
             
-            <Heading size="lg" fontWeight="600" color="white">
+            <Heading size="lg" mt="4" fontWeight="600">
               Iniciar Sesión
             </Heading>
           </Center>
 
-          <VStack space={3} mt="10" borderColor_="blue.500" borderWidth_="3">
+          <VStack space={3} mt="6" borderColor_="blue.500" borderWidth_="3">
             <FormControl isRequired={isRequiredEmail} isInvalid={isRequiredEmail}>
               <FormControl.Label>Correo</FormControl.Label>
-                <Input value={email} onChangeText={setEmail} color="white" borderRadius="lg" backgroundColor="#0F1319" borderColor="#0F1319" _focus={{borderColor:"#553AB6"}}/>
+                <Input value={email} onChangeText={setEmail} color_="white" borderRadius="lg" backgroundColor_="#0F1319" borderColor_="#0F1319" _focus_={{borderColor:"#553AB6"}}/>
                 <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                   {errorMessageEmail}
                 </FormControl.ErrorMessage>
@@ -87,27 +88,22 @@ const Login = ({navigation}) =>
                             <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
                           </Pressable>
                         }
-                        color="white"
+                        color_="white"
                         borderRadius="lg"
-                        backgroundColor="#0F1319" 
+                        backgroundColor_="#0F1319" 
                         borderColor="#0F1319"
-                        _focus={{borderColor:"#553AB6"}}
+                        _focus_={{borderColor:"#553AB6"}}
                 />
 
-                <Link _text={{fontSize: "xs", fontWeight: "500", color: "white"}} alignSelf="flex-end" mt="2">
+                <Link _text={{fontSize: "xs", fontWeight: "500", color_: "white"}} alignSelf="flex-end" mt="2">
                   Olvidó la Contraseña?
                 </Link>
             </FormControl>
 
-            <Button onPress={validateForm} mt="5" backgroundColor="#553AB6" borderRadius="lg" height="44px">
+            <Button onPress={validateForm} mt="5" backgroundColor="#46c9cb" borderRadius="lg" height="44px">
               Ingresar
             </Button>
 
-            {/* <HStack mt="6" justifyContent="center">
-              <Link _text={{color: "white", fontWeight: "medium", fontSize: "sm"}} href="#">
-                Tienes problemas con tus credenciales?
-              </Link>
-            </HStack> */}
           </VStack>
         </Box>
       </Center>

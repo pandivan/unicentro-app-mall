@@ -11,7 +11,7 @@ import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
 import AuthContext from "./src/contexts/AuthContext"
 import clientServices from "./src/services/ClientService";
-import ZoomInsight from "./src/views/insight/ZoomInsight";
+import ZoomInsight from "./src/screens/insight/ZoomInsight";
 import { NativeBaseProvider } from "native-base";
 
 
@@ -175,7 +175,7 @@ export default function App()
         <NavigationContainer>
           <Stack.Navigator screenOptions={{ headerShown: false, headerTitleStyle_:{color:"#afafaf"}, headerStyle_: { backgroundColor: "black" } }}>
           {
-            (state.isLoading) ?
+            (state.isLoading || state.isLoading === undefined) ?
               (<Stack.Screen name="Splash" component={SplashScreen} />) 
             :  
               (state.userToken === null) ?

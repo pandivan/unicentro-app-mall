@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 // import Registro from "../containers/login/Registro";
-import Login from "../views/login/Login";
+import Login from "../screens/login/Login";
 
 
 const Stack = createNativeStackNavigator();
