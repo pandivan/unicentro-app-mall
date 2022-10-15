@@ -17,10 +17,10 @@ const Settings = ({ navigation }) =>
 
 
   return (
-    <Box flex={1} backgroundColor="#0F1319" borderColor_="green.500" borderWidth_="3">
+    <Box flex={1} backgroundColor_="#0F1319" borderColor_="green.500" borderWidth_="3">
       <HStack m="3" alignItems="center" pb="3" borderBottomColor="light.400" borderBottomWidth="2">
         <Avatar size="48px" source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU"}} />
-        <Heading fontSize="xl" p="4" pb="3" color="light.50">
+        <Heading fontSize="xl" p="4" pb="3" color="light.600">
           Ivan Hernandez
         </Heading>
       </HStack>

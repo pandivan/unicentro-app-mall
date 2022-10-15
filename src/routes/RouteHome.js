@@ -2,8 +2,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
 import { Image } from "native-base";
 
-import StaticChart from "../screens/insight/StaticChart";
-import Insight from "../screens/insight/Insight";
 import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
 
@@ -26,12 +24,11 @@ const RouteHome = ({ navigation, route }) =>
       screenOptions=
       {{
         headerShown:true,
-        tabBarActiveTintColor:"white",
-        tabBarInactiveTintColor:"#999999",
+        tabBarActiveTintColor:"#f18032",
+        tabBarInactiveTintColor:"#5d5d5d",
         tabBarLabelStyle:{fontSize: 13},
-        headerStyle:{ backgroundColor:"#1b2028"},
-        tabBarStyle:{ height:50, paddingBottom:4, paddingTop:4, backgroundColor:"#0F1319", borderTopColor:"white", borderTopWidth:0.2 },
-        headerLeft: () => (<Image ml={3} source={require('../../assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={9}/>)
+        headerStyle:{backgroundColor:"red"},
+        tabBarStyle:{height:60, paddingBottom:4, paddingTop:4, backgroundColor_:"blue", borderTopColor:"black", borderTopWidth:0.2}
       }}
     >
       <Tab.Screen
@@ -39,54 +36,31 @@ const RouteHome = ({ navigation, route }) =>
         component={Home}
         options=
         {{
-          headerTitle:"", 
-          headerTitleStyle:{color:"#afafaf"},
+          headerShown:false,
           tabBarLabel:"Home",
-          tabBarIcon:({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
-          )
+          tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
         }}
       />
 
-      <Tab.Screen
-        name="StaticChart"
-        component={StaticChart}
-        options=
-        {{
-          headerTitle:"", 
-          headerTitleStyle:{color:"#afafaf"},
-          tabBarLabel:"Consultas",
-          tabBarIcon:({ color, size }) => (
-            <MaterialIcons name="insights" color={color} size={size} />
-          )
-        }}
-      />
-
-      <Tab.Screen
+      {/* <Tab.Screen
         name="Insight"
         component={Insight}
         options=
         {{
-          headerTitle:"", 
-          headerTitleStyle:{color:"#afafaf"},
+          headerShown:false,
           tabBarLabel:"Insight",
-          tabBarIcon:({ color, size }) => (
-            <MaterialCommunityIcons name="robot-confused-outline" color={color} size={size} />
-          )
+          tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="robot-confused-outline" color={color} size={size} />)
         }}
-      />
+      /> */}
 
       <Tab.Screen
         name="Settings"
         component={Settings}
         options=
         {{
-          headerTitle:"", 
-          headerTitleStyle:{color:"#afafaf"},
+          headerShown:false,
           tabBarLabel:"Ajustes",
-          tabBarIcon:({ color, size }) => (
-            <MaterialCommunityIcons name="cog-outline" color={color} size={size} />
-          )
+          tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="cog-outline" color={color} size={size} />)
         }}
       />
     </Tab.Navigator>

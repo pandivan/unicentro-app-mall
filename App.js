@@ -1,6 +1,7 @@
 import React, { useReducer, useMemo, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NativeBaseProvider, Image } from "native-base";
 import { Alert } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
@@ -11,12 +12,13 @@ import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
 import AuthContext from "./src/contexts/AuthContext"
 import clientServices from "./src/services/ClientService";
-import ZoomInsight from "./src/screens/insight/ZoomInsight";
-import { NativeBaseProvider } from "native-base";
+import DrawerContent from "./src/screens/home/DrawerContent";
+
+
 
 
 //Creando Menu de Navegación
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 
 export default function App() 
@@ -167,24 +169,32 @@ export default function App()
   }),
   []
   );
-  
+
+  // useLegacyImplementation
 
   return (
     <NativeBaseProvider>
       <AuthContext.Provider value={authContext}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{ headerShown: false, headerTitleStyle_:{color:"#afafaf"}, headerStyle_: { backgroundColor: "black" } }}>
-          {
-            (state.isLoading || state.isLoading === undefined) ?
-              (<Stack.Screen name="Splash" component={SplashScreen} />) 
-            :  
-              (state.userToken === null) ?
-                (<Stack.Screen name="RouteAuthentication" component={RouteAuthentication}/>)
-              :
-                (<Stack.Screen name="RouteHome" component={RouteHome}/>)
-          }
-            <Stack.Screen name="ZoomInsight" component={ZoomInsight}/>
-          </Stack.Navigator>
+        {
+          (state.userToken !== null) ?
+          (
+            <Drawer.Navigator 
+              initialRouteName="RouteHome" 
+              drawerContent={props => <DrawerContent {...props} />} 
+              screenOptions=
+              {{ 
+                headerShown: true, 
+                drawerStyle: {width:305},
+                headerRight:() => (<Image ml_={3} source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={12}/>)
+              }}
+            >
+              <Drawer.Screen name="RouteHome" component={RouteHome}/>
+            </Drawer.Navigator>
+          )
+          :
+          <RouteAuthentication />
+        }
         </NavigationContainer>
       </AuthContext.Provider>
     </NativeBaseProvider>
