@@ -4,6 +4,7 @@ import { Image } from "native-base";
 
 import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
+import Directory from "../screens/menu/Directory";
 
 
 
@@ -42,17 +43,6 @@ const RouteHome = ({ navigation, route }) =>
         }}
       />
 
-      {/* <Tab.Screen
-        name="Insight"
-        component={Insight}
-        options=
-        {{
-          headerShown:false,
-          tabBarLabel:"Insight",
-          tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="robot-confused-outline" color={color} size={size} />)
-        }}
-      /> */}
-
       <Tab.Screen
         name="Settings"
         component={Settings}
@@ -63,6 +53,12 @@ const RouteHome = ({ navigation, route }) =>
           tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="cog-outline" color={color} size={size} />)
         }}
       />
+
+      {/* <Tab.Screen
+        name="Directory" 
+        component={Directory}
+        options={{headerTitle:"dd"}}
+      /> */}
     </Tab.Navigator>
   );
 }

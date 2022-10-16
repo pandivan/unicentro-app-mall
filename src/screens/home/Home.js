@@ -102,7 +102,7 @@ const Home = ({ navigation, route }) =>
 
             <VStack alignItems="center" width="50%" space={3} borderColor_="red.600" borderWidth_="1">
               {/* Tarjeta Tiendas */}
-              <Pressable maxW_="40" width_="50%">
+              <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('Directory')}>
               {
                 ({ isPressed }) => 
                 {

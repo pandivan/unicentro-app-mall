@@ -1,7 +1,7 @@
 import React, { useReducer, useMemo, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NativeBaseProvider, Image } from "native-base";
+import { NativeBaseProvider, Image, Box, Text } from "native-base";
 import { Alert } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
@@ -11,8 +11,9 @@ import RouteHome from "./src/routes/RouteHome";
 import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
 import AuthContext from "./src/contexts/AuthContext"
-import clientServices from "./src/services/ClientService";
-import DrawerContent from "./src/screens/home/DrawerContent";
+import clientServices from "./src/services/ClientServices";
+import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
+import Directory from "./src/screens/menu/Directory";
 
 
 
@@ -181,15 +182,31 @@ export default function App()
           (
             <Drawer.Navigator 
               initialRouteName="RouteHome" 
-              drawerContent={props => <DrawerContent {...props} />} 
+              drawerContent={props => <DrawerContentMenu {...props} />} 
               screenOptions=
               {{ 
-                headerShown: true, 
-                drawerStyle: {width:305},
-                headerRight:() => (<Image ml_={3} source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={12}/>)
+                headerShown:true, 
+                drawerStyle:{width:305},
+                headerRight:() => 
+                (
+                  <Box width="90%" borderColor_="green.500" borderWidth_="1">
+                    <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
+                  </Box>
+                ),
+                headerStyle:{height:120}
               }}
             >
-              <Drawer.Screen name="RouteHome" component={RouteHome}/>
+              <Drawer.Screen 
+                name="RouteHome" 
+                component={RouteHome}
+                options={{headerTitle:""}}
+              />
+
+              <Drawer.Screen 
+                name="Directory" 
+                component={Directory}
+                options={{headerTitle:"dd"}}
+              />
             </Drawer.Navigator>
           )
           :

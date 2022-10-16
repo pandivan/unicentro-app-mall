@@ -12,7 +12,7 @@ import { FlatList } from "react-native";
  * Componente funcional que contiene los items del menú
  * @returns Screen Menú
  */
-const DrawerContent = (props) =>
+const DrawerContentMenu = (props) =>
 {
 
   const previewMenu = (item) => 
@@ -48,4 +48,4 @@ const DrawerContent = (props) =>
   );
 }
 
-export default DrawerContent;
+export default DrawerContentMenu;
