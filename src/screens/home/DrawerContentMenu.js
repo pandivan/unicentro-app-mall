@@ -1,32 +1,85 @@
 import React, { useState, useEffect } from "react";
 import { VStack, HStack, Center, Box, Heading, Text, Avatar, Image, Spacer, StatusBar, Button, Divider } from "native-base";
-import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import * as SecureStore from "expo-secure-store";
-
-import data from "./data";
 import { FlatList } from "react-native";
+
+import Constants from "../../utilities/Constants";
+import menuServices from "../../services/MenuServices";
 
 
 
 /**
- * Componente funcional que contiene los items del menú
+ * Componente funcional que contiene el menú
  * @returns Screen Menú
  */
 const DrawerContentMenu = (props) =>
 {
 
+  const [menu, setMenu] = useState(null);
+
+  /**
+   * Funcion que permite cargar el menú
+   */
+  useEffect(() => 
+  {
+    console.log("useEffect DrawerContentMenu");
+
+    const loadData = async () => 
+    {
+      try 
+      {
+        //Se obtiene los item del menú a traves del api-rest
+        let {status, menuBD} = await menuServices.getMenu();
+
+        switch (status)
+        {
+          case Constants.STATUS_OK:            
+            setMenu(menuBD);
+          break;
+
+          case Constants.STATUS_ACCESO_DENEGADO:
+            console.log("acceso denegado ap")
+          break;
+
+          default:
+            //Valida si hubo un error en el api-rest
+            //Si tiene token es porque estoy logueado y debo informar que hubo un error en el backend
+          //  if(autenticacionServices.getToken())
+          //  {
+          //    setMensajePopup("En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
+          //    setMostrarPopup(true);
+          //  }
+            console.log("default acceso denegado")
+          break;
+        }
+      }
+      catch (error) 
+      {
+        console.log("Error al cargar el menu (DrawerContentMenu)")
+      }
+    }
+
+    loadData();
+  }, []);
+
+
+
+  /**
+   * Función que permite previsualizar los item del menú desplegable
+   * @param item Item del menú
+   * @returns Lista de items del menú
+   */
   const previewMenu = (item) => 
   {
     return(
       <Box borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" borderColor_="blue.500" borderWidth_="1">
         <HStack space={3} justifyContent_="space-between">
-          <Avatar size="45px" source={{uri: item.avatarUrl}} />
+          <Avatar size="45px" source={{uri: item.urlItemImage}} />
           <VStack>
             <Text fontSize="md" color="coolGray.800" bold>
-              {item.fullName}
+              {item.itemName}
             </Text>
             <Text fontSize="xs" color="coolGray.400">
-              {item.recentText}
+              {item.description}
             </Text>
           </VStack>
         </HStack>
@@ -41,9 +94,9 @@ const DrawerContentMenu = (props) =>
         Menú
       </Heading>
       <FlatList 
-        data={data.dataMenu} 
+        data={menu} 
         renderItem={({item}) => previewMenu(item)} 
-        keyExtractor={item => item.id} />
+        keyExtractor={item => item.idItemMenu} />
     </Box>
   );
 }

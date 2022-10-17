@@ -3,35 +3,35 @@ const BACKEND_URL = "http://192.168.1.8:7788/api/cliente/barrio";
 
 import axios from "axios";
 
-import data from "../screens/home/data";
+import data from "../../data";
 
 
 /**
- * Función que permite obtener los puntos de venta asociados al vendedor
+ * Función que permite obtener el categorieso de categorías y sus tiendas
  */
-const getAllPointsSale = async () => 
+const getAllCategories = async () => 
 {
   try
   {
     // console.log(JSON.stringify(cliente));
-    // En el token debe estar mi vendedor
+    // En el token debe estar el cliente
     // let respuesta = await axios.get(`${Constantes.BACKEND_URL}/pointsofsale`, { headers: tokenServices.autenticacionHeader() });
 
     let result = 
     {
       status: 200,
-      data: data.vw_dim_points_of_sale
+      data: data.dataCategories
     };
 
     // console.log("Respuesta API-REST getAllPointsOfSale");
     // console.log(JSON.stringify(respuesta));
 
-    return { status: result.status, lstPointsSaleBD: result.data };
+    return { status: result.status, categoriesBD: result.data };
   }
 	catch(error)
   {
     //TODO: Guardar log en BD
-    console.log(`Error al consultar los puntos de venta: ${error}`);
+    console.log(`Error al consultar el categorieso: ${error}`);
     return { status: error.request.status };
   }
 }
@@ -40,5 +40,5 @@ const getAllPointsSale = async () =>
 
 export default 
 {
-  getAllPointsSale
+  getAllCategories
 };

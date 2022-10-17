@@ -5,7 +5,7 @@ import Swiper from "react-native-swiper";
 import * as SecureStore from "expo-secure-store";
 
 import Constants from "../../utilities/Constants";
-import pointSaleService from "../../services/PointSaleService";
+import categoriesServices from "../../services/CategoriesServices";
 
 
 
@@ -18,6 +18,8 @@ import pointSaleService from "../../services/PointSaleService";
 const Home = ({ navigation, route }) =>
 {
 
+  const [categories, setCategories] = useState(null);
+
   let arrayBanner =
   [
     "http://tutofox.com/foodapp//banner/banner-1.jpg",
@@ -27,7 +29,7 @@ const Home = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar los puntos de venta asociados al vendedor
+   * Funcion que permite cargar la data inicial del home
    */
   useEffect(() => 
   {
@@ -37,15 +39,15 @@ const Home = ({ navigation, route }) =>
     {
       try 
       {
-        //Se obtiene los puntos de venta a traves del api-rest
-        let {status, lstPointsSaleBD} = await pointSaleService.getAllPointsSale();
+        //Se obtiene el categorieso que contiene categorías y tiendas a traves del api-rest
+        let {status, categoriesBD} = await categoriesServices.getAllCategories();
 
         switch (status)
         {
           case Constants.STATUS_OK:
-            // Se almacenan los puntos de venta en el storage
-            await SecureStore.setItemAsync("lstPointsSale", JSON.stringify(lstPointsSaleBD));
-            console.log("useEffect RouteHome")
+            // Se almacenan el categorieso en el storage
+            await SecureStore.setItemAsync("categories", JSON.stringify(categoriesBD));
+            setCategories(categoriesBD);
           break;
 
           case Constants.STATUS_ACCESO_DENEGADO:
@@ -60,17 +62,14 @@ const Home = ({ navigation, route }) =>
           //    setMensajePopup("En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
           //    setMostrarPopup(true);
           //  }
-            console.log("acceso denegado")
+            console.log("default acceso denegado")
           break;
         }
       }
       catch (error) 
       {
-        console.log("Error al cargar la data en RouteHome")
+        console.log("Error al cargar el categorieso (Home)")
       }
-      
-      //Se obtienen los puntos de ventas del storage
-      // let lstPointsSale = await SecureStore.getItemAsync("lstPointsSale");
     }
 
     loadData();
@@ -110,11 +109,11 @@ const Home = ({ navigation, route }) =>
                     <Box background={isPressed ? "#78C9CC" : "#39bec2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="210" width="40">
                       <VStack>
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          icono 
+                          {categories[0].categoryName} 
                         </Text>
 
                         <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          Tiendas
+                          {categories[0].urlCategoryImage}
                         </Text>
                       </VStack>
                     </Box>
@@ -132,11 +131,11 @@ const Home = ({ navigation, route }) =>
                     <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="120" width="40">
                       <VStack>
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          icono 
+                          {categories[3].categoryName} 
                         </Text>
 
                         <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          Entretenimiento
+                          {categories[3].urlCategoryImage}
                         </Text>
                       </VStack>
                     </Box>
@@ -156,7 +155,7 @@ const Home = ({ navigation, route }) =>
                     <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
                       <VStack>
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          icono
+                          {categories[2].categoryName}
                         </Text>
 
                         <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
@@ -178,7 +177,7 @@ const Home = ({ navigation, route }) =>
                     <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
                       <VStack>
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          icono
+                          {categories[4].categoryName}
                         </Text>
 
                         <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
