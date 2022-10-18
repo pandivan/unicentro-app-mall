@@ -14,7 +14,7 @@ import menuServices from "../../services/MenuServices";
 const DrawerContentMenu = (props) =>
 {
 
-  const [menu, setMenu] = useState(null);
+  const [lstMenu, setLstMenu] = useState(null);
 
   /**
    * Funcion que permite cargar el menú
@@ -28,12 +28,12 @@ const DrawerContentMenu = (props) =>
       try 
       {
         //Se obtiene los item del menú a traves del api-rest
-        let {status, menuBD} = await menuServices.getMenu();
+        let {status, lstMenuBD} = await menuServices.getMenu();
 
         switch (status)
         {
           case Constants.STATUS_OK:            
-            setMenu(menuBD);
+            setLstMenu(lstMenuBD);
           break;
 
           case Constants.STATUS_ACCESO_DENEGADO:
@@ -94,7 +94,7 @@ const DrawerContentMenu = (props) =>
         Menú
       </Heading>
       <FlatList 
-        data={menu} 
+        data={lstMenu} 
         renderItem={({item}) => previewMenu(item)} 
         keyExtractor={item => item.idItemMenu} />
     </Box>

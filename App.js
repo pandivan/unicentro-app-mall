@@ -10,10 +10,13 @@ import "react-native-gesture-handler";
 import RouteHome from "./src/routes/RouteHome";
 import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
-import AuthContext from "./src/contexts/AuthContext"
-import clientServices from "./src/services/ClientServices";
+import AppContext from "./src/contexts/AppContext"
 import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
+import clientServices from "./src/services/ClientServices";
 import Directory from "./src/screens/menu/Directory";
+import categoriesServices from "./src/services/CategoriesServices";
+import Constants from "./src/utilities/Constants";
+
 
 
 
@@ -28,9 +31,10 @@ export default function App()
   //Valores iniciales del state
   const inicializarState = 
   {
-    isLoading: true,
-    isSignout: false,
-    userToken: null
+    isLoading:true,
+    isSignout:false,
+    userToken:null,
+    lstCategories:[]
   }
 
 
@@ -44,13 +48,37 @@ export default function App()
     {
       try 
       {
-        //Se valida si hay un token en el storage
-        let userToken = await SecureStore.getItemAsync("userToken");
-        dispatch({ type: "RESTORE_TOKEN", token: userToken });
+        console.log("*** UseEffect APP ****");
+        
+        //Se obtiene las categorias y sus tiendas a traves del api-rest
+        let {status, lstCategoriesBD} = await categoriesServices.getAllCategories();
+
+        switch (status)
+        {
+          case Constants.STATUS_OK:
+            // Se almacenan las categorias en el contexto
+            dispatch({ type: "LOAD_CATEGORIES", lstCategories: lstCategoriesBD });
+
+            //Se valida si hay un token en el storage
+            let userToken = await SecureStore.getItemAsync("userToken");
+            dispatch({ type: "RESTORE_TOKEN", token: userToken });
+          break;
+
+          case Constants.STATUS_ACCESO_DENEGADO:
+            // El usuario tiene el token vencido y debe loguearse nuevamente
+            dispatch({ type: "RESTORE_TOKEN", token: null });
+            console.log("case STATUS_ACCESO_DENEGADO")
+          break;
+
+          default:
+            dispatch({ type: "RESTORE_TOKEN", token: null });
+            console.log("case default acceso denegado")
+          break;
+        }
       } 
       catch (e) 
       {
-        Alert.alert("Restoring token failed...");
+        Alert.alert("Información", "En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
       }
     };
 
@@ -64,14 +92,14 @@ export default function App()
    * @param action 
    * @returns State
    */
-  const reducer = (prevState, action) => 
+  const stateReducer = (prevState, action) => 
   {
     switch (action.type) 
     {
       case "RESTORE_TOKEN":
-        console.log("***** REDUCER RESTORE ***** " + action.token);
+        console.log("***** REDUCER RESTORE ***** ");
         return {
-          ...prevState, //Retorna todas las propieades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading y userToken
+          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading y userToken
           userToken: action.token,
           isLoading: false
         };
@@ -92,6 +120,13 @@ export default function App()
           userToken: null
         };
       
+      case "LOAD_CATEGORIES":
+        console.log("*** REDUCER LOAD_CATEGORIES *** " + action.lstCategories.length);
+        return {
+          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad lstCategories
+          lstCategories: action.lstCategories
+        };
+
       default:
         console.log("switch default");
         return state;
@@ -100,19 +135,19 @@ export default function App()
 
 
   //Creando state....
-  const [state, dispatch] = useReducer(reducer, inicializarState);
+  const [state, dispatch] = useReducer(stateReducer, inicializarState);
 
   
   /**
    * Hook que contiene las funciones de inicio, cierre y restauración de sesión
    */
-  const authContext = useMemo(() => (
+  const appContext = useMemo(() => (
   {
     signIn: async (client) => 
     {
       try 
       {
-        console.log("***** SIGN_IN *****");
+        console.log("***** SIGN_IN MEMO *****");
         let {success, userToken} = await clientServices.validateClient(client);
         
         if(success)
@@ -137,7 +172,7 @@ export default function App()
     
     signOut: () => 
     {
-      console.log("***** SIGN_OUT *****");
+      console.log("***** SIGN_OUT MEMO *****");
       dispatch({ type: "SIGN_OUT" });
       SecureStore.deleteItemAsync("userToken");
     },
@@ -146,7 +181,7 @@ export default function App()
     {
       try 
       {
-        console.log("***** SIGN_UP *****");
+        console.log("***** SIGN_UP MEMO *****");
         let {success, userToken} = await clientServices.registerCliente(client);
         
         if(success)
@@ -167,15 +202,15 @@ export default function App()
         Alert.alert("Información", "No es posible registrar el cliente");
       }
     },
-  }),
-  []
-  );
 
-  // useLegacyImplementation
+    lstCategories: state.lstCategories,
+
+  }), [state.lstCategories]);
+
 
   return (
     <NativeBaseProvider>
-      <AuthContext.Provider value={authContext}>
+      <AppContext.Provider value={appContext}>
         <NavigationContainer>
         {
           (state.userToken !== null) ?
@@ -213,7 +248,7 @@ export default function App()
           <RouteAuthentication />
         }
         </NavigationContainer>
-      </AuthContext.Provider>
+      </AppContext.Provider>
     </NativeBaseProvider>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Box, Icon, Image, Pressable, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, StatusBar, WarningOutlineIcon } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import AuthContext from '../../contexts/AuthContext';
+import AppContext from '../../contexts/AppContext';
 
 
 
@@ -21,7 +21,7 @@ const Login = ({navigation}) =>
   const [show, setShow] = useState(false);
   
   //Hook que permite invocar al metodo signIn(useMemo) del App.js
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useContext(AppContext);
 
 
 

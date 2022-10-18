@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { VStack, HStack, Box, Heading, Text, Icon, Avatar, Menu } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
-import AuthContext from "../../contexts/AuthContext";
+import AppContext from "../../contexts/AppContext";
 
 
 /**
@@ -13,7 +13,7 @@ const Settings = ({ navigation }) =>
 {
 
   //Hook que permite invocar al metodo signIn(useMemo) del App.js
-  const { signOut } = useContext(AuthContext);
+  const { signOut } = useContext(AppContext);
 
 
   return (

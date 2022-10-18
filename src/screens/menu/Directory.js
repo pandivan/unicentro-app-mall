@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { VStack, HStack, Center, Box, Heading, Text, Pressable, Image, StatusBar, Button, Icon, IconButton } from "native-base";
 import { MaterialCommunityIcons, Ionicons, Fontisto } from '@expo/vector-icons';
 
 import * as SecureStore from "expo-secure-store";
 
-import Constants from "../../utilities/Constants";
-
+import AppContext from '../../contexts/AppContext';
 
 
 
@@ -15,6 +14,9 @@ import Constants from "../../utilities/Constants";
  */
  const Directory = (props) =>
  {
+
+  //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
+  const { lstCategories }  = useContext(AppContext);
 
   const [directoryCategories, setDirectoryCategories] = useState([]);
   const [backgroundColor, setBackgroundColor] = useState("red.500");
@@ -31,9 +33,11 @@ import Constants from "../../utilities/Constants";
     {
       try 
       {
-        let categoriesBD = await SecureStore.getItemAsync(JSON.parse("categories"));
-
-        let directoryCategories = categoriesBD.filter(category => (2 === category.type || 3 === category.type));
+        // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
+        // 1 = Se pinta en home
+        // 2 = Se pinta en directorio
+        // 3 = Se pinta en home y directorio
+        let directoryCategories = lstCategories.filter(category => (2 === category.type || 3 === category.type)); console.log(directoryCategories.length);
 
         setDirectoryCategories(directoryCategories);
       }

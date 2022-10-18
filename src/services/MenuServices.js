@@ -26,7 +26,7 @@ const getMenu = async () =>
     // console.log("Respuesta API-REST getAllPointsOfSale");
     // console.log(JSON.stringify(respuesta));
 
-    return { status: result.status, menuBD: result.data };
+    return { status: result.status, lstMenuBD: result.data };
   }
 	catch(error)
   {

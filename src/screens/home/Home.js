@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Alert } from "react-native";
 import { VStack, HStack, Center, Box, Heading, Text, Pressable, Image, ScrollView, StatusBar, Button, Spacer } from "native-base";
 import Swiper from "react-native-swiper";
 
 import * as SecureStore from "expo-secure-store";
 
-import Constants from "../../utilities/Constants";
-import categoriesServices from "../../services/CategoriesServices";
+// import categoriesServices from "../../services/CategoriesServices";
+// import Constants from "../../utilities/Constants";
+import AppContext from '../../contexts/AppContext';
 
 
 
@@ -17,8 +19,12 @@ import categoriesServices from "../../services/CategoriesServices";
  */
 const Home = ({ navigation, route }) =>
 {
+  //Hook que permite invocar el atributo lstCategories del App.js (useMemo), el cual contiene las categorías previamente cargadas al iniciar la APP
+  const { lstCategories }  = useContext(AppContext);
 
-  const [categories, setCategories] = useState(null);
+  const [lstHomeCategories, setLstHomeCategories] = useState([]);
+
+  var pepe = "Tiendas.png";
 
   let arrayBanner =
   [
@@ -33,43 +39,17 @@ const Home = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect Home");
+    console.log("useEffect Home ");
 
     const loadData = async () => 
     {
-      try 
-      {
-        //Se obtiene el categorieso que contiene categorías y tiendas a traves del api-rest
-        let {status, categoriesBD} = await categoriesServices.getAllCategories();
+      // Se obtiene las categorías que se deben pintar en el home según el tipo de categoría... 
+      // 1 = Se pinta en home
+      // 2 = Se pinta en directorio
+      // 3 = Se pinta en home y directorio
+      let lstHomeCategories = lstCategories.filter(category => (1 === category.type || 3 === category.type));
 
-        switch (status)
-        {
-          case Constants.STATUS_OK:
-            // Se almacenan el categorieso en el storage
-            await SecureStore.setItemAsync("categories", JSON.stringify(categoriesBD));
-            setCategories(categoriesBD);
-          break;
-
-          case Constants.STATUS_ACCESO_DENEGADO:
-            console.log("acceso denegado ap")
-          break;
-
-          default:
-            //Valida si hubo un error en el api-rest
-            //Si tiene token es porque estoy logueado y debo informar que hubo un error en el backend
-          //  if(autenticacionServices.getToken())
-          //  {
-          //    setMensajePopup("En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
-          //    setMostrarPopup(true);
-          //  }
-            console.log("default acceso denegado")
-          break;
-        }
-      }
-      catch (error) 
-      {
-        console.log("Error al cargar el categorieso (Home)")
-      }
+      setLstHomeCategories(lstHomeCategories);
     }
 
     loadData();
@@ -106,15 +86,17 @@ const Home = ({ navigation, route }) =>
                 ({ isPressed }) => 
                 {
                   return (
-                    <Box background={isPressed ? "#78C9CC" : "#39bec2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="210" width="40">
-                      <VStack>
-                        <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[0].categoryName} 
+                    <Box background={isPressed ? "#78C9CC" : "#39bec2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40">
+                      <VStack height="100%" justifyContent="space-between">
+                        <Text ml="2" fontSize="17" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                          {lstCategories ? lstCategories[0].categoryName : null} 
                         </Text>
-
-                        <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[0].urlCategoryImage}
-                        </Text>
+                        {
+                          lstCategories ?
+                            <Image source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={32} height={32}/>
+                          :
+                          null
+                        }
                       </VStack>
                     </Box>
                   );
@@ -128,15 +110,17 @@ const Home = ({ navigation, route }) =>
                 ({ isPressed }) => 
                 {
                   return (
-                    <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="120" width="40">
-                      <VStack>
+                    <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
+                      <VStack height="100%" justifyContent="space-between">
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[3].categoryName} 
+                          {lstCategories ? lstCategories[2].categoryName : null} 
                         </Text>
-
-                        <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[3].urlCategoryImage}
-                        </Text>
+                        {
+                          lstCategories ?
+                            <Image source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={24} height={24}/>
+                          :
+                          null
+                        }
                       </VStack>
                     </Box>
                   );
@@ -152,15 +136,19 @@ const Home = ({ navigation, route }) =>
                 ({ isPressed }) => 
                 {
                   return (
-                    <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
-                      <VStack>
+                    <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
+                      <VStack height="100%" justifyContent="space-between">
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[2].categoryName}
+                          {lstCategories ? lstCategories[1].categoryName : null} 
                         </Text>
-
-                        <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          Bancos
-                        </Text>
+                        <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1">
+                        {
+                          lstCategories ?
+                            <Image source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={24} height={24}/>
+                          :
+                          null
+                        }
+                        </Box>
                       </VStack>
                     </Box>
                   );
@@ -174,15 +162,17 @@ const Home = ({ navigation, route }) =>
                 ({ isPressed }) => 
                 {
                   return (
-                    <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} p="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
-                      <VStack>
+                    <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
+                      <VStack height="100%" justifyContent="space-between">
                         <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {categories[4].categoryName}
+                          {lstCategories ? lstCategories[3].categoryName : null} 
                         </Text>
-
-                        <Text mt="3" m="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          Comidas
-                        </Text>
+                        {
+                          lstCategories ?
+                            <Image source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={32} height={32}/>
+                          :
+                          null
+                        }
                       </VStack>
                     </Box>
                   );

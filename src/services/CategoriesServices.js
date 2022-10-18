@@ -26,12 +26,12 @@ const getAllCategories = async () =>
     // console.log("Respuesta API-REST getAllPointsOfSale");
     // console.log(JSON.stringify(respuesta));
 
-    return { status: result.status, categoriesBD: result.data };
+    return { status: result.status, lstCategoriesBD: result.data };
   }
 	catch(error)
   {
     //TODO: Guardar log en BD
-    console.log(`Error al consultar el categorieso: ${error}`);
+    console.log(`Error al consultar las categorias: ${error}`);
     return { status: error.request.status };
   }
 }

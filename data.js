@@ -30,9 +30,10 @@ const dataCategories =
   {
     idCategory:1,
     categoryName: "Tiendas",
-    urlCategoryImage: "Tiendas.png",
-    urlCategoryIcon: "TiendasIcon.png",
+    urlCategoryImage: "https://drive.google.com/uc?id=1NvTdrYQv8QkIcm3ZBMs1wjudbmvIqKFd",
+    urlCategoryIcon: "https://drive.google.com/uc?id=1W_V648HOZs2TAoxVzD-u3aaqe8Dvxtnl",
     type: 3,
+    order:1,
     lstStores:
     [
       {
@@ -82,9 +83,10 @@ const dataCategories =
   {
     idCategory:2,
     categoryName: "Bancos",
-    urlCategoryImage: "Bancos.png",
+    urlCategoryImage: "https://drive.google.com/uc?id=1iNyhFsaZM1alsoOqMntm8-i5PHxIle3Q",
     urlCategoryIcon: "BancosIcon.png",
     type: 1,
+    order:2,
     lstStores:
     [
       {
@@ -134,9 +136,10 @@ const dataCategories =
   {
     idCategory:3,
     categoryName: "Entretenimiento",
-    urlCategoryImage: "Entretenimiento.png",
-    urlCategoryIcon: "EntretenimientoIcon.png",
+    urlCategoryImage:"https://drive.google.com/uc?id=11upZeqF2De1bVV8_zUQx_HDw7rzFSx8M",
+    urlCategoryIcon: "https://drive.google.com/uc?id=1rSUcz2vv1Z9wT59yyA6aGyQupbIR-zsR",
     type: 3,
+    order:3,
     lstStores:
     [
       {
@@ -172,9 +175,10 @@ const dataCategories =
   {
     idCategory:4,
     categoryName: "Comidas",
-    urlCategoryImage: "Comidas.png",
-    urlCategoryIcon: "ComidasIcon.png",
+    urlCategoryImage: "https://drive.google.com/uc?id=14HolMEjBah_GfsKb8PFSjN2-PBGnCnW6",
+    urlCategoryIcon: "https://drive.google.com/uc?id=1LVvIh2xNwJTinn1Uwnh5C89U6mfc8esg",
     type: 3,
+    order:4,
     lstStores:
     [
       {
