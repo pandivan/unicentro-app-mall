@@ -24,7 +24,11 @@ const getAllCategories = async () =>
     };
 
     // console.log("Respuesta API-REST getAllPointsOfSale");
-    // console.log(JSON.stringify(respuesta));
+    // let a = JSON.stringify(result.data);
+    // console.log(JSON.parse('data.dataCategories'));
+    // console.log(data.dataCategories);
+    // console.log(a);
+
 
     return { status: result.status, lstCategoriesBD: result.data };
   }

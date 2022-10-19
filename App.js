@@ -121,7 +121,7 @@ export default function App()
         };
       
       case "LOAD_CATEGORIES":
-        console.log("*** REDUCER LOAD_CATEGORIES *** " + action.lstCategories.length);
+        console.log("*** REDUCER LOAD_CATEGORIES *** ");
         return {
           ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad lstCategories
           lstCategories: action.lstCategories
