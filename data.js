@@ -40,43 +40,97 @@ const dataCategories =
         idStore:1,
         storeName:'Arturo Calle',
         description:'Ropa Casual y Formal',
-        storeNumber:'Local 1-41',
+        storeNumber:'1-41',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:2,
         storeName:'Academy',
         description:'Ropa Casual y Formal',
-        storeNumber:'Local 1-42',
+        storeNumber:'1-42',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:3,
         storeName:'Afterland',
         description:'Juguetería',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:4,
         storeName:'Black',
         description:'Juguetería',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:5,
         storeName:'Jumbo',
         description:'Hipermercado',
-        storeNumber:'Local 1-22',
+        storeNumber:'1-22',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:6,
         storeName:'Pepe Ganga',
         description:'Ropa Infantil, Juguetería',
-        storeNumber:'Local 1-64',
+        storeNumber:'1-64',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       }
     ]
   },
@@ -93,43 +147,97 @@ const dataCategories =
         idStore:7,
         storeName:'Bancolombia',
         description:'Banca',
-        storeNumber:'Local 1-41',
+        storeNumber:'1-41',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:8,
         storeName:'AV Villas',
         description:'Banca',
-        storeNumber:'Local 1-42',
+        storeNumber:'1-42',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:9,
         storeName:'Banco Popular',
         description:'Banca',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:10,
         storeName:'Colpatria',
         description:'Banca',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:11,
         storeName:'Itau',
         description:'Banca',
-        storeNumber:'Local 1-22',
+        storeNumber:'1-22',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:12,
         storeName:'BBVA',
         description:'Banca',
-        storeNumber:'Local 1-64',
+        storeNumber:'1-64',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       }
     ]
   },
@@ -146,29 +254,65 @@ const dataCategories =
         idStore:13,
         storeName:'Cine Colombia',
         description:'Cines',
-        storeNumber:'Local 1-41',
+        storeNumber:'1-41',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:14,
         storeName:'Cinemark',
         description:'Cines',
-        storeNumber:'Local 1-42',
+        storeNumber:'1-42',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:15,
         storeName:'Smart Fit',
         description:'Gimnasio',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:16,
         storeName:'Caballitos',
         description:'Juegos para Niños',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       }
     ]
   },
@@ -185,36 +329,81 @@ const dataCategories =
         idStore:17,
         storeName:'Mario Bros',
         description:'Restaurante',
-        storeNumber:'Local 1-41',
+        storeNumber:'1-41',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:18,
         storeName:'Cheers',
         description:'Restaurante',
-        storeNumber:'Local 1-42',
+        storeNumber:'1-42',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:19,
         storeName:'El Corral',
         description:'Restaurante',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:20,
         storeName:'Starbucks',
         description:'Panadería',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       },
       {
         idStore:21,
         storeName:'El Molino',
         description:'Panadería',
-        storeNumber:'Local 1-46',
+        storeNumber:'1-46',
         urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        storeLocation:'Pasillo 5 - Piso 1',
+        phone:'301-431-7636',
+        socialNetworks:
+        [
+          {website:'wwww.google.com'},
+          {instagram:'https://instagram.com'},
+          {facebook:'https://www.facebook.com'},
+          {whatsapp:'3014317636'}
+        ]
       }
     ]
   }

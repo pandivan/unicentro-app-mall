@@ -1,9 +1,9 @@
 import React, { useReducer, useMemo, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NativeBaseProvider, Image, Box, Text } from "native-base";
+import { NativeBaseProvider, Image, Box, HamburgerIcon, Center } from "native-base";
 import { Alert } from "react-native";
-
+import { MaterialCommunityIcons, Ionicons, Fontisto } from '@expo/vector-icons';
 import * as SecureStore from "expo-secure-store";
 import "react-native-gesture-handler";
 
@@ -97,7 +97,7 @@ export default function App()
     switch (action.type) 
     {
       case "RESTORE_TOKEN":
-        console.log("***** REDUCER RESTORE ***** ");
+        // console.log("***** REDUCER RESTORE ***** ");
         return {
           ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading y userToken
           userToken: action.token,
@@ -121,7 +121,7 @@ export default function App()
         };
       
       case "LOAD_CATEGORIES":
-        console.log("*** REDUCER LOAD_CATEGORIES *** ");
+        // console.log("*** REDUCER LOAD_CATEGORIES *** ");
         return {
           ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad lstCategories
           lstCategories: action.lstCategories
@@ -219,17 +219,26 @@ export default function App()
               initialRouteName="RouteHome" 
               drawerContent={props => <DrawerContentMenu {...props} />} 
               screenOptions=
-              {{ 
-                headerShown:true, 
-                drawerStyle:{width:305},
-                headerRight:() => 
-                (
-                  <Box width="90%" borderColor_="green.500" borderWidth_="1">
-                    <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
-                  </Box>
-                ),
-                headerStyle:{height:120}
-              }}
+              {
+                ({ navigation }) =>
+                ({ 
+                    headerShown:true,
+                    drawerStyle:{width:305},
+                    headerStyle:{height:120},
+                    headerLeft:() => 
+                    (
+                      <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="10" height="10">
+                        <HamburgerIcon onPress={navigation.toggleDrawer} size="md" color="#f18032"/>
+                      </Center>
+                    ),
+                    headerRight:() => 
+                    (
+                      <Box width="90%" borderColor_="green.500" borderWidth_="1">
+                        <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
+                      </Box>
+                    )
+                })
+              }
             >
               <Drawer.Screen 
                 name="RouteHome" 
@@ -240,7 +249,7 @@ export default function App()
               <Drawer.Screen 
                 name="Directory" 
                 component={Directory}
-                options={{headerTitle:"dd"}}
+                options={{headerTitle:"Directorio", headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center"}}
               />
             </Drawer.Navigator>
           )

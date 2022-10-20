@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FlatList, SafeAreaView } from "react-native";
-import { VStack, HStack, Center, Box, Heading, Text, Pressable, Image, StatusBar, Button, Icon, Input } from "native-base";
-import { MaterialCommunityIcons, Ionicons, Fontisto } from '@expo/vector-icons';
-
-import * as SecureStore from "expo-secure-store";
+import { FlatList } from "react-native";
+import { VStack, HStack, Center, Text, Pressable, Image, Icon, Input } from "native-base";
+import { Ionicons } from '@expo/vector-icons';
 
 import AppContext from '../../contexts/AppContext';
 
@@ -13,15 +11,16 @@ import AppContext from '../../contexts/AppContext';
  * Componente funcional que contiene el directorio por categorías y productos
  * @returns Screen Directorio
  */
- const Directory = (props) =>
- {
+const Directory = ({ navigation, route, props }) =>
+{
 
   //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
   const { lstCategories }  = useContext(AppContext);
 
   const [lstDirectoryCategories, setLstDirectoryCategories] = useState([]);
   const [lstStores, setLstStores] = useState([]);
-  const [backgroundColor, setBackgroundColor] = useState("red.500");
+  const [idCategory, setIdCategory] = useState(1);
+  const [search, setSearch] = useState("");
 
 
   /**
@@ -35,6 +34,9 @@ import AppContext from '../../contexts/AppContext';
     {
       try 
       {
+        // Se adiciona el componente HeaderFilters al header de la barra de navegación con los puntos de venta JSON.parse(lstPointsSale)
+        navigation.setOptions({ headerRight: null });
+
         // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
         // 1 = Se pinta en home
         // 2 = Se pinta en directorio
@@ -42,10 +44,13 @@ import AppContext from '../../contexts/AppContext';
         let lstDirectoryCategories = lstCategories.filter(category => (2 === category.type || 3 === category.type));
         
         setLstDirectoryCategories(lstDirectoryCategories);
+        
+        // Se obtiene de listado de tiendas de la primera categoria
+        setLstStores(lstDirectoryCategories[0].lstStores);
       }
       catch (error) 
       {
-        console.log("Error al cargar el categories (Directory)")
+        console.log("Error al cargar el categories (Directory) " + error)
       }
     }
 
@@ -59,16 +64,26 @@ import AppContext from '../../contexts/AppContext';
    */
   const loadStores = (idCategory) =>
   {
+    // Se obtiene de listado de categorias la categoria selecconada
     let category = lstDirectoryCategories.filter(category => (idCategory === category.idCategory))[0];
     
-    // category.lstStores.map((category, index)=>
-    // {
-    //   console.log(category)
-    // });
-
+    setIdCategory(idCategory);
     setLstStores(category.lstStores);
   }
 
+
+  /**
+   * Función que permite buscar la tienda en todo el listado de tiendas
+   * @param search Tienda a buscar
+   */
+  const searchStore = (search) => 
+  {
+    // Se busca la tienda en el listado de tiendas según la categoría seleccionada
+    setLstStores(lstStores.filter(store => store.storeName.toLowerCase().includes(search.toLowerCase())));
+    
+    // Se actualiza el estado search
+    setSearch(search);
+  }
 
   /**
    * Funcion que permite listar las tiendas segun la categoria seleccionada
@@ -79,26 +94,26 @@ import AppContext from '../../contexts/AppContext';
   {
 
     return(
-      <Pressable height="32" width="80" mt="5" borderColor_="red.500" borderWidth_="1">
+      <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1">
       {
         ({ isPressed }) => 
         {
           return (
-            <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="5" borderColor="gray.300" borderWidth="1">
-              <HStack space={10} borderColor_="red.500" borderWidth_="1">
-                <Center borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:"https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C"}} alt="Alternate Text" resizeMode="cover" width={16} height={16}/>
+            <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="2" borderColor="gray.300" borderWidth="1">
+              <HStack ml="5" space={8} borderColor_="red.500" borderWidth_="1">
+                <Center width="20" borderColor_="blue.500" borderWidth_="1">
+                  <Image source={{uri:store.urlStoreImage}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
                 </Center>
 
-                <VStack height="100%" borderColor_="green.500" borderWidth_="1">
+                <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
                   <Text fontSize="23" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
-                    Arturo Calle
+                    {store.storeName}
                   </Text>
                   <Text fontSize="15" color="#f18032">
-                    Ropa Casual y Formal
+                    {store.description}
                   </Text>
                   <Center mt="2" height="10" width="110px" _text={{color:"#f18032", fontWeight:"600", fontSize:"lg"}} rounded="18" borderColor="#f18032" borderWidth="2">
-                    Local 1-41
+                    {store.storeNumber}
                   </Center>
                 </VStack>
               </HStack>
@@ -112,9 +127,10 @@ import AppContext from '../../contexts/AppContext';
 
 
   return(
-    <Center backgroundColor_="white">
+    <Center flex={1} backgroundColor_="white" borderColor_="red.600" borderWidth_="1">
       <HStack mt="5" justifyContent="center" space={5} width="100%" borderColor_="red.600" borderWidth_="1">
       {
+        // Visualización de las categorias en el header
         lstDirectoryCategories.map((category, index)=>
         {
           return (
@@ -124,32 +140,42 @@ import AppContext from '../../contexts/AppContext';
                 ({ isPressed }) => 
                 {
                   return (
-                    <Center bg={isPressed ? "#78C9CC" : "white"} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
-                      <Image source={{uri:category.urlCategoryIcon}} alt="Alternate Text" size="xs" rounded="100"/>
+                    <Center bg={idCategory === category.idCategory ? "#3abdc2" : "white"} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
+                      <Image source={{uri:category.urlCategoryIcon}} alt="Imagen desactualizada" size="xs" rounded="100"/>
                     </Center>
                   )
                 }
               }
               </Pressable>
-              <Text mt="2">{category.categoryName}</Text>
+              <Text mt="2" bold color={idCategory === category.idCategory ? "#3abdc2" : "#b5b5b5"}>Local {category.categoryName}</Text>
             </VStack>
           )        
         })
       }
       </HStack>
 
-      <Input placeholder="Search" variant="filled" width="90%" borderColor="#f18032" _focus={{borderColor:"#f18032", backgroundColor:"white"}} borderRadius="10" mt="8" py="1" px="2" InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />} />
+      <Input 
+        placeholder="Tiendas" 
+        variant="filled" 
+        width="90%" 
+        borderColor="#f18032" 
+        _focus={{borderColor:"#f18032", backgroundColor:"white"}} 
+        borderRadius="10" mt="8" mb="5" py="1" px="2" 
+        InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />}
+        value={search} 
+        onChangeText={(search) => searchStore(search)}
+      />
 
-      {/* <SafeAreaView style={{flex_:1, width:200}}> */}
-        <FlatList style={{ backgroundColor: "#fff" }}
+      <Center flex={1}>
+        <FlatList
           data={lstStores} 
           renderItem={({item}) => renderStores(item)} 
           keyExtractor={item => item.idStore} 
-          style_={{width:100}}
+          showsVerticalScrollIndicator ={false}
         />
-      {/* </SafeAreaView> */}
+      </Center>
     </Center>
   );
- }
- 
- export default Directory;
+}
+
+export default Directory;
