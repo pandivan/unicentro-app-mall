@@ -41,7 +41,7 @@ const Home = ({ navigation, route }) =>
   {
     console.log("useEffect Home ");
 
-    const loadData = async () => 
+    const loadData = () => 
     {
       // Se obtiene las categorías que se deben pintar en el home según el tipo de categoría... 
       // 1 = Se pinta en home
@@ -61,128 +61,124 @@ const Home = ({ navigation, route }) =>
     <Center flex={1} borderColor_="green.500" borderWidth_="3">
       {/* <StatusBar barStyle="light-content" backgroundColor_="#1B2028" /> */}
 
-      <Center px="2" backgroundColor_="#0F1319" justifyContent_="flex-start" alignItems_="flex-start" width="100%" borderColor_="red.500" borderWidth_="2">
-        <ScrollView maxW="100%" height="100%" pt="1" _contentContainerStyle_={{borderColor:"blue.500", borderWidth:"5"}}>
-          
-          {/* Banner */}
-          <Box justifyContent="center" mb="5" mt="1" mx="1" height="48" borderColor_="blue.500" borderWidth_="2">
-            <Swiper showsButtons={false} autoplay_={true} autoplayTimeout={4}>
+      <Center px="2" backgroundColor_="#0F1319" justifyContent_="flex-start" alignItems_="flex-start" width="100%" borderColor_="red.500" borderWidth_="2">  
+        {/* Banner */}
+        <Box justifyContent="center" mb="5" mt="1" mx="1" height="48" borderColor_="blue.500" borderWidth_="2">
+          <Swiper showsButtons={false} autoplay_={true} autoplayTimeout={4}>
+          {
+            arrayBanner.map((banner, index)=>
             {
-              arrayBanner.map((banner, index)=>
+              return( <Image key={index} source={{uri: banner}} resizeMode="contain" borderRadius="10" width="100%" height="100%" alt="Alternate Text"/> )
+            })
+          }
+          </Swiper>
+        </Box>
+        
+        <HStack mt="1" borderColor_="green.600" borderWidth_="1">
+
+          <VStack alignItems="center" width="50%" space={3} borderColor_="red.600" borderWidth_="1">
+            {/* Tarjeta Tiendas */}
+            <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('Directory')}>
+            {
+              ({ isPressed }) => 
               {
-                return( <Image key={index} source={{uri: banner}} resizeMode="contain" borderRadius="10" width="100%" height="100%" alt="Alternate Text"/> )
-              })
+                return (
+                  <Box background={isPressed ? "#78C9CC" : "#39bec2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40">
+                    <VStack height="100%" justifyContent="space-between">
+                      <Text ml="2" fontSize="17" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                        {lstCategories ? lstCategories[0].categoryName : null} 
+                      </Text>
+                      {
+                        lstCategories ?
+                          <Image source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode="contain" borderBottomLeftRadius="20" width={32} height={32}/>
+                        :
+                        null
+                      }
+                    </VStack>
+                  </Box>
+                );
+              }
             }
-            </Swiper>
-          </Box>
-          
-          
-          <HStack mt="1" borderColor_="green.600" borderWidth_="1">
+            </Pressable>
+            
+            {/* Tarjeta Entretenimiento */}
+            <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('StoreInformation')}>
+            {
+              ({ isPressed }) => 
+              {
+                return (
+                  <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
+                    <VStack height="100%" justifyContent="space-between">
+                      <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                        {lstCategories ? lstCategories[2].categoryName : null} 
+                      </Text>
+                      {
+                        lstCategories ?
+                          <Image source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode="contain" borderBottomLeftRadius="20" width={24} height={20}/>
+                        :
+                        null
+                      }
+                    </VStack>
+                  </Box>
+                );
+              }
+            }
+            </Pressable>
+          </VStack>
 
-            <VStack alignItems="center" width="50%" space={3} borderColor_="red.600" borderWidth_="1">
-              {/* Tarjeta Tiendas */}
-              <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('Directory')}>
+          <VStack alignItems="center" width="50%" space={3} borderColor_="blue.600" borderWidth_="1">
+            {/* Tarjeta de Bancos */}
+            <Pressable maxW_="48" width_="50%">
+            {
+              ({ isPressed }) => 
               {
-                ({ isPressed }) => 
-                {
-                  return (
-                    <Box background={isPressed ? "#78C9CC" : "#39bec2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40">
-                      <VStack height="100%" justifyContent="space-between">
-                        <Text ml="2" fontSize="17" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {lstCategories ? lstCategories[0].categoryName : null} 
-                        </Text>
-                        {
-                          lstCategories ?
-                            <Image source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={32} height={32}/>
-                          :
-                          null
-                        }
-                      </VStack>
-                    </Box>
-                  );
-                }
+                return (
+                  <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
+                    <VStack height="100%" justifyContent="space-between">
+                      <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                        {lstCategories ? lstCategories[1].categoryName : null} 
+                      </Text>
+                      <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1">
+                      {
+                        lstCategories ?
+                          <Image source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode="contain" borderBottomRightRadius="20" width={24} height={20}/>
+                        :
+                        null
+                      }
+                      </Box>
+                    </VStack>
+                  </Box>
+                );
               }
-              </Pressable>
-              
-              {/* Tarjeta Entretenimiento */}
-              <Pressable maxW_="40" width_="50%">
+            }
+            </Pressable>
+            
+            {/* Tarjeta de comidas */}
+            <Pressable maxW_="48" width_="50%">
+            {
+              ({ isPressed }) => 
               {
-                ({ isPressed }) => 
-                {
-                  return (
-                    <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
-                      <VStack height="100%" justifyContent="space-between">
-                        <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {lstCategories ? lstCategories[2].categoryName : null} 
-                        </Text>
-                        {
-                          lstCategories ?
-                            <Image source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={24} height={24}/>
-                          :
-                          null
-                        }
-                      </VStack>
-                    </Box>
-                  );
-                }
+                return (
+                  <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
+                    <VStack height="100%" justifyContent="space-between">
+                      <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                        {lstCategories ? lstCategories[3].categoryName : null} 
+                      </Text>
+                      {
+                        lstCategories ?
+                          <Image source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode="contain" borderBottomLeftRadius="20" width={32} height={32}/>
+                        :
+                        null
+                      }
+                    </VStack>
+                  </Box>
+                );
               }
-              </Pressable>
-            </VStack>
+            }
+            </Pressable>
+          </VStack>
 
-            <VStack alignItems="center" width="50%" space={3} borderColor_="blue.600" borderWidth_="1">
-              {/* Tarjeta de Bancos */}
-              <Pressable maxW_="48" width_="50%">
-              {
-                ({ isPressed }) => 
-                {
-                  return (
-                    <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
-                      <VStack height="100%" justifyContent="space-between">
-                        <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {lstCategories ? lstCategories[1].categoryName : null} 
-                        </Text>
-                        <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1">
-                        {
-                          lstCategories ?
-                            <Image source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={24} height={24}/>
-                          :
-                          null
-                        }
-                        </Box>
-                      </VStack>
-                    </Box>
-                  );
-                }
-              }
-              </Pressable>
-              
-              {/* Tarjeta de promociones */}
-              <Pressable maxW_="48" width_="50%">
-              {
-                ({ isPressed }) => 
-                {
-                  return (
-                    <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
-                      <VStack height="100%" justifyContent="space-between">
-                        <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                          {lstCategories ? lstCategories[3].categoryName : null} 
-                        </Text>
-                        {
-                          lstCategories ?
-                            <Image source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode="cover" width={32} height={32}/>
-                          :
-                          null
-                        }
-                      </VStack>
-                    </Box>
-                  );
-                }
-              }
-              </Pressable>
-            </VStack>
-
-          </HStack>
-        </ScrollView>
+        </HStack>
       </Center>
     </Center>
   );

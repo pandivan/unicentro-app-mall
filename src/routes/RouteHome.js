@@ -4,7 +4,7 @@ import { Image } from "native-base";
 
 import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
-import Directory from "../screens/menu/Directory";
+import Directory from "../screens/directory/Directory";
 
 
 

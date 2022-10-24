@@ -41,96 +41,102 @@ const dataCategories =
         storeName:'Arturo Calle',
         description:'Ropa Casual y Formal',
         storeNumber:'1-41',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:2,
         storeName:'Academy',
         description:'Ropa Casual y Formal',
         storeNumber:'1-42',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:3,
         storeName:'Afterland',
         description:'Juguetería',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:4,
         storeName:'Black',
         description:'Juguetería',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:5,
         storeName:'Jumbo',
         description:'Hipermercado',
         storeNumber:'1-22',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:6,
         storeName:'Pepe Ganga',
         description:'Ropa Infantil, Juguetería',
         storeNumber:'1-64',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       }
     ]
   },
@@ -148,96 +154,102 @@ const dataCategories =
         storeName:'Bancolombia',
         description:'Banca',
         storeNumber:'1-41',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:8,
         storeName:'AV Villas',
         description:'Banca',
         storeNumber:'1-42',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:9,
         storeName:'Banco Popular',
         description:'Banca',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:10,
         storeName:'Colpatria',
         description:'Banca',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:11,
         storeName:'Itau',
         description:'Banca',
         storeNumber:'1-22',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:12,
         storeName:'BBVA',
         description:'Banca',
         storeNumber:'1-64',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       }
     ]
   },
@@ -255,64 +267,68 @@ const dataCategories =
         storeName:'Cine Colombia',
         description:'Cines',
         storeNumber:'1-41',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:14,
         storeName:'Cinemark',
         description:'Cines',
         storeNumber:'1-42',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:15,
         storeName:'Smart Fit',
         description:'Gimnasio',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:16,
         storeName:'Caballitos',
         description:'Juegos para Niños',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       }
     ]
   },
@@ -330,80 +346,85 @@ const dataCategories =
         storeName:'Mario Bros',
         description:'Restaurante',
         storeNumber:'1-41',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:18,
         storeName:'Cheers',
         description:'Restaurante',
         storeNumber:'1-42',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:19,
         storeName:'El Corral',
         description:'Restaurante',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:20,
         storeName:'Starbucks',
         description:'Panadería',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       },
       {
         idStore:21,
         storeName:'El Molino',
         description:'Panadería',
         storeNumber:'1-46',
-        urlStoreImage: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
         storeLocation:'Pasillo 5 - Piso 1',
-        phone:'301-431-7636',
+        phone:'3014317636',
         socialNetworks:
-        [
-          {website:'wwww.google.com'},
-          {instagram:'https://instagram.com'},
-          {facebook:'https://www.facebook.com'},
-          {whatsapp:'3014317636'}
-        ]
+        {
+          website:'www.arturocalle.com',
+          instagram:'elcristian_gonzalez',
+          facebook:'elcristiangonzalez1',
+          whatsapp:'3014317636'
+        }
       }
     ]
   }

@@ -13,7 +13,8 @@ import SplashScreen from "./src/components/SplashScreen";
 import AppContext from "./src/contexts/AppContext"
 import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
 import clientServices from "./src/services/ClientServices";
-import Directory from "./src/screens/menu/Directory";
+import Directory from "./src/screens/directory/Directory";
+import StoreInformation from "./src/screens/directory/StoreInformation";
 import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
 
@@ -251,6 +252,13 @@ export default function App()
                 component={Directory}
                 options={{headerTitle:"Directorio", headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center"}}
               />
+
+              <Drawer.Screen 
+                name="StoreInformation" 
+                component={StoreInformation}
+                options={{headerTitle:""}}
+              />
+              
             </Drawer.Navigator>
           )
           :

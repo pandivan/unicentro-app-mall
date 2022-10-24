@@ -11,7 +11,7 @@ import AppContext from '../../contexts/AppContext';
  * Componente funcional que contiene el directorio por categorías y productos
  * @returns Screen Directorio
  */
-const Directory = ({ navigation, route, props }) =>
+const Directory = ({ navigation, route }) =>
 {
 
   //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
@@ -30,7 +30,7 @@ const Directory = ({ navigation, route, props }) =>
   {
     console.log("useEffect Directory");
 
-    const loadData = async () => 
+    const loadData = () => 
     {
       try 
       {
@@ -94,7 +94,7 @@ const Directory = ({ navigation, route, props }) =>
   {
 
     return(
-      <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1">
+      <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("StoreInformation", store)}>
       {
         ({ isPressed }) => 
         {
@@ -102,7 +102,7 @@ const Directory = ({ navigation, route, props }) =>
             <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="2" borderColor="gray.300" borderWidth="1">
               <HStack ml="5" space={8} borderColor_="red.500" borderWidth_="1">
                 <Center width="20" borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:store.urlStoreImage}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
+                  <Image source={{uri:store.urlStoreLogo}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
                 </Center>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
@@ -112,8 +112,10 @@ const Directory = ({ navigation, route, props }) =>
                   <Text fontSize="15" color="#f18032">
                     {store.description}
                   </Text>
-                  <Center mt="2" height="10" width="110px" _text={{color:"#f18032", fontWeight:"600", fontSize:"lg"}} rounded="18" borderColor="#f18032" borderWidth="2">
-                    {store.storeNumber}
+                  <Center mt="2" height="10" width="110px" rounded="18" borderColor="#f18032" borderWidth="2">
+                    <Text color="#f18032" fontWeight="600" fontSize="lg">
+                      Local {store.storeNumber}
+                    </Text>
                   </Center>
                 </VStack>
               </HStack>
@@ -147,7 +149,7 @@ const Directory = ({ navigation, route, props }) =>
                 }
               }
               </Pressable>
-              <Text mt="2" bold color={idCategory === category.idCategory ? "#3abdc2" : "#b5b5b5"}>Local {category.categoryName}</Text>
+              <Text mt="2" bold color={idCategory === category.idCategory ? "#3abdc2" : "#b5b5b5"}>{category.categoryName}</Text>
             </VStack>
           )        
         })
