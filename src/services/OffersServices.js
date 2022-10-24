@@ -7,9 +7,9 @@ import data from "../../data";
 
 
 /**
- * Función que permite obtener las categorías y sus tiendas
+ * Función que permite obtener todas las ofertas de las tiendas
  */
-const getAllCategories = async () => 
+const getAllOffers = async () => 
 {
   try
   {
@@ -20,7 +20,7 @@ const getAllCategories = async () =>
     let result = 
     {
       status: 200,
-      data: data.dataCategories
+      data: data.dataOffers
     };
 
     // console.log("Respuesta API-REST getAllPointsOfSale");
@@ -30,12 +30,12 @@ const getAllCategories = async () =>
     // console.log(a);
 
 
-    return { status: result.status, lstCategoriesBD: result.data };
+    return { status: result.status, lstOffersBD: result.data };
   }
 	catch(error)
   {
     //TODO: Guardar log en BD
-    console.log(`Error al consultar las categorias: ${error}`);
+    console.log(`Error al consultar las ofertas: ${error}`);
     return { status: error.request.status };
   }
 }
@@ -44,5 +44,5 @@ const getAllCategories = async () =>
 
 export default 
 {
-  getAllCategories
+  getAllOffers
 };

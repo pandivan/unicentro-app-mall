@@ -9,10 +9,10 @@ import AppContext from '../../contexts/AppContext';
 
 
 /**
- * Componente funcional que contiene el directorio por categorías y productos
- * @returns Screen Directorio
+ * Componente funcional que contiene el detalle de la oferta
+ * @returns Screen Detalle de la oferta
  */
-const StoreInformation = ({ navigation, route }) =>
+const OfferDetail = ({ navigation, route }) =>
 {
 
   const [store, setStore] = useState(route.params);
@@ -20,11 +20,11 @@ const StoreInformation = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar la data inicial para el screen de información tienda
+   * Funcion que permite cargar la data inicial para el screen detalle de la oferta 
    */
   useEffect(() => 
   {
-    console.log("useEffect StoreInformation");
+    console.log("useEffect OfferDetail");
 
     // const loadData = async () => 
     // {
@@ -162,15 +162,4 @@ const StoreInformation = ({ navigation, route }) =>
   );
 }
 
-export default StoreInformation;
-
-// https://www.instagram.com/elcristian_gonzalez/
-// Linking.openURL('fb://page/PAGE_ID');
-// Linking.openURL('http://instagram.com/_u/USER_NAME');
-// Linking.openURL('http://instagram.com/_p/PICTURE');
-// Linking.openURL('twitter://timeline')
-// instagramApp: 'instagram://user?username=stackAnswer',
-// youtubeApp: 'vnd.youtube://channel/UCPHssSTfq-K823dDJnvXqgw',
-// linkedInApp: 'linkedin://company/google',
-// facebookApp: 'fb://page/318948148343',
-// facebookAppIos: 'fb://page/?id=318948148343',
+export default OfferDetail;

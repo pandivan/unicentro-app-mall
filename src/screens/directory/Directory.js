@@ -24,7 +24,7 @@ const Directory = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar la data inicial del home
+   * Funcion que permite cargar la data inicial para el screen directorio
    */
   useEffect(() => 
   {
@@ -79,7 +79,7 @@ const Directory = ({ navigation, route }) =>
   const searchStore = (search) => 
   {
     // Se busca la tienda en el listado de tiendas según la categoría seleccionada
-    setLstStores(lstStores.filter(store => store.storeName.toLowerCase().includes(search.toLowerCase())));
+    setLstStores(lstStores.filter(store => store.name.toLowerCase().includes(search.toLowerCase())));
     
     // Se actualiza el estado search
     setSearch(search);
@@ -107,7 +107,7 @@ const Directory = ({ navigation, route }) =>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
                   <Text fontSize="23" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
-                    {store.storeName}
+                    {store.name}
                   </Text>
                   <Text fontSize="15" color="#f18032">
                     {store.description}

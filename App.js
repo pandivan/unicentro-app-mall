@@ -15,6 +15,8 @@ import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
 import clientServices from "./src/services/ClientServices";
 import Directory from "./src/screens/directory/Directory";
 import StoreInformation from "./src/screens/directory/StoreInformation";
+import Offers from "./src/screens/directory/Offers";
+import OfferDetail from "./src/screens/directory/OfferDetail";
 import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
 
@@ -256,6 +258,18 @@ export default function App()
               <Drawer.Screen 
                 name="StoreInformation" 
                 component={StoreInformation}
+                options={{headerTitle:""}}
+              />
+
+              <Drawer.Screen 
+                name="Offers" 
+                component={Offers}
+                options={{headerTitle:"Promociones", headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center"}}
+              />
+
+              <Drawer.Screen 
+                name="OfferDetail" 
+                component={OfferDetail}
                 options={{headerTitle:""}}
               />
               

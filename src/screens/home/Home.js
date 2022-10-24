@@ -7,7 +7,7 @@ import * as SecureStore from "expo-secure-store";
 
 // import categoriesServices from "../../services/CategoriesServices";
 // import Constants from "../../utilities/Constants";
-import AppContext from '../../contexts/AppContext';
+import AppContext from "../../contexts/AppContext";
 
 
 
@@ -35,7 +35,7 @@ const Home = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar la data inicial del home
+   * Funcion que permite cargar la data inicial para el screen del home
    */
   useEffect(() => 
   {
@@ -78,7 +78,7 @@ const Home = ({ navigation, route }) =>
 
           <VStack alignItems="center" width="50%" space={3} borderColor_="red.600" borderWidth_="1">
             {/* Tarjeta Tiendas */}
-            <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('Directory')}>
+            <Pressable onPress={() => navigation.navigate("Directory")}>
             {
               ({ isPressed }) => 
               {
@@ -102,7 +102,7 @@ const Home = ({ navigation, route }) =>
             </Pressable>
             
             {/* Tarjeta Entretenimiento */}
-            <Pressable maxW_="40" width_="50%" onPress={() => navigation.navigate('StoreInformation')}>
+            <Pressable onPress={() => navigation.navigate("StoreInformation")}>
             {
               ({ isPressed }) => 
               {
@@ -128,7 +128,7 @@ const Home = ({ navigation, route }) =>
 
           <VStack alignItems="center" width="50%" space={3} borderColor_="blue.600" borderWidth_="1">
             {/* Tarjeta de Bancos */}
-            <Pressable maxW_="48" width_="50%">
+            <Pressable onPress={() => navigation.navigate("Offers")}>
             {
               ({ isPressed }) => 
               {
@@ -154,7 +154,7 @@ const Home = ({ navigation, route }) =>
             </Pressable>
             
             {/* Tarjeta de comidas */}
-            <Pressable maxW_="48" width_="50%">
+            <Pressable onPress={() => navigation.navigate("Offers")}>
             {
               ({ isPressed }) => 
               {

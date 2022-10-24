@@ -38,7 +38,7 @@ const dataCategories =
     [
       {
         idStore:1,
-        storeName:'Arturo Calle',
+        name:'Arturo Calle',
         description:'Ropa Casual y Formal',
         storeNumber:'1-41',
         urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -55,7 +55,7 @@ const dataCategories =
       },
       {
         idStore:2,
-        storeName:'Academy',
+        name:'Academy',
         description:'Ropa Casual y Formal',
         storeNumber:'1-42',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -72,7 +72,7 @@ const dataCategories =
       },
       {
         idStore:3,
-        storeName:'Afterland',
+        name:'Afterland',
         description:'Juguetería',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -89,7 +89,7 @@ const dataCategories =
       },
       {
         idStore:4,
-        storeName:'Black',
+        name:'Black',
         description:'Juguetería',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -106,7 +106,7 @@ const dataCategories =
       },
       {
         idStore:5,
-        storeName:'Jumbo',
+        name:'Jumbo',
         description:'Hipermercado',
         storeNumber:'1-22',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -123,7 +123,7 @@ const dataCategories =
       },
       {
         idStore:6,
-        storeName:'Pepe Ganga',
+        name:'Pepe Ganga',
         description:'Ropa Infantil, Juguetería',
         storeNumber:'1-64',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -151,7 +151,7 @@ const dataCategories =
     [
       {
         idStore:7,
-        storeName:'Bancolombia',
+        name:'Bancolombia',
         description:'Banca',
         storeNumber:'1-41',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -168,7 +168,7 @@ const dataCategories =
       },
       {
         idStore:8,
-        storeName:'AV Villas',
+        name:'AV Villas',
         description:'Banca',
         storeNumber:'1-42',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -185,7 +185,7 @@ const dataCategories =
       },
       {
         idStore:9,
-        storeName:'Banco Popular',
+        name:'Banco Popular',
         description:'Banca',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -202,7 +202,7 @@ const dataCategories =
       },
       {
         idStore:10,
-        storeName:'Colpatria',
+        name:'Colpatria',
         description:'Banca',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -219,7 +219,7 @@ const dataCategories =
       },
       {
         idStore:11,
-        storeName:'Itau',
+        name:'Itau',
         description:'Banca',
         storeNumber:'1-22',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -236,7 +236,7 @@ const dataCategories =
       },
       {
         idStore:12,
-        storeName:'BBVA',
+        name:'BBVA',
         description:'Banca',
         storeNumber:'1-64',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -264,7 +264,7 @@ const dataCategories =
     [
       {
         idStore:13,
-        storeName:'Cine Colombia',
+        name:'Cine Colombia',
         description:'Cines',
         storeNumber:'1-41',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -281,7 +281,7 @@ const dataCategories =
       },
       {
         idStore:14,
-        storeName:'Cinemark',
+        name:'Cinemark',
         description:'Cines',
         storeNumber:'1-42',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -298,7 +298,7 @@ const dataCategories =
       },
       {
         idStore:15,
-        storeName:'Smart Fit',
+        name:'Smart Fit',
         description:'Gimnasio',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -315,7 +315,7 @@ const dataCategories =
       },
       {
         idStore:16,
-        storeName:'Caballitos',
+        name:'Caballitos',
         description:'Juegos para Niños',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -343,7 +343,7 @@ const dataCategories =
     [
       {
         idStore:17,
-        storeName:'Mario Bros',
+        name:'Mario Bros',
         description:'Restaurante',
         storeNumber:'1-41',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -360,7 +360,7 @@ const dataCategories =
       },
       {
         idStore:18,
-        storeName:'Cheers',
+        name:'Cheers',
         description:'Restaurante',
         storeNumber:'1-42',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -377,7 +377,7 @@ const dataCategories =
       },
       {
         idStore:19,
-        storeName:'El Corral',
+        name:'El Corral',
         description:'Restaurante',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -394,7 +394,7 @@ const dataCategories =
       },
       {
         idStore:20,
-        storeName:'Starbucks',
+        name:'Starbucks',
         description:'Panadería',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -411,7 +411,7 @@ const dataCategories =
       },
       {
         idStore:21,
-        storeName:'El Molino',
+        name:'El Molino',
         description:'Panadería',
         storeNumber:'1-46',
         urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
@@ -430,8 +430,117 @@ const dataCategories =
   }
 ];
 
+const dataOffers = 
+[
+  {
+    idOffer:1,
+    store:
+    {
+      idStore:1,
+      name:'El Corral',
+      description:'Gourmet',
+      storeNumber:'1-41',
+      urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      storeLocation:'Pasillo 5 - Piso 1',
+      phone:'3014317636',
+      socialNetworks:
+      {
+        website:'www.arturocalle.com',
+        instagram:'elcristian_gonzalez',
+        facebook:'elcristiangonzalez1',
+        whatsapp:'3014317636'
+      }
+    },
+    name:'El Corral - Antójate',
+    description:'Parece una sencilla pero viene cargada de queso :). Disfrutala con papas y gaseosa en #ElCorralGourmet :) :)',
+    startDate:'20221024',
+    endDate:'20221025',
+    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+  },
+  {
+    idOffer:2,
+    store:
+    {
+      idStore:1,
+      name:'Arturo Calle',
+      description:'Ropa Casual y Formal',
+      storeNumber:'1-41',
+      urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      storeLocation:'Pasillo 5 - Piso 1',
+      phone:'3014317636',
+      socialNetworks:
+      {
+        website:'www.arturocalle.com',
+        instagram:'elcristian_gonzalez',
+        facebook:'elcristiangonzalez1',
+        whatsapp:'3014317636'
+      }
+    },
+    name:'Arturo Calle - Halloween',
+    description:'Aprovecha una oferta terrorifica 5 x 2',
+    startDate:'20221024',
+    endDate:'20221025',
+    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+  },
+  {
+    idOffer:3,
+    store:
+    {
+      idStore:2,
+      name:'Academy',
+      description:'Ropa Casual y Formal',
+      storeNumber:'1-42',
+      urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      storeLocation:'Pasillo 5 - Piso 1',
+      phone:'3014317636',
+      socialNetworks:
+      {
+        website:'www.arturocalle.com',
+        instagram:'elcristian_gonzalez',
+        facebook:'elcristiangonzalez1',
+        whatsapp:'3014317636'
+      }
+    },
+    name:'Academy - Halloween',
+    description:'Aprovecha una oferta terrorifica aprende mucha mas!!!',
+    startDate:'20221024',
+    endDate:'20221025',
+    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+  },
+  {
+    idOffer:4,
+    store:
+    {
+      idStore:21,
+      name:'El Molino',
+      description:'Panadería',
+      storeNumber:'1-46',
+      urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
+      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      storeLocation:'Pasillo 5 - Piso 1',
+      phone:'3014317636',
+      socialNetworks:
+      {
+        website:'www.arturocalle.com',
+        instagram:'elcristian_gonzalez',
+        facebook:'elcristiangonzalez1',
+        whatsapp:'3014317636'
+      }
+    },
+    name:'El Molino - Pan Arabe',
+    description:'Estamos de aniversario y queremos darte lo mejor, pan arabe con la mejor calidad, precio y sabor, acercate!!!',
+    startDate:'20221024',
+    endDate:'20221025',
+    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+  }
+]
+
 export default 
 {
   dataMenu,
-  dataCategories
+  dataCategories,
+  dataOffers
 };

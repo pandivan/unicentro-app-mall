@@ -17,7 +17,7 @@ const DrawerContentMenu = (props) =>
   const [lstMenu, setLstMenu] = useState(null);
 
   /**
-   * Funcion que permite cargar el menú
+   * Funcion que permite cargar la data inicial para el screen del menu
    */
   useEffect(() => 
   {
