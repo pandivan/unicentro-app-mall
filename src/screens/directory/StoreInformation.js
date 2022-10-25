@@ -3,8 +3,6 @@ import { Linking, ScrollView } from "react-native";
 import { VStack, HStack, Center, Text, Image, Icon, Box, Avatar } from "native-base";
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
-import AppContext from '../../contexts/AppContext';
-
 
 
 
@@ -16,7 +14,6 @@ const StoreInformation = ({ navigation, route }) =>
 {
 
   const [store, setStore] = useState(route.params);
-  const [lstStores, setLstStores] = useState([]);
 
 
   /**

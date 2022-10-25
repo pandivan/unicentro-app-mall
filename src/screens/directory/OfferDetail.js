@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Linking, ScrollView } from "react-native";
+import React, { useState, useEffect } from "react";
 import { VStack, HStack, Center, Text, Image, Icon, Box, Avatar } from "native-base";
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
-
-import AppContext from '../../contexts/AppContext';
-
-
 
 
 /**
@@ -15,8 +10,7 @@ import AppContext from '../../contexts/AppContext';
 const OfferDetail = ({ navigation, route }) =>
 {
 
-  const [store, setStore] = useState(route.params);
-  const [lstStores, setLstStores] = useState([]);
+  const [offerDetail, setOfferDetail] = useState(route.params);
 
 
   /**
@@ -30,7 +24,7 @@ const OfferDetail = ({ navigation, route }) =>
     // {
     //   try 
     //   {
-        setStore(route.params);
+        setOfferDetail(route.params);
     //   }
     //   catch (error) 
     //   {
@@ -41,125 +35,49 @@ const OfferDetail = ({ navigation, route }) =>
     // loadData();
   }, [route.params]);
 
-  
-  /**
-   * Función que permite abrir la app seleccionada en el dispositivo
-   * @param urlApp Url de la app que se desea abrir en el dispositivo
-   */
-  const openApp = async (urlApp) =>
-  {
-    let isCanOpenUrlApp  = await Linking.canOpenURL(urlApp);
-    
-    // Se valida si la app solicitada está instalada en el dispositivo
-    if (isCanOpenUrlApp) 
-    {
-      // Se abre la app solicitada en el dispositivo
-      await Linking.openURL(urlApp);
-    } 
-    else 
-    {
-      // Se abre la app en el browser
-      await Linking.openURL("https://www.facebook.com/");
-    }
-  }
 
 
   return(
-    <ScrollView showsVerticalScrollIndicator ={false}>
-      <Center flex={1} px="3" justifyContent="flex-start" backgroundColor="white" borderColor_="red.600" borderWidth_="1">
-        <Box width="100%" height="64" borderRadius="10" backgroundColor="#E1E667" borderColor_="blue.500" borderWidth_="1">
+    <Center flex={1} px="3" justifyContent="flex-start" backgroundColor="white" borderColor_="red.600" borderWidth_="1">
+      <Box width="100%" height="64" borderRadius="10" borderColor_="blue.500" borderWidth_="1">
+        <Image source={{uri:offerDetail.urlImage}} alt="Imagen desactualizada" borderRadius="10" resizeMode_="cover" width="100%" height="100%"/>
+      </Box>
 
-          <HStack space={5} height="24" pl="4" pt="4" borderColor_="red.500" borderWidth_="1">
-            <Avatar source={{uri: store.urlStoreLogo}} _image={{resizeMode:"contain"}} size="16"/>
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                {store.name}
-              </Text>
-              <Text fontSize="xs" color_="coolGray.400">
-                {store.description}
-              </Text>
-            </VStack>
-          </HStack>
-          
-          <Image source={{uri:store.urlStoreImage}} alt="Imagen desactualizada" borderBottomRadius="10" resizeMode="contain" width="100%" height="40"/>
-        </Box>
+      <Box mt="5" p_="4" width="100%" height="56" shadow_="2" backgroundColor="white" borderRadius_="10" borderColor_="red.600" borderWidth_="1">
+        <Text fontSize="xl" color_="coolGray.800" bold>
+          {offerDetail.name}
+        </Text>
+        <Text fontSize="sm" color="#f18032" mt="1">
+          {offerDetail.store.name}
+        </Text>
+        <Text fontSize="md" color="coolGray.500" mt="5" textAlign="justify" letterSpacing="xs" lineHeight="md">
+          {offerDetail.description}
+        </Text>
+        <HStack space={4} mt="6" alignItems="center" borderColor_="red.500" borderWidth_="1">
+          <Icon as={<SimpleLineIcons name="phone"/>} size={6} color_="#6133E4" />
+          <VStack>
+            <Text fontSize="sm" color_="coolGray.800" bold>
+              Teléfono
+            </Text>
+            <Text fontSize="xs" color_="coolGray.400" onPress={() => openApp("tel:"+offerDetail.store.phone)}>
+              {offerDetail.store.phone}
+            </Text>
+          </VStack>
+        </HStack>
+      </Box>
 
-        <Box mt="5" p="4" width="100%" shadow="2" backgroundColor="white" borderRadius="10">
-      
-          <HStack space={4} borderColor_="red.500" borderWidth_="1">
-            <Icon as={<MaterialCommunityIcons name="storefront-outline"/>} size={7} color_="#E1E667" />
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                Local
-              </Text>
-              <Text fontSize="sm" color_="coolGray.400">
-                {store.storeNumber}
-              </Text>
-            </VStack>
-          </HStack>
-          
-          <HStack space={4} mt="4" borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="location-pin"/>} size={6} color_="#6133E4" />
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                Ubicación
-              </Text>
-              <Text fontSize="sm" color_="coolGray.400">
-                {store.storeLocation}
-              </Text>
-            </VStack>
-          </HStack>
-
-          <HStack space={4} mt="4" borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="clock"/>} size={6} color_="#6133E4" />
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                Horario
-              </Text>
-              <Text fontSize="sm" color_="coolGray.400">
-                L-S   8:00 AM - 9:00 PM
-              </Text>
-            </VStack>
-          </HStack>
-          
-          <HStack space={4} mt="4" borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="phone"/>} size={6} color_="#6133E4" />
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                Teléfono
-              </Text>
-              <Text fontSize="sm" color_="coolGray.400" onPress={() => openApp("tel:"+store.phone)}>
-                {store.phone}
-              </Text>
-            </VStack>
-          </HStack>
-
-          <HStack space={4} mt="4" borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="globe"/>} size={6} color_="#6133E4" />
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
-                Sitio Web
-              </Text>
-              <Text fontSize="sm" color_="coolGray.400" onPress={() => openApp("https://"+store.socialNetworks.website)}>
-                {store.socialNetworks.website}
-              </Text>
-            </VStack>
-          </HStack>
-        </Box>
-
-        <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10">
-          <Text bold>
-            Redes Sociales:
-          </Text>
-          <HStack mt="4" space={6} borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="social-instagram"/>} size={6} color="secondary.500" onPress={() => openApp("instagram://user?username=" + store.socialNetworks.instagram)}/>
-            <Icon as={<SimpleLineIcons name="social-facebook"/>} size={6} color="darkBlue.400" onPress={() => openApp("fb://facewebmodal/f?href=https://www.facebook.com/" + store.socialNetworks.facebook)}/>
-            <Icon as={<MaterialCommunityIcons name="whatsapp"/>} size={7} color="green.400" onPress={() => openApp("whatsapp://send?text=Hola &phone=" + store.socialNetworks.whatsapp)}/>
-          </HStack>
-        </Center>
+      <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10">
+        <Text bold>
+          Redes Sociales:
+        </Text>
+        <HStack mt="4" space={6} borderColor_="red.500" borderWidth_="1">
+          <Icon as={<SimpleLineIcons name="social-instagram"/>} size={6} color="secondary.500" onPress={() => openApp("instagram://user?username=" + offerDetail.store.socialNetworks.instagram)}/>
+          <Icon as={<SimpleLineIcons name="social-facebook"/>} size={6} color="darkBlue.400" onPress={() => openApp("fb://facewebmodal/f?href=https://www.facebook.com/" + offerDetail.store.socialNetworks.facebook)}/>
+          <Icon as={<MaterialCommunityIcons name="whatsapp"/>} size={7} color="green.400" onPress={() => openApp("whatsapp://send?text=Hola &phone=" + offerDetail.store.socialNetworks.whatsapp)}/>
+        </HStack>
       </Center>
-    </ScrollView>
-  );
+    </Center>
+);
 }
 
 export default OfferDetail;

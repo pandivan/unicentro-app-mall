@@ -452,7 +452,7 @@ const dataOffers =
         whatsapp:'3014317636'
       }
     },
-    name:'El Corral - Antójate',
+    name:'Cole Haan - 50% de descuento',
     description:'Parece una sencilla pero viene cargada de queso :). Disfrutala con papas y gaseosa en #ElCorralGourmet :) :)',
     startDate:'20221024',
     endDate:'20221025',
@@ -478,7 +478,7 @@ const dataOffers =
         whatsapp:'3014317636'
       }
     },
-    name:'Arturo Calle - Halloween',
+    name:'Cruz Verde Dermocosmética',
     description:'Aprovecha una oferta terrorifica 5 x 2',
     startDate:'20221024',
     endDate:'20221025',
@@ -504,7 +504,7 @@ const dataOffers =
         whatsapp:'3014317636'
       }
     },
-    name:'Academy - Halloween',
+    name:'Ofertas Imperdibles',
     description:'Aprovecha una oferta terrorifica aprende mucha mas!!!',
     startDate:'20221024',
     endDate:'20221025',
@@ -530,7 +530,7 @@ const dataOffers =
         whatsapp:'3014317636'
       }
     },
-    name:'El Molino - Pan Arabe',
+    name:'El Corral - Antójate',
     description:'Estamos de aniversario y queremos darte lo mejor, pan arabe con la mejor calidad, precio y sabor, acercate!!!',
     startDate:'20221024',
     endDate:'20221025',

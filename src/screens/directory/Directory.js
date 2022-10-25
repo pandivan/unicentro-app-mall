@@ -81,7 +81,7 @@ const Directory = ({ navigation, route }) =>
     // Se busca la tienda en el listado de tiendas según la categoría seleccionada
     setLstStores(lstStores.filter(store => store.name.toLowerCase().includes(search.toLowerCase())));
     
-    // Se actualiza el estado search
+    // Se actualiza el estado de search
     setSearch(search);
   }
 

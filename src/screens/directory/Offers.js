@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FlatList } from "react-native";
-import { VStack, HStack, Center, Text, Pressable, Image, Icon, Input } from "native-base";
+import { Box, Center, Text, Pressable, Image, Icon, Input, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import offersServices from "../../services/OffersServices";
@@ -15,7 +15,7 @@ import Constants from "../../utilities/Constants";
 const Offers = ({ navigation, route }) =>
 {
   const [lstOffers, setLstOffers] = useState([]);
-  const [idOffer, setIdOffer] = useState(1);
+  const [lstFilteredOffers, setLstFilteredOffers] = useState([]);
   const [search, setSearch] = useState("");
 
 
@@ -30,6 +30,9 @@ const Offers = ({ navigation, route }) =>
     {
       try 
       {
+        // Se adiciona el componente HeaderFilters al header de la barra de navegación con los puntos de venta JSON.parse(lstPointsSale)
+        navigation.setOptions({ headerRight: null });
+
         //Se obtiene las ofertas de las tiendas a traves del api-rest
         let {status, lstOffersBD} = await offersServices.getAllOffers();
 
@@ -37,6 +40,7 @@ const Offers = ({ navigation, route }) =>
         {
           case Constants.STATUS_OK:
             setLstOffers(lstOffersBD);
+            setLstFilteredOffers(lstOffersBD);
           break;
 
           case Constants.STATUS_ACCESO_DENEGADO:
@@ -70,9 +74,15 @@ const Offers = ({ navigation, route }) =>
   const searchOffers = (search) => 
   {
     // Se busca la oferta en el listado de ofertas
-    setLstStores(lstOffers.filter(offer => offer.name.toLowerCase().includes(search.toLowerCase())));
+    setLstFilteredOffers(lstOffers.filter(offer => offer.name.concat(offer.store.name).concat(offer.description).toLowerCase().includes(search.toLowerCase())));
+
+    // Si el input de busqueda está vacío, se vuelve a cargar el listado original de ofertas
+    if(!search)
+    {
+      setLstFilteredOffers(lstOffers);
+    }
     
-    // Se actualiza el estado search
+    // Se actualiza el estado de search
     setSearch(search);
   }
 
@@ -85,27 +95,24 @@ const Offers = ({ navigation, route }) =>
   {
 
     return(
-      <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("OfferDetail", offer)}>
+      <Pressable height="180px" width="40" m="1" borderColor_="green.500" borderWidth_="1" onPress={() => navigation.navigate("OfferDetail", offer)}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="2" borderColor="gray.300" borderWidth="1">
-              <HStack ml="5" space={8} borderColor_="red.500" borderWidth_="1">
-                <Center width="20" borderColor_="blue.500" borderWidth_="1">
+            <Box background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow="2">
+              <VStack space={2} p="4">
+                <Center borderColor_="blue.500" borderWidth_="1">
                   <Image source={{uri:offer.urlImage}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
                 </Center>
-
-                <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
-                  <Text fontSize="23" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
-                    {offer.name}
-                  </Text>
-                  <Text fontSize="15" color="#f18032">
-                    {offer.store.name}
-                  </Text>
-                </VStack>
-              </HStack>
-            </Center>
+                <Text mt="2" letterSpacing_="sm" lineHeight="xs" height="10" fontSize_="14" fontWeight="700" color="muted.500" borderColor_="red.300" borderWidth_="1">
+                  {offer.name}
+                </Text>
+                <Text mt_="1" fontSize_="13" color="#f18032" borderColor_="blue.300" borderWidth_="1">
+                  {offer.store.name}
+                </Text>
+              </VStack>
+            </Box>
           );
         }
       }
@@ -130,10 +137,11 @@ const Offers = ({ navigation, route }) =>
 
       <Center flex={1}>
         <FlatList
-          data={lstOffers} 
+          data={lstFilteredOffers} 
           renderItem={({item}) => renderOffers(item)} 
-          keyExtractor={item => item.idStore} 
+          keyExtractor={item => item.idOffer} 
           showsVerticalScrollIndicator ={false}
+          numColumns={2}
         />
       </Center>
     </Center>
