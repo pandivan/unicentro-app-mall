@@ -43,7 +43,7 @@ const OfferDetail = ({ navigation, route }) =>
         <Image source={{uri:offerDetail.urlImage}} alt="Imagen desactualizada" borderRadius="10" resizeMode_="cover" width="100%" height="100%"/>
       </Box>
 
-      <Box mt="5" p_="4" width="100%" height="56" shadow_="2" backgroundColor="white" borderRadius_="10" borderColor_="red.600" borderWidth_="1">
+      <Box mt="5" p_="4" width="100%" height="48" shadow_="2" backgroundColor="white" borderRadius_="10" borderColor_="red.600" borderWidth_="1">
         <Text fontSize="xl" color_="coolGray.800" bold>
           {offerDetail.name}
         </Text>
@@ -66,7 +66,7 @@ const OfferDetail = ({ navigation, route }) =>
         </HStack>
       </Box>
 
-      <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10">
+      <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10" borderColor="light.300" borderWidth="1">
         <Text bold>
           Redes Sociales:
         </Text>

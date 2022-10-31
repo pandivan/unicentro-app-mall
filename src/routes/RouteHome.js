@@ -1,10 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Image } from "native-base";
 
 import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
 import Directory from "../screens/directory/Directory";
+import StoreInformation from "../screens/directory/StoreInformation";
+import Offers from "../screens/directory/Offers";
+import OfferDetail from "../screens/directory/OfferDetail";
+import { View } from "react-native";
 
 
 
@@ -19,12 +23,13 @@ const RouteHome = ({ navigation, route }) =>
 {
   console.log("useEffect RouteHome");
 
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions=
       {{
-        headerShown:true,
+        headerShown:false,
         tabBarActiveTintColor:"#f18032",
         tabBarInactiveTintColor:"#5d5d5d",
         tabBarLabelStyle:{fontSize: 13},
@@ -54,11 +59,49 @@ const RouteHome = ({ navigation, route }) =>
         }}
       />
 
-      {/* <Tab.Screen
+      <Tab.Screen 
         name="Directory" 
         component={Directory}
-        options={{headerTitle:"dd"}}
-      /> */}
+        options=
+        {{
+          headerTitle:"Directorio", 
+          headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center",
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="StoreInformation" 
+        component={StoreInformation}
+        options=
+        {{
+          headerTitle:"",
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="Offers" 
+        component={Offers}
+        options=
+        {{
+          headerTitle:"Promociones", 
+          headerTitleStyle:{fontWeight:"700"}, 
+          headerTitleAlign:"center",
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="OfferDetail" 
+        component={OfferDetail}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+          
     </Tab.Navigator>
   );
 }

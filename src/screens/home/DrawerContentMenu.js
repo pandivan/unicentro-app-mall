@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { VStack, HStack, Center, Box, Heading, Text, Avatar, Image, Spacer, StatusBar, Button, Divider } from "native-base";
+import { VStack, HStack, Center, Box, Heading, Text, Pressable, Image, Icon, StatusBar, Button, Divider } from "native-base";
 import { FlatList } from "react-native";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Constants from "../../utilities/Constants";
 import menuServices from "../../services/MenuServices";
@@ -9,9 +10,11 @@ import menuServices from "../../services/MenuServices";
 
 /**
  * Componente funcional que contiene el menú
+ * @param navigation Parametro desestructurado de props que es enviado desde App.js drawerContent={props => <DrawerContentMenu {...props} />} 
+ * @param route Parametro desestructurado de props que es enviado desde App.js drawerContent={props => <DrawerContentMenu {...props} />} 
  * @returns Screen Menú
  */
-const DrawerContentMenu = (props) =>
+const DrawerContentMenu = ({ navigation, route }) =>
 {
 
   const [lstMenu, setLstMenu] = useState(null);
@@ -62,35 +65,43 @@ const DrawerContentMenu = (props) =>
   }, []);
 
 
+  const redirect = (itemMenu) =>
+  {
+    console.log(itemMenu.itemName)
+    navigation.navigate("Offers");
+  }
+
 
   /**
    * Función que permite previsualizar los item del menú desplegable
-   * @param item Item del menú
+   * @param itemMenu Item del menú
    * @returns Lista de items del menú
    */
-  const previewMenu = (item) => 
+  const previewMenu = (itemMenu) => 
   {
     return(
-      <Box borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" borderColor_="blue.500" borderWidth_="1">
+      <Pressable borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" onPress={() => redirect(itemMenu)} borderColor_="blue.500" borderWidth_="1">
         <HStack space={3} justifyContent_="space-between">
-          <Avatar size="45px" source={{uri: item.urlItemImage}} />
+          <Center backgroundColor={itemMenu.color} rounded="100" width="8" height="8">
+            <Icon as={<SimpleLineIcons name="location-pin" />} size={4} color_="#6133E4" />
+          </Center>
           <VStack>
             <Text fontSize="md" color="coolGray.800" bold>
-              {item.itemName}
+              {itemMenu.itemName}
             </Text>
             <Text fontSize="xs" color="coolGray.400">
-              {item.description}
+              {itemMenu.description}
             </Text>
           </VStack>
         </HStack>
-      </Box>
+      </Pressable>
     )
   }
 
 
   return(
     <Box my="8" width_="80" borderColor_="red.500" borderWidth_="1">
-      <Heading fontSize="xl" p="4" pb="8" mb="4" borderColor="muted.800" borderBottomWidth="1">
+      <Heading fontSize="xl" p="4" pb="8" mb="4" borderColor="light.300" borderBottomWidth="2">
         Menú
       </Heading>
       <FlatList 

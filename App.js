@@ -3,7 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NativeBaseProvider, Image, Box, HamburgerIcon, Center } from "native-base";
 import { Alert } from "react-native";
-import { MaterialCommunityIcons, Ionicons, Fontisto } from '@expo/vector-icons';
 import * as SecureStore from "expo-secure-store";
 import "react-native-gesture-handler";
 
@@ -13,10 +12,6 @@ import SplashScreen from "./src/components/SplashScreen";
 import AppContext from "./src/contexts/AppContext"
 import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
 import clientServices from "./src/services/ClientServices";
-import Directory from "./src/screens/directory/Directory";
-import StoreInformation from "./src/screens/directory/StoreInformation";
-import Offers from "./src/screens/directory/Offers";
-import OfferDetail from "./src/screens/directory/OfferDetail";
 import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
 
@@ -230,7 +225,7 @@ export default function App()
                     headerStyle:{height:120},
                     headerLeft:() => 
                     (
-                      <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="10" height="10">
+                      <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
                         <HamburgerIcon onPress={navigation.toggleDrawer} size="md" color="#f18032"/>
                       </Center>
                     ),
@@ -246,30 +241,6 @@ export default function App()
               <Drawer.Screen 
                 name="RouteHome" 
                 component={RouteHome}
-                options={{headerTitle:""}}
-              />
-
-              <Drawer.Screen 
-                name="Directory" 
-                component={Directory}
-                options={{headerTitle:"Directorio", headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center"}}
-              />
-
-              <Drawer.Screen 
-                name="StoreInformation" 
-                component={StoreInformation}
-                options={{headerTitle:""}}
-              />
-
-              <Drawer.Screen 
-                name="Offers" 
-                component={Offers}
-                options={{headerTitle:"Promociones", headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center"}}
-              />
-
-              <Drawer.Screen 
-                name="OfferDetail" 
-                component={OfferDetail}
                 options={{headerTitle:""}}
               />
               

@@ -1,29 +1,56 @@
-const dataMenu = [{
-  idItemMenu: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+const dataMenu = 
+[{
+  idItemMenu: '1',
   itemName: 'Directorio',
   description: 'Tiendas, entretenimiento y gastronomía',
-  urlItemImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
-}, {
-  idItemMenu: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+  urlItemImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
+  color: '#ffbeca'
+}, 
+{
+  idItemMenu: '2',
   itemName: 'Torre Médica',
   description: 'Cheer up, there!',
-  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU'
-}, {
-  idItemMenu: '58694a0f-3da1-471f-bd96-145571e29d72',
-  itemName: 'Anci Barroco',
-  description: 'Good Day!',
-  urlItemImage: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg'
-}, {
-  idItemMenu: '68694a0f-3da1-431f-bd56-142371e29d72',
-  itemName: 'Aniket Kumar',
-  description: 'All the best',
-  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU'
-}, {
-  idItemMenu: '28694a0f-3da1-471f-bd96-142456e29d72',
-  itemName: 'Kiara',
-  description: 'I will call today.',
-  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU'
-}];
+  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
+  color: '#ffbeca'
+}, 
+{
+  idItemMenu: '3',
+  itemName: 'Ofertas',
+  description: 'Disfruta increíbles descuentos',
+  urlItemImage: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
+  color: '#ffbeca',
+  redirect: 'Offers'
+}, 
+{
+  idItemMenu: '4',
+  itemName: 'Agenda',
+  description: 'Programación de eventos',
+  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
+  color: '#ffbeca'
+}, 
+{
+  idItemMenu: '5',
+  itemName: 'Noticias',
+  description: 'Información de servicios y eventos',
+  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+  color: '#ffbeca'
+},
+{
+  idItemMenu: '6',
+  itemName: 'Cómo llegar',
+  description: 'Rutas y parqueaderos',
+  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+  color: '#ffbeca'
+}
+,
+{
+  idItemMenu: '7',
+  itemName: 'Conctacto',
+  description: 'Queremos saber que piensas',
+  urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
+  color: '#ffbeca'
+}
+];
 
 const dataCategories = 
 [
