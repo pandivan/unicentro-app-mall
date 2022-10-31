@@ -1,8 +1,8 @@
+import { Linking } from "react-native";
+
 /**
  * JS que contien funciones genericas para utilizar desde los componentes
  */
-
-
 
 
 /**
@@ -24,9 +24,30 @@ const formatNumber = (num) =>
   return num.toFixed(0);
 }
 
+
+/**
+ * Función que permite abrir la app seleccionada en el dispositivo
+ * @param urlApp Url de la app que se desea abrir en el dispositivo
+ */
+const openApp = async (urlApp) =>
+{
+  let isCanOpenUrlApp  = await Linking.canOpenURL(urlApp);
+  
+  // Se valida si la app solicitada está instalada en el dispositivo
+  if (isCanOpenUrlApp) 
+  {
+    // Se abre la app solicitada en el dispositivo
+    await Linking.openURL(urlApp);
+  } 
+  else 
+  {
+    return null;
+  }
+}
  
 
 export default 
 {
-  formatNumber
+  formatNumber,
+  openApp
 };

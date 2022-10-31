@@ -1,20 +1,22 @@
 const dataMenu = 
 [{
-  idItemMenu: '1',
+  idItemMenu: 1,
   itemName: 'Directorio',
   description: 'Tiendas, entretenimiento y gastronomía',
   urlItemImage: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'Directory'
 }, 
 {
-  idItemMenu: '2',
-  itemName: 'Torre Médica',
-  description: 'Cheer up, there!',
+  idItemMenu: 2,
+  itemName: 'Registrar Facturas',
+  description: 'Registra tus facturas',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'Invoices'
 }, 
 {
-  idItemMenu: '3',
+  idItemMenu: 3,
   itemName: 'Ofertas',
   description: 'Disfruta increíbles descuentos',
   urlItemImage: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
@@ -22,33 +24,37 @@ const dataMenu =
   redirect: 'Offers'
 }, 
 {
-  idItemMenu: '4',
+  idItemMenu: 4,
   itemName: 'Agenda',
   description: 'Programación de eventos',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'https://www.ccunicentropasto.com/eventos-y-actividades/'
 }, 
 {
-  idItemMenu: '5',
+  idItemMenu: 5,
   itemName: 'Noticias',
   description: 'Información de servicios y eventos',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'Offers'
 },
 {
-  idItemMenu: '6',
+  idItemMenu: 6,
   itemName: 'Cómo llegar',
   description: 'Rutas y parqueaderos',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'Offers'
 }
 ,
 {
-  idItemMenu: '7',
+  idItemMenu: 7,
   itemName: 'Conctacto',
   description: 'Queremos saber que piensas',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
-  color: '#ffbeca'
+  color: '#ffbeca',
+  redirect: 'Contact'
 }
 ];
 

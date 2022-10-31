@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Linking, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { VStack, HStack, Center, Text, Image, Icon, Box, Avatar } from "native-base";
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
-
+import GenericFunctions from "../../utilities/GenericFunctions";
 
 
 /**
@@ -39,26 +39,7 @@ const StoreInformation = ({ navigation, route }) =>
   }, [route.params]);
 
   
-  /**
-   * Función que permite abrir la app seleccionada en el dispositivo
-   * @param urlApp Url de la app que se desea abrir en el dispositivo
-   */
-  const openApp = async (urlApp) =>
-  {
-    let isCanOpenUrlApp  = await Linking.canOpenURL(urlApp);
-    
-    // Se valida si la app solicitada está instalada en el dispositivo
-    if (isCanOpenUrlApp) 
-    {
-      // Se abre la app solicitada en el dispositivo
-      await Linking.openURL(urlApp);
-    } 
-    else 
-    {
-      // Se abre la app en el browser
-      await Linking.openURL("https://www.facebook.com/");
-    }
-  }
+  
 
 
   return(
@@ -125,7 +106,7 @@ const StoreInformation = ({ navigation, route }) =>
               <Text fontSize="md" color_="coolGray.800" bold>
                 Teléfono
               </Text>
-              <Text fontSize="sm" color_="coolGray.400" onPress={() => openApp("tel:"+store.phone)}>
+              <Text fontSize="sm" color_="coolGray.400" onPress={() => GenericFunctions.openApp("tel:"+store.phone)}>
                 {store.phone}
               </Text>
             </VStack>
@@ -137,7 +118,7 @@ const StoreInformation = ({ navigation, route }) =>
               <Text fontSize="md" color_="coolGray.800" bold>
                 Sitio Web
               </Text>
-              <Text fontSize="sm" color_="coolGray.400" onPress={() => openApp("https://"+store.socialNetworks.website)}>
+              <Text fontSize="sm" color_="coolGray.400" onPress={() => GenericFunctions.openApp("https://"+store.socialNetworks.website)}>
                 {store.socialNetworks.website}
               </Text>
             </VStack>
@@ -149,9 +130,9 @@ const StoreInformation = ({ navigation, route }) =>
             Redes Sociales:
           </Text>
           <HStack mt="4" space={6} borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="social-instagram"/>} size={6} color="secondary.500" onPress={() => openApp("instagram://user?username=" + store.socialNetworks.instagram)}/>
-            <Icon as={<SimpleLineIcons name="social-facebook"/>} size={6} color="darkBlue.400" onPress={() => openApp("fb://facewebmodal/f?href=https://www.facebook.com/" + store.socialNetworks.facebook)}/>
-            <Icon as={<MaterialCommunityIcons name="whatsapp"/>} size={7} color="green.400" onPress={() => openApp("whatsapp://send?text=Hola &phone=" + store.socialNetworks.whatsapp)}/>
+            <Icon as={<SimpleLineIcons name="social-instagram"/>} size={6} color="secondary.500" onPress={() => GenericFunctions.openApp("instagram://user?username=" + store.socialNetworks.instagram)}/>
+            <Icon as={<SimpleLineIcons name="social-facebook"/>} size={6} color="darkBlue.400" onPress={() => GenericFunctions.openApp("fb://facewebmodal/f?href=https://www.facebook.com/" + store.socialNetworks.facebook)}/>
+            <Icon as={<MaterialCommunityIcons name="whatsapp"/>} size={7} color="green.400" onPress={() => GenericFunctions.openApp("whatsapp://send?text=Hola &phone=" + store.socialNetworks.whatsapp)}/>
           </HStack>
         </Center>
       </Center>
@@ -171,3 +152,4 @@ export default StoreInformation;
 // linkedInApp: 'linkedin://company/google',
 // facebookApp: 'fb://page/318948148343',
 // facebookAppIos: 'fb://page/?id=318948148343',
+// Linking.openURL('mailto:support@example.com?subject=SendMail&body=Description')

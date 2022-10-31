@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Image } from "native-base";
+import { View } from "react-native";
 
 import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
@@ -8,7 +8,8 @@ import Directory from "../screens/directory/Directory";
 import StoreInformation from "../screens/directory/StoreInformation";
 import Offers from "../screens/directory/Offers";
 import OfferDetail from "../screens/directory/OfferDetail";
-import { View } from "react-native";
+import Invoices from "../screens/directory/Invoices";
+import Contact from "../screens/directory/Contact";
 
 
 
@@ -95,6 +96,26 @@ const RouteHome = ({ navigation, route }) =>
       <Tab.Screen 
         name="OfferDetail" 
         component={OfferDetail}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="Invoices" 
+        component={Invoices}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="Contact" 
+        component={Contact}
         options=
         {{
           headerTitle:"", 

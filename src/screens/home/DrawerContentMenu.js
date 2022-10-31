@@ -5,7 +5,7 @@ import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Constants from "../../utilities/Constants";
 import menuServices from "../../services/MenuServices";
-
+import GenericFunctions from "../../utilities/GenericFunctions";
 
 
 /**
@@ -65,10 +65,24 @@ const DrawerContentMenu = ({ navigation, route }) =>
   }, []);
 
 
+  /**
+   * Función que permite redireccionar a un screen de la app oh a una url
+   * @param itemMenu Item del menú
+   */
   const redirect = (itemMenu) =>
   {
-    console.log(itemMenu.itemName)
-    navigation.navigate("Offers");
+    // Se valida si es un screen de la app, en caso contrario redirecciona a una url
+    if(1 === itemMenu.idItemMenu || 2 === itemMenu.idItemMenu || 3 === itemMenu.idItemMenu || 7 === itemMenu.idItemMenu)
+    { 
+      navigation.navigate(itemMenu.redirect);
+    }
+    else
+    {
+      console.log(itemMenu.redirect);
+      
+      let redirect = GenericFunctions.openApp(itemMenu.redirect);
+      console.log("redirect--> "+redirect);
+    }
   }
 
 
