@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Box, Icon, Image, Pressable, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, StatusBar, WarningOutlineIcon } from "native-base";
+import { Box, Icon, Image, Pressable, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, StatusBar, WarningOutlineIcon, Text } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import AppContext from '../../contexts/AppContext';
@@ -80,24 +80,27 @@ const Login = ({navigation}) =>
 
             <FormControl isRequired={isRequiredPassword} isInvalid={isRequiredPassword}>
               <FormControl.Label>Contraseña</FormControl.Label>
-                <Input  value={password} onChangeText={setPassword}
-                        type={show ? "text" : "password"} 
-                        InputRightElement=
-                        {
-                          <Pressable onPress={() => setShow(!show)}>
-                            <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
-                          </Pressable>
-                        }
-                        color_="white"
-                        borderRadius="lg"
-                        backgroundColor_="#0F1319" 
-                        borderColor="#0F1319"
-                        _focus_={{borderColor:"#553AB6"}}
+                <Input 
+                  value={password} 
+                  onChangeText={setPassword}
+                  type={show ? "text" : "password"} 
+                  InputRightElement=
+                  {
+                    <Pressable onPress={() => setShow(!show)}>
+                      <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
+                    </Pressable>
+                  }
+                  color_="white"
+                  borderRadius="lg"
+                  backgroundColor_="#0F1319" 
+                  borderColor="#0F1319"
+                  _focus_={{borderColor:"#553AB6"}}
                 />
 
                 <Link _text={{fontSize: "xs", fontWeight: "500", color_: "white"}} alignSelf="flex-end" mt="2">
                   Olvidó la Contraseña?
                 </Link>
+                <Text onPress={() => navigation.navigate("Registration")}>Primera vez en Unicentro Pasto? Suscribete ya.</Text>
             </FormControl>
 
             <Button onPress={validateForm} mt="5" backgroundColor="#46c9cb" borderRadius="lg" height="44px">

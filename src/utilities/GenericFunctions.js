@@ -28,6 +28,7 @@ const formatNumber = (num) =>
 /**
  * Función que permite abrir la app seleccionada en el dispositivo
  * @param urlApp Url de la app que se desea abrir en el dispositivo
+ * @returns Null si no puede abrir la url app, en caso contrario abre la url app
  */
 const openApp = async (urlApp) =>
 {
@@ -44,10 +45,57 @@ const openApp = async (urlApp) =>
     return null;
   }
 }
+
+
+ /**
+ * Función que permite validar si el caracter digitado es numérico
+ * @param number Número a validar
+ * @returns Vacío si el caracter no es numérico, en caso contrario retorna el caracter digitado
+ */
+const validateMumber = (number) => 
+{
+  if (!Number(number)) 
+  {
+      return;
+  }
+  
+  return number;
+}
+
+
+/**
+ * Función que permite el tamaño maximo de un campo
+ * @param value Valor a validar
+ * @param maxSize Tamaño máximo
+ * @returns True si es válido, en caso contrario false
+ */
+const validateMaximumSize = (value, maxSize) => 
+{
+  if (value > maxSize) 
+  {
+    return true;
+  }
+  
+  return false;
+}
+
+
+/**
+ * Función que permite validar si una fecha es válida
+ * @param date Fecha a validar
+ * @returns True si es válida, en caso contrario false
+ */
+const dateIsValid = (date) =>
+{
+  return date instanceof Date && !isNaN(date);
+}
  
 
 export default 
 {
   formatNumber,
-  openApp
+  validateMumber,
+  validateMaximumSize,
+  openApp,
+  dateIsValid
 };
