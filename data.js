@@ -571,9 +571,108 @@ const dataOffers =
   }
 ]
 
+const dataBarrio = 
+[
+  {
+    idNeighborhood: 1,
+    description: 'Valle Lili'
+  },
+  {
+    idNeighborhood: 2,
+    description: 'Alamos'
+  },
+  {
+    idNeighborhood: 3,
+    description: 'Caney'
+  },
+  {
+    idNeighborhood: 4,
+    description: 'Pucalpa'
+  }, 
+]
+
+const dataClientes = 
+[
+  {
+    idClient: 1,
+    identification: 13072207,
+    name: 'ivan',
+    lastName: 'hernandez',
+    phone: '3014317636',
+    email: 'ivan.hernandez.coral@gmail.com',
+    password: '123456',
+    birthday: '1982/12/01',
+    gender: 'M',
+    neighborhood:
+    {
+      idNeighborhood:1,
+      description:'Valle Lili'
+    },
+    isPet:1,
+    isTermsConditions:1
+  },
+  {
+    idClient: 2,
+    identification: 2,
+    name: 'n2',
+    lastName: 'ln2',
+    phone: 'p2',
+    email: '2@gmail.com',
+    password: '2',
+    birthday: '1982/12/01',
+    gender: 'F',
+    neighborhood:
+    {
+      idNeighborhood:1,
+      description:'Valle Lili'
+    },
+    isPet:1,
+    isTermsConditions:1
+  },
+  {
+    idClient: 3,
+    identification: 3,
+    name: 'n3',
+    lastName: 'ln3',
+    phone: 'p3',
+    email: '3@gmail.com',
+    password: '3',
+    birthday: '1982/12/01',
+    gender: 'F',
+    neighborhood:
+    {
+      idNeighborhood:3,
+      description:'Caney'
+    },
+    isPet:0,
+    isTermsConditions:1
+  },
+  {
+    idClient: 4,
+    identification: 4,
+    name: 'n4',
+    lastName: 'ln4',
+    phone: 'p4',
+    email: '4@gmail.com',
+    password: '4',
+    birthday: '1982/12/01',
+    gender: 'F',
+    neighborhood:
+    {
+      idNeighborhood:4,
+      description:'Pucalpa'
+    },
+    isPet:1,
+    isTermsConditions:1
+  }
+]
+
+
 export default 
 {
   dataMenu,
   dataCategories,
-  dataOffers
+  dataOffers,
+  dataBarrio,
+  dataClientes
 };

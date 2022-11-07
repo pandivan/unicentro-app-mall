@@ -11,11 +11,11 @@ const RouteAuthentication = () =>
 {
   return (
     <Stack.Navigator 
-      initialRouteName="Registration"
-      screenOptions={{headerShown:true}}>
+      initialRouteName="Login"
+      screenOptions={{headerShown:false}}>
 
       <Stack.Screen name="Login" component={Login} />
-      <Stack.Screen name="Registration" component={Registration} />
+      <Stack.Screen name="Registration" component={Registration} options={{headerTitle:"Registro", headerTitleAlign:"center", headerTitleStyle:{fontSize:24, color:"#1f2937", fontWeight:"semibold"}}}/>
       
     </Stack.Navigator>
   );

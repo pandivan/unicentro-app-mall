@@ -90,17 +90,13 @@ const Login = ({navigation}) =>
                       <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
                     </Pressable>
                   }
-                  color_="white"
                   borderRadius="lg"
-                  backgroundColor_="#0F1319" 
-                  borderColor="#0F1319"
-                  _focus_={{borderColor:"#553AB6"}}
                 />
 
                 <Link _text={{fontSize: "xs", fontWeight: "500", color_: "white"}} alignSelf="flex-end" mt="2">
                   Olvidó la Contraseña?
                 </Link>
-                <Text onPress={() => navigation.navigate("Registration")}>Primera vez en Unicentro Pasto? Suscribete ya.</Text>
+                <Text mt="6" fontSize="12" onPress={() => navigation.navigate("Registration")}>Primera vez en Unicentro Pasto? Suscribete ya.</Text>
             </FormControl>
 
             <Button onPress={validateForm} mt="5" backgroundColor="#46c9cb" borderRadius="lg" height="44px">

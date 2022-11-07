@@ -163,8 +163,7 @@ export default function App()
       } 
       catch (error) 
       {
-        console.log(error);
-        Alert.alert("Información", "No es posible consultar el cliente");
+        Alert.alert("Información", "No es posible acceder en este momento, favor intentarlo en unos minutos.");
       }
     },
     

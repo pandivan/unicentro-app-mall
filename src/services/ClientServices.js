@@ -3,7 +3,7 @@ const BACKEND_URL = "http://192.168.1.8:7788/api/cliente/barrio";
 
 import axios from "axios";
 
-
+import data from "../../data";
 
 
 /**
@@ -36,6 +36,59 @@ const registerCliente = async (client) =>
 }
 
 
+/**
+ * Función que permite obtener los datos del clinte según su identificación
+ */
+const getClientByIdentification = async (identification) => 
+{
+  try
+  {
+    // console.log(JSON.stringify(cliente));
+    // En el token debe estar el cliente
+    // let respuesta = await axios.get(`${Constantes.BACKEND_URL}/pointsofsale`, { headers: tokenServices.autenticacionHeader() });
+
+    let client = {
+      idClient: 1,
+      identification: 13072207,
+      name: 'ivan',
+      lastName: 'hernandez',
+      phone: '3014317636',
+      email: 'ivan.hernandez.coral@gmail.com',
+      password: '123456',
+      birthday: '1982/12/01',
+      gender: 'M',
+      neighborhood:
+      {
+        idNeighborhood:1,
+        description:'Valle Lili'
+      },
+      isPet:1,
+      isTermsConditions:1
+    }
+
+    let result = 
+    {
+      status: 200,
+      data: client
+    };
+
+    // console.log("Respuesta API-REST getAllPointsOfSale");
+    // let a = JSON.stringify(result.data);
+    // console.log(JSON.parse('data.dataCategories'));
+    // console.log(data.dataCategories);
+    // console.log(a);
+
+
+    return { status: result.status, clientBD: result.data };
+  }
+  catch(error)
+  {
+    //TODO: Guardar log en BD
+    console.log(`Error al consultar las categorias: ${error}`);
+    return { status: error.request.status };
+  }
+}
+
 
 /**
  * Función que permite validar un cliente en BD, según login y password
@@ -65,8 +118,45 @@ const validateClient = async (client) =>
 }
 
 
+/**
+ * Función que permite obtener los barrios
+ */
+ const getAllNeighborhoods = async () => 
+ {
+   try
+   {
+     // console.log(JSON.stringify(cliente));
+     // En el token debe estar el cliente
+     // let respuesta = await axios.get(`${Constantes.BACKEND_URL}/pointsofsale`, { headers: tokenServices.autenticacionHeader() });
+ 
+     let result = 
+     {
+       status: 200,
+       data: data.dataBarrio
+     };
+ 
+     // console.log("Respuesta API-REST getAllPointsOfSale");
+     // let a = JSON.stringify(result.data);
+     // console.log(JSON.parse('data.dataCategories'));
+     // console.log(data.dataCategories);
+     // console.log(a);
+ 
+ 
+     return { status: result.status, lstNeighborhoodsBD: result.data };
+   }
+   catch(error)
+   {
+     //TODO: Guardar log en BD
+     console.log(`Error al consultar las categorias: ${error}`);
+     return { status: error.request.status };
+   }
+ }
+
+
 export default 
 {
   registerCliente,
-  validateClient
+  validateClient,
+  getClientByIdentification,
+  getAllNeighborhoods
 };
