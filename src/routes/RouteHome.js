@@ -10,7 +10,10 @@ import Offers from "../screens/directory/Offers";
 import OfferDetail from "../screens/directory/OfferDetail";
 import Invoices from "../screens/directory/Invoices";
 import Contact from "../screens/directory/Contact";
-
+import RegisterInvoices from "../screens/directory/RegisterInvoices";
+import HistoryInvoices from "../screens/directory/HistoryInvoices";
+import SendInvoice from "../screens/directory/SendInvoice";
+import TakePicture from "../screens/directory/TakePicture";
 
 
 const Tab = createBottomTabNavigator();
@@ -106,6 +109,46 @@ const RouteHome = ({ navigation, route }) =>
       <Tab.Screen 
         name="Invoices" 
         component={Invoices}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="RegisterInvoices" 
+        component={RegisterInvoices}
+        options=
+        {{
+          headerTitle:"Registra tus facturas", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="SendInvoice" 
+        component={SendInvoice}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+      
+      <Tab.Screen 
+        name="HistoryInvoices" 
+        component={HistoryInvoices}
+        options=
+        {{
+          headerTitle:"", 
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="TakePicture" 
+        component={TakePicture}
         options=
         {{
           headerTitle:"", 

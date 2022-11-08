@@ -30,9 +30,6 @@ const Offers = ({ navigation, route }) =>
     {
       try 
       {
-        // Se adiciona el componente HeaderFilters al header de la barra de navegación con los puntos de venta JSON.parse(lstPointsSale)
-        navigation.setOptions({ headerRight: null });
-
         //Se obtiene las ofertas de las tiendas a traves del api-rest
         let {status, lstOffersBD} = await offersServices.getAllOffers();
 

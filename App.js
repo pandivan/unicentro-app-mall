@@ -26,6 +26,8 @@ const Drawer = createDrawerNavigator();
 export default function App() 
 {
 
+  console.log("useEffect App");
+
   //Valores iniciales del state
   const inicializarState = 
   {

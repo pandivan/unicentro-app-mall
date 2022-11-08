@@ -5,15 +5,15 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 
 
 /**
- * Componente funcional que permite acceder al historial y registro de facturas
- * @returns Screen Facturas
+ * Componente funcional que permite el registro de facturas
+ * @returns Screen Registro de facturas
  */
-const Invoices = ({ navigation, route }) =>
+const HistoryInvoices = ({ navigation, route }) =>
 {
 
   return(
     <Center flex={1} backgroundColor="white" justifyContent="flex-start" p="3">
-      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("RegisterInvoices")}>
+      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
       {
         ({ isPressed }) => 
         {
@@ -39,7 +39,7 @@ const Invoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("HistoryInvoices", store)}>
+      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
       {
         ({ isPressed }) => 
         {
@@ -94,4 +94,4 @@ const Invoices = ({ navigation, route }) =>
   )
 }
 
-export default Invoices;
+export default HistoryInvoices;

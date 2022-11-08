@@ -67,7 +67,7 @@ const Registration = ({navigation}) =>
 
 
   /**
-   * Funcion que permite cargar los puntos de venta asociados al vendedor
+   * Funcion que permite cargar u obtener la información del cliente
    */
   useEffect(() => 
   {
@@ -100,7 +100,6 @@ const Registration = ({navigation}) =>
     }
 
     loadData();
-  //  loadDailySales("7701001003306", "quantity");
   }, []);
 
 

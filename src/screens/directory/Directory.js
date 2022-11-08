@@ -34,9 +34,6 @@ const Directory = ({ navigation, route }) =>
     {
       try 
       {
-        // Se adiciona el componente HeaderFilters al header de la barra de navegación con los puntos de venta JSON.parse(lstPointsSale)
-        navigation.setOptions({ headerRight: null });
-
         // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
         // 1 = Se pinta en home
         // 2 = Se pinta en directorio

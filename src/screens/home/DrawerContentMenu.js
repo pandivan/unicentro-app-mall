@@ -65,6 +65,7 @@ const DrawerContentMenu = ({ navigation, route }) =>
   }, []);
 
 
+  
   /**
    * Función que permite redireccionar a un screen de la app oh a una url
    * @param itemMenu Item del menú
