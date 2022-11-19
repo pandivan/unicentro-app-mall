@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { FlatList } from "react-native";
-import { Box, Center, Text, Pressable, Image, Icon, Input, VStack } from "native-base";
+import { FlatList, Image } from "react-native";
+import { Box, Center, Text, Pressable, Icon, Input, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import offersServices from "../../services/OffersServices";
 import Constants from "../../utilities/Constants"; 
+import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -30,9 +31,6 @@ const Offers = ({ navigation, route }) =>
     {
       try 
       {
-        // Se actualiza el titulo del header del navegador padre q en este caso es el drawer
-        navigation.getParent("NavigatorDrawer").setOptions({ headerShown:true, headerTitle:"Ofertas" });
-
         //Se obtiene las ofertas de las tiendas a traves del api-rest
         let {status, lstOffersBD} = await offersServices.getAllOffers();
 
@@ -65,6 +63,11 @@ const Offers = ({ navigation, route }) =>
   }, []);
 
 
+
+  useEffect(() => 
+  {
+    HeaderTitle.unsubscribe(navigation, "Promociones");
+  }, [navigation]);
 
 
   /**
@@ -103,7 +106,7 @@ const Offers = ({ navigation, route }) =>
             <Box background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow="2">
               <VStack space={2} p="4">
                 <Center borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:offer.urlImage}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
+                  <Image source={{uri:offer.urlImage}} resizeMode="cover" style={{width:64, height:64}}/>
                 </Center>
                 <Text mt="2" letterSpacing_="sm" lineHeight="xs" height="10" fontSize_="14" fontWeight="700" color="muted.500" borderColor_="red.300" borderWidth_="1">
                   {offer.name}
@@ -122,14 +125,15 @@ const Offers = ({ navigation, route }) =>
 
 
   return(
-    <Center flex={1} backgroundColor_="white" borderColor_="red.600" borderWidth_="1">
+    <Center flex={1} backgroundColor="white" borderColor_="red.600" borderWidth_="1">
       <Input 
         placeholder="Buscas alguna promo?" 
         variant="filled" 
         width="90%" 
         borderColor="#f18032" 
+        backgroundColor="white"
         _focus={{borderColor:"#f18032", backgroundColor:"white"}} 
-        borderRadius="10" mt="8" mb="5" py="1" px="2" 
+        borderRadius="10" mt="3" mb="5" py="1" px="2" 
         InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />}
         value={search} 
         onChangeText={(search) => searchOffers(search)}

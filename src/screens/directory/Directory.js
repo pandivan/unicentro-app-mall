@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FlatList } from "react-native";
-import { VStack, HStack, Center, Text, Pressable, Image, Icon, Input } from "native-base";
+import { FlatList, Image } from "react-native";
+import { VStack, HStack, Center, Text, Pressable, Icon, Input, Box } from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 
 import AppContext from '../../contexts/AppContext';
+import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -31,12 +32,9 @@ const Directory = ({ navigation, route }) =>
   {
     const loadData = () => 
     {
-      console.log("useEffect loadData Directory");
+      // console.log("useEffect loadData Directory");
       try 
       {
-        // Se actualiza el titulo del header del navegador padre q en este caso es el drawer
-        navigation.getParent("NavigatorDrawer").setOptions({ headerTitle:"Directorio" });
-
         // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
         // 1 = Se pinta en home
         // 2 = Se pinta en directorio
@@ -56,6 +54,12 @@ const Directory = ({ navigation, route }) =>
 
     loadData();
   }, []);
+
+
+  useEffect(() => 
+  {
+    HeaderTitle.unsubscribe(navigation, "Directorio");
+  }, [navigation]);
 
 
   /**
@@ -85,6 +89,7 @@ const Directory = ({ navigation, route }) =>
     setSearch(search);
   }
 
+  
   /**
    * Funcion que permite listar las tiendas segun la categoria seleccionada
    * @param store Tienda
@@ -102,18 +107,18 @@ const Directory = ({ navigation, route }) =>
             <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="2" borderColor="gray.300" borderWidth="1">
               <HStack ml="5" space={8} borderColor_="red.500" borderWidth_="1">
                 <Center width="20" borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:store.urlStoreLogo}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/>
+                  <Image source={{uri:store.urlStoreLogo}} resizeMode="cover" style={{width:64, height:64}}/>
                 </Center>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
-                  <Text fontSize="23" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
+                  <Text fontSize="21" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
                     {store.name}
                   </Text>
-                  <Text fontSize="15" color="#f18032">
+                  <Text fontSize="12" color="#f18032">
                     {store.description}
                   </Text>
-                  <Center mt="2" height="10" width="110px" rounded="18" borderColor="#f18032" borderWidth="2">
-                    <Text color="#f18032" fontWeight="600" fontSize="lg">
+                  <Center mt="2" height="9" width="110px" rounded="18" borderColor="#f18032" borderWidth="2">
+                    <Text color="#f18032" fontWeight="600" fontSize="md">
                       Local {store.storeNumber}
                     </Text>
                   </Center>
@@ -143,7 +148,7 @@ const Directory = ({ navigation, route }) =>
                 {
                   return (
                     <Center bg={idCategory === category.idCategory ? "#3abdc2" : "white"} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
-                      <Image source={{uri:category.urlCategoryIcon}} alt="Imagen desactualizada" size="xs" rounded="100"/>
+                      <Image source={{uri:category.urlCategoryIcon}} style={{width:40, height:40}}/>
                     </Center>
                   )
                 }

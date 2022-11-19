@@ -4,6 +4,7 @@ import { VStack, HStack, Center, Text, Image, Icon, Box, Avatar } from "native-b
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
 import GenericFunctions from "../../utilities/GenericFunctions";
+import HeaderTitle from "../../components/HeaderTitle";
 
 
 /**
@@ -27,7 +28,6 @@ const StoreInformation = ({ navigation, route }) =>
     // {
     //   try 
     //   {
-        navigation.getParent("NavigatorDrawer").setOptions({ headerTitle:"Información" });
         setStore(route.params);
     //   }
     //   catch (error) 
@@ -41,6 +41,10 @@ const StoreInformation = ({ navigation, route }) =>
   }, [route.params]);
 
   
+  useEffect(() => 
+  {
+    HeaderTitle.unsubscribe(navigation, "");
+  }, [navigation]);
   
 
 
@@ -127,7 +131,7 @@ const StoreInformation = ({ navigation, route }) =>
           </HStack>
         </Box>
 
-        <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10">
+        <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10" borderColor="light.300" borderWidth="1">
           <Text bold>
             Redes Sociales:
           </Text>

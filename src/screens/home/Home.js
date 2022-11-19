@@ -8,6 +8,7 @@ import * as SecureStore from "expo-secure-store";
 // import categoriesServices from "../../services/CategoriesServices";
 // import Constants from "../../utilities/Constants";
 import AppContext from "../../contexts/AppContext";
+import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -39,7 +40,7 @@ const Home = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect Home ");
+    // console.log("useEffect Home ");
 
     const loadData = () => 
     {
@@ -54,6 +55,12 @@ const Home = ({ navigation, route }) =>
 
     loadData();
   }, []);
+
+
+  useEffect(() => 
+  {
+    HeaderTitle.unsubscribe(navigation, "");
+  }, [navigation]);
 
 
 

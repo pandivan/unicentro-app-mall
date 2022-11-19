@@ -9,7 +9,7 @@ const Stack = createStackNavigator();
 
 const RouteDirectory = ({ navigation, route }) =>
 {
-  console.log("useEffect RouteDirectory");
+  // console.log("useEffect RouteDirectory");
 
   return (
     <Stack.Navigator 

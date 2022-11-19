@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons, SimpleLineIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 
 import Settings from "../screens/configuration/Settings";
@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
  */
 const RouteHome = ({ navigation, route }) => 
 {
-  console.log("useEffect RouteHome");
+  // console.log("useEffect RouteHome");
 
 
   return (
@@ -35,10 +35,19 @@ const RouteHome = ({ navigation, route }) =>
         tabBarActiveTintColor:"#f18032",
         tabBarInactiveTintColor:"#5d5d5d",
         tabBarLabelStyle:{fontSize: 13},
-        headerStyle:{backgroundColor:"red"},
         tabBarStyle:{height:60, paddingBottom:4, paddingTop:4, backgroundColor_:"blue", borderTopColor:"black", borderTopWidth:0.2}
       }}
     >
+      <Tab.Screen 
+        name="Invoices" 
+        component={Invoices}
+        options=
+        {{
+          tabBarLabel:"Registrar Facturas",
+          tabBarIcon:({ color, size }) => (<SimpleLineIcons name="camera" color={color} size={size} />)
+        }}
+      />
+
       <Tab.Screen
         name="RouteDirectory"
         component={RouteDirectory}
@@ -73,15 +82,6 @@ const RouteHome = ({ navigation, route }) =>
       <Tab.Screen 
         name="OfferDetail" 
         component={OfferDetail}
-        options=
-        {{
-          tabBarButton: () => <View style={{ width: 0 }} />
-        }}
-      />
-
-      <Tab.Screen 
-        name="Invoices" 
-        component={Invoices}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />

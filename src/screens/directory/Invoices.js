@@ -13,12 +13,12 @@ const Invoices = ({ navigation, route }) =>
 
   return(
     <Center flex={1} backgroundColor="white" justifyContent="flex-start" p="3">
-      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("RegisterInvoices")}>
+      <Pressable height="110px" width="100%" mt="5" mb="6" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("RegisterInvoices")}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Box background={isPressed ? "#F4AF7D" : "#f18032"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
+            <Box background={isPressed ? "#F4AF7D" : "#F05642"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
               <HStack justifyContent="space-between" height="100%" borderColor_="red.500" borderWidth_="1">
                 <VStack justifyContent="flex-end" height_="100%" p="3" borderColor_="black" borderWidth_="1">
                   <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">
@@ -39,12 +39,12 @@ const Invoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("HistoryInvoices", store)}>
+      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("HistoryInvoices", store)}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Box background={isPressed ? "#7AC9CC" : "#3abdc2"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
+            <Box background={isPressed ? "#7AC9CC" : "#39BFC2"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
               <HStack justifyContent="space-between" height="100%" borderColor_="red.500" borderWidth_="1">
                 <VStack justifyContent="flex-end" height_="100%" p="3" borderColor_="black" borderWidth_="1">
                   <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">
@@ -65,12 +65,12 @@ const Invoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" mb="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
+      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Box background={isPressed ? "#F4926E" : "#f15a25"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
+            <Box background={isPressed ? "#F4926E" : "#F18032"} p="0" style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow_="2" borderColor_="red.500" borderWidth_="1">
               <HStack justifyContent="space-between" height="100%" borderColor_="red.500" borderWidth_="1">
                 <VStack justifyContent="flex-end" height_="100%" p="3" borderColor_="black" borderWidth_="1">
                   <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">

@@ -17,7 +17,6 @@ import Constants from "./src/utilities/Constants";
 
 
 
-
 //Creando Menu de Navegación
 const Drawer = createDrawerNavigator();
 
@@ -25,7 +24,7 @@ const Drawer = createDrawerNavigator();
 export default function App() 
 {
 
-  console.log("useEffect App");
+  // console.log("useEffect App");
 
   //Valores iniciales del state
   const inicializarState = 
@@ -47,7 +46,7 @@ export default function App()
     {
       try 
       {
-        console.log("*** UseEffect APP ****");
+        // console.log("*** UseEffect APP ****");
         
         //Se obtiene las categorias y sus tiendas a traves del api-rest
         let {status, lstCategoriesBD} = await categoriesServices.getAllCategories();
@@ -229,9 +228,6 @@ export default function App()
                 ({ navigation }) =>
                 ({ 
                     headerShown:true,
-                    headerTitle:"Papa",
-                    // headerTitleStyle:{fontWeight:"700"}, 
-                    // headerTitleAlign:"center",
                     drawerStyle:{width:305},
                     headerStyle:{height:120},
                     headerLeft:() => 
@@ -240,19 +236,19 @@ export default function App()
                         <HamburgerIcon onPress={navigation.toggleDrawer} size="md" color="#f18032"/>
                       </Center>
                     ),
-                    headerRight:() => 
-                    (
-                      <Box width="90%" borderColor_="green.500" borderWidth_="1">
-                        <Image source={require('./assets/Logo_Fullcolor.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
-                      </Box>
-                    )
+                    // headerRight:() => 
+                    // (
+                    //   <Box width="90%" borderColor_="green.500" borderWidth_="1">
+                    //     <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
+                    //   </Box>
+                    // )
                 })
               }
             >
               <Drawer.Screen 
                 name="RouteHome" 
                 component={RouteHome}
-                // options={{headerTitle:"App"}}
+                options={{headerTitle:""}}
               />
               
             </Drawer.Navigator>

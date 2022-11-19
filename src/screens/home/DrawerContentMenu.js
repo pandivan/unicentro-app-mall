@@ -24,7 +24,7 @@ const DrawerContentMenu = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect DrawerContentMenu");
+    // console.log("useEffect DrawerContentMenu");
 
     const loadData = async () => 
     {
@@ -75,7 +75,7 @@ const DrawerContentMenu = ({ navigation, route }) =>
     // Se valida si es un screen de la app, en caso contrario redirecciona a una url
     if(1 === itemMenu.idItemMenu || 2 === itemMenu.idItemMenu || 3 === itemMenu.idItemMenu || 7 === itemMenu.idItemMenu)
     { 
-      navigation.navigate(itemMenu.redirect);
+      navigation.navigate(itemMenu.redirect, itemMenu.redirect);
     }
     else
     {
