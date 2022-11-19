@@ -30,6 +30,9 @@ const Offers = ({ navigation, route }) =>
     {
       try 
       {
+        // Se actualiza el titulo del header del navegador padre q en este caso es el drawer
+        navigation.getParent("NavigatorDrawer").setOptions({ headerShown:true, headerTitle:"Ofertas" });
+
         //Se obtiene las ofertas de las tiendas a traves del api-rest
         let {status, lstOffersBD} = await offersServices.getAllOffers();
 

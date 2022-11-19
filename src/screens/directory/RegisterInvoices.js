@@ -14,27 +14,30 @@ const RegisterInvoices = ({ navigation, route }) =>
 {
   const [permission, requestPermission] = Camera.useCameraPermissions();
 
+  //Registra tus facturas
+
   /**
    * Funcion que permite cargar u obtener la información del cliente
    */
   //  useEffect(() => 
   //  {
   //    console.log("useEffect Registration");
+    //  navigation.getParent().getParent().getParent().getParent().setOptions({ headerShown:true, headerTitle:"Información" });
  
-  //    const loadData = async () => 
-  //    {
-  //      try 
-  //      {
-  //        // Se habilita la cabecera del react navigation de la pantalla
-  //        navigation.setOptions({ headerShown:true, headerRight:null });
-  //      }
-  //      catch (error) 
-  //      {
-  //        Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
-  //      }
-  //    }
+    //  const loadData = async () => 
+    //  {
+    //    try 
+    //    {
+    //      // Se habilita la cabecera del react navigation de la pantalla
+    //      navigation.getParent().getParent().getParent().getParent().setOptions({ headerShown:true, headerTitle:"Información" });
+    //    }
+    //    catch (error) 
+    //    {
+    //      Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+    //    }
+    //  }
  
-  //    loadData();
+    //  loadData();
   //  }, []);
  
   const openCamera = () => 
@@ -42,7 +45,7 @@ const RegisterInvoices = ({ navigation, route }) =>
     // if (!permission.granted) 
     // {
       requestPermission();
-      console.log("pedir..");
+      console.log("openCamera.. " + permission.granted);
       navigation.navigate("TakePicture");
     // }
   }

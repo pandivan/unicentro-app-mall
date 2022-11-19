@@ -24,7 +24,8 @@ const OfferDetail = ({ navigation, route }) =>
     // {
     //   try 
     //   {
-        setOfferDetail(route.params);
+      navigation.getParent("NavigatorDrawer").setOptions({ headerTitle:"" });
+      setOfferDetail(route.params);
     //   }
     //   catch (error) 
     //   {

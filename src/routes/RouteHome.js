@@ -2,10 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { View } from "react-native";
 
-import Home from "../screens/home/Home"
 import Settings from "../screens/configuration/Settings";
-import Directory from "../screens/directory/Directory";
-import StoreInformation from "../screens/directory/StoreInformation";
 import Offers from "../screens/directory/Offers";
 import OfferDetail from "../screens/directory/OfferDetail";
 import Invoices from "../screens/directory/Invoices";
@@ -14,6 +11,7 @@ import RegisterInvoices from "../screens/directory/RegisterInvoices";
 import HistoryInvoices from "../screens/directory/HistoryInvoices";
 import SendInvoice from "../screens/directory/SendInvoice";
 import TakePicture from "../screens/directory/TakePicture";
+import RouteDirectory from "./RouteDirectory";
 
 
 const Tab = createBottomTabNavigator();
@@ -30,7 +28,7 @@ const RouteHome = ({ navigation, route }) =>
 
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="RouteDirectory"
       screenOptions=
       {{
         headerShown:false,
@@ -42,56 +40,32 @@ const RouteHome = ({ navigation, route }) =>
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={Home}
+        name="RouteDirectory"
+        component={RouteDirectory}
         options=
         {{
-          headerShown:false,
           tabBarLabel:"Home",
           tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
         }}
       />
+
 
       <Tab.Screen
         name="Settings"
         component={Settings}
         options=
         {{
-          headerShown:false,
           tabBarLabel:"Ajustes",
           tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="cog-outline" color={color} size={size} />)
         }}
       />
 
-      <Tab.Screen 
-        name="Directory" 
-        component={Directory}
-        options=
-        {{
-          headerTitle:"Directorio", 
-          headerTitleStyle:{fontWeight:"700"},  headerTitleAlign:"center",
-          tabBarButton: () => <View style={{ width: 0 }} />
-        }}
-      />
-
-      <Tab.Screen 
-        name="StoreInformation" 
-        component={StoreInformation}
-        options=
-        {{
-          headerTitle:"",
-          tabBarButton: () => <View style={{ width: 0 }} />
-        }}
-      />
 
       <Tab.Screen 
         name="Offers" 
         component={Offers}
         options=
         {{
-          headerTitle:"Promociones", 
-          headerTitleStyle:{fontWeight:"700"}, 
-          headerTitleAlign:"center",
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -101,7 +75,6 @@ const RouteHome = ({ navigation, route }) =>
         component={OfferDetail}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -111,7 +84,6 @@ const RouteHome = ({ navigation, route }) =>
         component={Invoices}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -121,7 +93,6 @@ const RouteHome = ({ navigation, route }) =>
         component={RegisterInvoices}
         options=
         {{
-          headerTitle:"Registra tus facturas", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -131,7 +102,6 @@ const RouteHome = ({ navigation, route }) =>
         component={SendInvoice}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -141,7 +111,6 @@ const RouteHome = ({ navigation, route }) =>
         component={HistoryInvoices}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -151,7 +120,6 @@ const RouteHome = ({ navigation, route }) =>
         component={TakePicture}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />
@@ -161,7 +129,6 @@ const RouteHome = ({ navigation, route }) =>
         component={Contact}
         options=
         {{
-          headerTitle:"", 
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
       />

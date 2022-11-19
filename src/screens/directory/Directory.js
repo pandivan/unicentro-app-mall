@@ -21,6 +21,7 @@ const Directory = ({ navigation, route }) =>
   const [lstStores, setLstStores] = useState([]);
   const [idCategory, setIdCategory] = useState(1);
   const [search, setSearch] = useState("");
+ 
 
 
   /**
@@ -28,12 +29,14 @@ const Directory = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect Directory");
-
     const loadData = () => 
     {
+      console.log("useEffect loadData Directory");
       try 
       {
+        // Se actualiza el titulo del header del navegador padre q en este caso es el drawer
+        navigation.getParent("NavigatorDrawer").setOptions({ headerTitle:"Directorio" });
+
         // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
         // 1 = Se pinta en home
         // 2 = Se pinta en directorio
@@ -89,7 +92,7 @@ const Directory = ({ navigation, route }) =>
    */
   const renderStores = (store) => 
   {
-
+    // Tarjetas de tiendas segun la categoria seleccionada
     return(
       <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("StoreInformation", store)}>
       {
@@ -153,6 +156,7 @@ const Directory = ({ navigation, route }) =>
       }
       </HStack>
 
+      {/* Buscador de tiendas */}
       <Input 
         placeholder="Tiendas" 
         variant="filled" 
@@ -165,6 +169,7 @@ const Directory = ({ navigation, route }) =>
         onChangeText={(search) => searchStore(search)}
       />
 
+      {/* Se lita las tarjetas con la informacion de cada tienda */}
       <Center flex={1}>
         <FlatList
           data={lstStores} 

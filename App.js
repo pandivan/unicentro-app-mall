@@ -18,7 +18,6 @@ import Constants from "./src/utilities/Constants";
 
 
 
-
 //Creando Menu de Navegación
 const Drawer = createDrawerNavigator();
 
@@ -214,7 +213,15 @@ export default function App()
         {
           (state.userToken !== null) ?
           (
+            // El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
+            // de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
+
+            // Cuando se implementa DrawerContentMenu los Drawer.Screen quedan funcionando de manera logica para navegar entre ellos pero 
+            // ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
+            // y es desde ahí q podremos acceder de manera logica a los Drawer.Screen 
+
             <Drawer.Navigator 
+              id="NavigatorDrawer"
               initialRouteName="RouteHome" 
               drawerContent={props => <DrawerContentMenu {...props} />} 
               screenOptions=
@@ -222,6 +229,9 @@ export default function App()
                 ({ navigation }) =>
                 ({ 
                     headerShown:true,
+                    headerTitle:"Papa",
+                    // headerTitleStyle:{fontWeight:"700"}, 
+                    // headerTitleAlign:"center",
                     drawerStyle:{width:305},
                     headerStyle:{height:120},
                     headerLeft:() => 
@@ -233,7 +243,7 @@ export default function App()
                     headerRight:() => 
                     (
                       <Box width="90%" borderColor_="green.500" borderWidth_="1">
-                        <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
+                        <Image source={require('./assets/Logo_Fullcolor.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
                       </Box>
                     )
                 })
@@ -242,7 +252,7 @@ export default function App()
               <Drawer.Screen 
                 name="RouteHome" 
                 component={RouteHome}
-                options={{headerTitle:""}}
+                // options={{headerTitle:"App"}}
               />
               
             </Drawer.Navigator>

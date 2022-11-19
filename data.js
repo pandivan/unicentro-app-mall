@@ -17,7 +17,7 @@ const dataMenu =
 }, 
 {
   idItemMenu: 3,
-  itemName: 'Ofertas',
+  itemName: 'Promociones',
   description: 'Disfruta increíbles descuentos',
   urlItemImage: 'https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg',
   color: '#ffbeca',
@@ -50,7 +50,7 @@ const dataMenu =
 ,
 {
   idItemMenu: 7,
-  itemName: 'Conctacto',
+  itemName: 'Contacto',
   description: 'Queremos saber que piensas',
   urlItemImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU',
   color: '#ffbeca',

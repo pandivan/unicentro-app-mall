@@ -27,6 +27,7 @@ const StoreInformation = ({ navigation, route }) =>
     // {
     //   try 
     //   {
+        navigation.getParent("NavigatorDrawer").setOptions({ headerTitle:"Información" });
         setStore(route.params);
     //   }
     //   catch (error) 
@@ -36,6 +37,7 @@ const StoreInformation = ({ navigation, route }) =>
     // }
 
     // loadData();
+
   }, [route.params]);
 
   

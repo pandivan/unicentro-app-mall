@@ -53,6 +53,7 @@ const TakePicture = ({ navigation, route }) =>
       }
       catch(error)
       {
+        console.log(error);
         Alert.alert("Información", "No es posible acceder a la cámara del dispositivo.\n\nAcceso denegado.");
       }
     }
