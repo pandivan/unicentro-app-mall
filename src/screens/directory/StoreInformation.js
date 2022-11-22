@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { ScrollView } from "react-native";
-import { VStack, HStack, Center, Text, Image, Icon, Box, Avatar } from "native-base";
+import { Image, VStack, HStack, Center, Text, Icon, Box, Avatar } from "native-base";
 import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
 import GenericFunctions from "../../utilities/GenericFunctions";
@@ -51,12 +51,13 @@ const StoreInformation = ({ navigation, route }) =>
   return(
     <ScrollView showsVerticalScrollIndicator ={false}>
       <Center flex={1} px="3" justifyContent="flex-start" backgroundColor="white" borderColor_="red.600" borderWidth_="1">
-        <Box width="100%" height="64" borderRadius="10" backgroundColor="#E1E667" borderColor_="blue.500" borderWidth_="1">
 
-          <HStack space={5} height="24" pl="4" pt="4" borderColor_="red.500" borderWidth_="1">
-            <Avatar source={{uri: store.urlStoreLogo}} _image={{resizeMode:"contain"}} size="16"/>
-            <VStack>
-              <Text fontSize="md" color_="coolGray.800" bold>
+        <Box width="100%" height="64" borderRadius="10" justifyItems="flex-start" backgroundColor="#39BFC2" borderColor_="blue.500" borderWidth_="1">
+          <HStack width="100%" space_={5} height="64" pl_="2" pt_="4" borderColor_="red.500" borderWidth_="1">
+            <Image source={{uri:store.urlStoreImage}} alt="Imagen desactualizada" borderBottomLeftRadius="10" borderTopLeftRadius="10" resizeMode="contain" width="50%" height="100%"/>
+            <VStack width="50%" mt_="10" justifyContent="center" alignItems="center" borderColor_="blue.500" borderWidth_="1">
+              <Avatar source={{uri: store.urlStoreLogo}} _image_={{resizeMode:"contain"}} size="20"/>
+              <Text fontSize="md" mt="4" color_="coolGray.800" bold>
                 {store.name}
               </Text>
               <Text fontSize="xs" color_="coolGray.400">
@@ -64,8 +65,6 @@ const StoreInformation = ({ navigation, route }) =>
               </Text>
             </VStack>
           </HStack>
-          
-          <Image source={{uri:store.urlStoreImage}} alt="Imagen desactualizada" borderBottomRadius="10" resizeMode="contain" width="100%" height="40"/>
         </Box>
 
         <Box mt="5" p="4" width="100%" shadow="2" backgroundColor="white" borderRadius="10">

@@ -319,7 +319,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Cédula
               </Text>
-              <Input value={identification} onChangeText={onChangeTextIdentification} onEndEditing={onEndEditingIdentification} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3"/>}/>
+              <Input value={identification} onChangeText={onChangeTextIdentification} onEndEditing={onEndEditingIdentification} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageIdentification}
               </FormControl.ErrorMessage>
@@ -329,7 +329,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Nombres
               </Text>
-              <Input value={names} onChangeText={setNames} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3"/>}/>
+              <Input value={names} onChangeText={setNames} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageNames}
               </FormControl.ErrorMessage>
@@ -339,7 +339,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Apellidos
               </Text>
-              <Input value={lastName} onChangeText={setLastName} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3"/>}/>
+              <Input value={lastName} onChangeText={setLastName} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageLastName}
               </FormControl.ErrorMessage>
@@ -349,7 +349,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Celular
               </Text>
-              <Input value={phone} onChangeText={setPhone} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="phone" size="4" ml="3"/>}/>
+              <Input value={phone} onChangeText={setPhone} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="phone" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessagePhone}
               </FormControl.ErrorMessage>
@@ -359,7 +359,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Email
               </Text>
-              <Input value={email} onChangeText={setEmail} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="envelope" size="4" ml="3"/>}/>
+              <Input value={email} onChangeText={setEmail} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="envelope" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageEmail}
               </FormControl.ErrorMessage>
@@ -370,7 +370,7 @@ const Registration = ({navigation}) =>
                 Contraseña
               </Text>
               <Input value={password} onChangeText={setPassword} height="9" borderRadius="15" shadow="2" backgroundColor="white" 
-                InputLeftElement={<Icon as={SimpleLineIcons} name="lock" size="4" ml="3"/>} 
+                InputLeftElement={<Icon as={SimpleLineIcons} name="lock" size="4" ml="3" color="#F18032"/>} 
                 type={showPassword ? "text" : "password"} 
                 InputRightElement=
                 {
@@ -389,7 +389,7 @@ const Registration = ({navigation}) =>
                 Confirmar contraseña
               </Text>
               <Input value={confirmPassword} onChangeText={setConfirmPassword} height="9" borderRadius="15" shadow="2" backgroundColor="white" 
-                InputLeftElement={<Icon as={SimpleLineIcons} name="lock" size="4" ml="3"/>}
+                InputLeftElement={<Icon as={SimpleLineIcons} name="lock" size="4" ml="3" color="#F18032"/>}
                 type={showConfirmPassword ? "text" : "password"} 
                 InputRightElement=
                 {
@@ -407,7 +407,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Fecha de cumpleaños (dd/mm/aaaa)
               </Text>
-              <Input value={birthday} onChangeText={onChangeTextBirthday} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="calendar" size="4" ml="3"/>}/>
+              <Input value={birthday} onChangeText={onChangeTextBirthday} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="calendar" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageBirthday}
               </FormControl.ErrorMessage>
@@ -418,7 +418,7 @@ const Registration = ({navigation}) =>
                 Género
               </Text>
               <Select height="9" borderRadius="15" shadow="2" selectedValue={gender}
-                InputLeftElement={<Icon as={SimpleLineIcons} name="people" size="4" ml="3"/>}
+                InputLeftElement={<Icon as={SimpleLineIcons} name="people" size="4" ml="3" color="#F18032"/>}
                 dropdownIcon={<ChevronDownIcon mr="3"/>}
                 _selectedItem={{backgroundColor:"#FF984F", height:9, justifyContent:"center", endIcon: <CheckIcon size={5}/>}}
                 _actionSheetContent={{}}
@@ -438,7 +438,7 @@ const Registration = ({navigation}) =>
                 Barrio
               </Text>
               <Select height="9" borderRadius="15" shadow="2" selectedValue={neighborhood}
-                InputLeftElement={<Icon as={SimpleLineIcons} name="home" size="4" ml="3"/>}
+                InputLeftElement={<Icon as={SimpleLineIcons} name="home" size="4" ml="3" color="#F18032"/>}
                 dropdownIcon={<ChevronDownIcon mr="3"/>}
                 _selectedItem={{backgroundColor:"#FF984F", height:9, justifyContent:"center", endIcon: <CheckIcon size={5}/>}}
                 _actionSheetContent={{}}

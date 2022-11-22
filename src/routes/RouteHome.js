@@ -12,6 +12,7 @@ import HistoryInvoices from "../screens/directory/HistoryInvoices";
 import SendInvoice from "../screens/directory/SendInvoice";
 import TakePicture from "../screens/directory/TakePicture";
 import RouteDirectory from "./RouteDirectory";
+import { Image } from "native-base";
 
 
 const Tab = createBottomTabNavigator();
@@ -34,7 +35,7 @@ const RouteHome = ({ navigation, route }) =>
         headerShown:false,
         tabBarActiveTintColor:"#f18032",
         tabBarInactiveTintColor:"#5d5d5d",
-        tabBarLabelStyle:{fontSize: 13},
+        tabBarLabelStyle:{fontSize: 14, fontWeight_:"700"},
         tabBarStyle:{height:60, paddingBottom:4, paddingTop:4, backgroundColor_:"blue", borderTopColor:"black", borderTopWidth:0.2}
       }}
     >
@@ -54,7 +55,7 @@ const RouteHome = ({ navigation, route }) =>
         options=
         {{
           tabBarLabel:"Home",
-          tabBarIcon:({ color, size }) => (<MaterialCommunityIcons name="home" color={color} size={size} />)
+          tabBarIcon:({ color, size }) => (<Image source={{uri: "https://drive.google.com/uc?id=1VnpIvRyqBYDknEvdzPlam1Fy316ECcI6"}} resizeMode="contain" color_={color} size="16" alt="Alternate Text"/>)
         }}
       />
 

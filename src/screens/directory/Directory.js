@@ -89,6 +89,28 @@ const Directory = ({ navigation, route }) =>
     setSearch(search);
   }
 
+
+  const categoryBackgroundColor = (category, backgroundColor) => 
+  {
+    if (idCategory === category.idCategory)
+    {
+      return category.backgroundColor;
+    }
+    
+    return backgroundColor;
+  }
+
+
+  const categoryIcon = (category) => 
+  {
+    if (idCategory === category.idCategory)
+    {
+      return category.urlCategoryIcon1;
+    }
+    
+    return category.urlCategoryIcon2;
+  }
+
   
   /**
    * Funcion que permite listar las tiendas segun la categoria seleccionada
@@ -107,7 +129,7 @@ const Directory = ({ navigation, route }) =>
             <Center background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="20" height="100%" width="100%" shadow="2" borderColor="gray.300" borderWidth="1">
               <HStack ml="5" space={8} borderColor_="red.500" borderWidth_="1">
                 <Center width="20" borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:store.urlStoreLogo}} resizeMode="cover" style={{width:64, height:64}}/>
+                  <Image source={{uri:store.urlStoreLogo}} resizeMode_="contain" style={{width:80, height:95}}/>
                 </Center>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
@@ -147,14 +169,14 @@ const Directory = ({ navigation, route }) =>
                 ({ isPressed }) => 
                 {
                   return (
-                    <Center bg={idCategory === category.idCategory ? "#3abdc2" : "white"} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
-                      <Image source={{uri:category.urlCategoryIcon}} style={{width:40, height:40}}/>
+                    <Center bg={categoryBackgroundColor(category, "white")} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
+                      <Image source={{uri:categoryIcon(category)}} style={{width:60, height:60}}/>
                     </Center>
                   )
                 }
               }
               </Pressable>
-              <Text mt="2" bold color={idCategory === category.idCategory ? "#3abdc2" : "#b5b5b5"}>{category.categoryName}</Text>
+              <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
             </VStack>
           )        
         })
@@ -167,6 +189,7 @@ const Directory = ({ navigation, route }) =>
         variant="filled" 
         width="90%" 
         borderColor="#f18032" 
+        backgroundColor_="white"
         _focus={{borderColor:"#f18032", backgroundColor:"white"}} 
         borderRadius="10" mt="8" mb="5" py="1" px="2" 
         InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />}

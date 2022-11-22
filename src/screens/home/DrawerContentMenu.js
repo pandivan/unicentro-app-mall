@@ -97,8 +97,13 @@ const DrawerContentMenu = ({ navigation, route }) =>
     return(
       <Pressable borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" onPress={() => redirect(itemMenu)} borderColor_="blue.500" borderWidth_="1">
         <HStack space={3} justifyContent_="space-between">
-          <Center backgroundColor={itemMenu.color} rounded="100" width="8" height="8">
-            <Icon as={<SimpleLineIcons name="location-pin" />} size={4} color_="#6133E4" />
+          <Center backgroundColor={itemMenu.color} rounded="100" width="10" height="10">
+            {
+              (1 === itemMenu.idItemMenu) ?
+                <Image source={{uri: "https://drive.google.com/uc?id=1RxTiI3B_pBtZCvOqSHlnGru7Cx_3bkH6"}} resizeMode="contain" size="8" alt="A Text"/>
+              :
+                <Icon as={<SimpleLineIcons name={itemMenu.urlItemImage} />} size="21" color="white" />
+            }
           </Center>
           <VStack>
             <Text fontSize="md" color="coolGray.800" bold>

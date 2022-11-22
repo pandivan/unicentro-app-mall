@@ -64,7 +64,7 @@ const Login = ({navigation}) =>
           <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
             <Image source={require('../../../assets/logo_login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={20}/>
             
-            <Heading size="lg" mt="4" fontWeight="600">
+            <Heading fontSize={22} mt="6" fontWeight="600">
               Iniciar Sesión
             </Heading>
           </Center>
@@ -96,7 +96,7 @@ const Login = ({navigation}) =>
                 <Link _text={{fontSize: "xs", fontWeight: "500", color_: "white"}} alignSelf="flex-end" mt="2">
                   Olvidó la Contraseña?
                 </Link>
-                <Text mt="6" fontSize="12" onPress={() => navigation.navigate("Registration")}>Primera vez en Unicentro Pasto? Suscribete ya.</Text>
+                <Text mt="6" fontSize="16" textAlign="center" bold color="#F18032" onPress={() => navigation.navigate("Registration")}>¿Primera vez en Unicentro Pasto? ¡Suscríbete ya!</Text>
             </FormControl>
 
             <Button onPress={validateForm} mt="5" backgroundColor="#46c9cb" borderRadius="lg" height="44px">

@@ -19,7 +19,12 @@
  const BACKEND_QLIK_URL = "https://83n21dw79d3imcg.us.qlikcloud.com/api/v1/users/me";
  
  const WEBINTEGRATIONID = "uOc5HfBzK4KyF5--fxWe8tVufT-LxWtf";
- 
+
+ const IMAGE_REPOSITORY = "https://drive.google.com/drive/folders/1Z3TYivBDLcMuJby0z0VMz4J-sCicil4o?usp=share_link/Bancos.png"
+
+ const API_KEY = "AIzaSyAuVKhS0jW_jPz9nHoTLkyJycLrxvK8ygg"
+
+
  
  export default 
  {
