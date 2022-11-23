@@ -60,32 +60,32 @@ const RegisterInvoices = ({ navigation, route }) =>
         La factura debe quedar completa en la foto
       </Text>
     
-      <Pressable height="110px" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress={openCamera}>
+      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress={openCamera}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Center background={isPressed ? "#F4AF7D" : "#d9d2bd"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width_="50%" shadow_="2" borderColor_="red.500" borderWidth_="1">
-              <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" mb="2" borderColor_="gray.300" borderWidth_="3">
+            <Center background={isPressed ? "#78CBCC" : "#39BFC2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" borderColor_="red.500" borderWidth_="1">
+              <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">
                 TOMAR FOTO
               </Text>
-              <SimpleLineIcons name="camera" size={48} color="#A6A090" style={{opacity:0.6}} />
+              <SimpleLineIcons name="camera" size={48} color="white" style={{opacity:0.6}} />
             </Center>
           );
         }
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
+      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
       {
         ({ isPressed }) => 
         {
           return (
-            <Center background={isPressed ? "#F4AF7D" : "#ea5745"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width_="50%" shadow_="2" borderColor_="red.500" borderWidth_="1">
-              <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" mb="2" borderColor_="gray.300" borderWidth_="3">
+            <Center background={isPressed ? "#78CBCC" : "#39BFC2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" borderColor_="red.500" borderWidth_="1">
+              <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">
                 ABRIR GALERÍA
               </Text>
-              <SimpleLineIcons name="picture" size={48} color="#B84435" style={{opacity:0.6}} />
+              <SimpleLineIcons name="picture" size={48} color="white" style={{opacity:0.6}} />
             </Center>
           );
         }

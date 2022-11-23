@@ -18,11 +18,10 @@ const Directory = ({ navigation, route }) =>
   //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
   const { lstCategories }  = useContext(AppContext);
 
-  const [lstDirectoryCategories, setLstDirectoryCategories] = useState([]);
   const [lstStores, setLstStores] = useState([]);
-  const [idCategory, setIdCategory] = useState(1);
+  const [idCategory, setIdCategory] = useState(route.params ? route.params : 1);
   const [search, setSearch] = useState("");
- 
+
 
 
   /**
@@ -32,19 +31,13 @@ const Directory = ({ navigation, route }) =>
   {
     const loadData = () => 
     {
-      // console.log("useEffect loadData Directory");
       try 
       {
-        // Se obtiene las categorías que se deben pintar en el header del directorio según el tipo de categoría...
-        // 1 = Se pinta en home
-        // 2 = Se pinta en directorio
-        // 3 = Se pinta en home y directorio
-        let lstDirectoryCategories = lstCategories.filter(category => (2 === category.type || 3 === category.type));
-        
-        setLstDirectoryCategories(lstDirectoryCategories);
+        let category = lstCategories.filter(category => (route.params === category.idCategory))[0]
         
         // Se obtiene de listado de tiendas de la primera categoria
-        setLstStores(lstDirectoryCategories[0].lstStores);
+        // setLstStores(route.params ? lstCategories[2].lstStores : lstCategories[0].lstStores);
+        setLstStores(category.lstStores)
       }
       catch (error) 
       {
@@ -68,11 +61,11 @@ const Directory = ({ navigation, route }) =>
    */
   const loadStores = (idCategory) =>
   {
-    // Se obtiene de listado de categorias la categoria selecconada
-    let category = lstDirectoryCategories.filter(category => (idCategory === category.idCategory))[0];
+    // Se obtiene de listado de categorias, la categoria selecconada
+    let selectedCategory = lstCategories.filter(category => (idCategory === category.idCategory))[0];
     
     setIdCategory(idCategory);
-    setLstStores(category.lstStores);
+    setLstStores(selectedCategory.lstStores);
   }
 
 
@@ -160,7 +153,7 @@ const Directory = ({ navigation, route }) =>
       <HStack mt="5" justifyContent="center" space={5} width="100%" borderColor_="red.600" borderWidth_="1">
       {
         // Visualización de las categorias en el header
-        lstDirectoryCategories.map((category, index)=>
+        lstCategories.map((category, index)=>
         {
           return (
             <VStack key={index} alignItems="center">

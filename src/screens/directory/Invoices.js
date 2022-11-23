@@ -29,8 +29,7 @@ const Invoices = ({ navigation, route }) =>
                   </Text>
                 </VStack>
                 <Center width="20" alignItems="flex-end" borderColor_="blue.500" borderWidth_="1">
-                  {/* <Image source={{uri:store.urlStoreLogo}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/> */}
-                  <SimpleLineIcons name="note" size={48} color="#BF6728" style={{opacity:0.6}} />
+                  <Image source={{uri:"https://drive.google.com/uc?id=1mRszqK4-NuNzxyiN57sb_fcq2uyYUHdv"}} alt="Imagen desactualizada" mr="3" width="53px" height="53px" opacity="0.6"/>
                 </Center>
               </HStack>
             </Box>
@@ -39,7 +38,7 @@ const Invoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("HistoryInvoices", store)}>
+      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("HistoryInvoices")}>
       {
         ({ isPressed }) => 
         {
@@ -55,8 +54,7 @@ const Invoices = ({ navigation, route }) =>
                   </Text>
                 </VStack>
                 <Center width="20" alignItems="flex-end" borderColor_="blue.500" borderWidth_="1">
-                  {/* <Image source={{uri:store.urlStoreLogo}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/> */}
-                  <SimpleLineIcons name="note" size={48} color="#2B8B8F" style={{opacity:0.6}} />
+                  <Image source={{uri:"https://drive.google.com/uc?id=10t8AmpzlzfQdyBI_w_LaTvkEF7QUK3b4"}} alt="Imagen desactualizada" mr="3" width="60px" height="60px" opacity="0.6"/>
                 </Center>
               </HStack>
             </Box>
@@ -65,7 +63,7 @@ const Invoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
+      <Pressable height="110px" width="100%" mb="6" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("faltapantalla sorteos", store)}>
       {
         ({ isPressed }) => 
         {
@@ -81,8 +79,7 @@ const Invoices = ({ navigation, route }) =>
                   </Text>
                 </VStack>
                 <Center width="20" alignItems="flex-end" borderColor_="blue.500" borderWidth_="1">
-                  {/* <Image source={{uri:store.urlStoreLogo}} alt="Imagen desactualizada" resizeMode="cover" width={16} height={16}/> */}
-                  <SimpleLineIcons name="note" size={48} color="#BF481D" style={{opacity:0.6}} />
+                  <Image source={{uri:"https://drive.google.com/uc?id=1CMPNJGESx8yO-sUFlryZFK-iBd6lvdZe"}} alt="Imagen desactualizada" mr="3" width="60px" height="60px" opacity="0.6"/>
                 </Center>
               </HStack>
             </Box>

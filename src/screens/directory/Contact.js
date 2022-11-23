@@ -22,13 +22,13 @@ const Contact = ({ navigation, route }) =>
         Atenderemos cualquier duda, inquietud o comentario que quiera compartir con nosotros.
       </Text>
 
-      <Button width="100%" rounded="15" mt="10" mb="5" backgroundColor="#2cbec3" _pressed={{backgroundColor:"#2d9997"}} leftIcon={<Icon as={SimpleLineIcons} name="envelope" size="6" mr="2"/>} onPress={() => GenericFunctions.openApp("mailto:publicidadymercadeo@ccunicentropasto.com")}>
+      <Button width="100%" rounded="15" mt="10" mb="5" backgroundColor="#39BFC2" _pressed={{backgroundColor:"#298D8F"}} leftIcon={<Icon as={SimpleLineIcons} name="envelope" size="6" mr="2"/>} onPress={() => GenericFunctions.openApp("mailto:publicidadymercadeo@ccunicentropasto.com")}>
         <Text fontSize="md" color="white" letterSpacing="xl" bold>
           Envíanos un e-mail
         </Text>
       </Button>
 
-      <Button width="100%" rounded="15" backgroundColor_="#2d9997" leftIcon={<Icon as={SimpleLineIcons} name="phone" size="6" mr="2"/>} onPress={() => GenericFunctions.openApp("tel:3104709828")}>
+      <Button width="100%" rounded="15" backgroundColor="#39BFC2" _pressed={{backgroundColor:"#298D8F"}} leftIcon={<Icon as={SimpleLineIcons} name="phone" size="6" mr="2"/>} onPress={() => GenericFunctions.openApp("tel:3104709828")}>
         <Text fontSize="md" color="white" letterSpacing="xl" bold>
           Llámanos
         </Text>

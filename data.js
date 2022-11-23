@@ -29,7 +29,7 @@ const dataMenu =
   description: 'Programación de eventos',
   urlItemImage: 'calendar',
   color: '#DAD2BD',
-  redirect: 'https://www.ccunicentropasto.com/eventos-y-actividades/'
+  redirect: 'https://www.ccunicentropasto.com/cartelera/'
 }, 
 {
   idItemMenu: 5,
@@ -37,7 +37,7 @@ const dataMenu =
   description: 'Información de servicios y eventos',
   urlItemImage: 'bell',
   color: '#F05642',
-  redirect: 'Offers'
+  redirect: 'https://www.ccunicentropasto.com/servicios/'
 },
 {
   idItemMenu: 6,
@@ -67,7 +67,6 @@ const dataCategories =
     urlCategoryIcon1: 'https://drive.google.com/uc?id=1KZ1NJJs9cW1Shubz5vXtbV9NOY6Rn7iR',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
-    type: 3,
     order:1,
     lstStores:
     [
@@ -178,9 +177,10 @@ const dataCategories =
   {
     idCategory:2,
     categoryName: 'Bancos',
-    urlCategoryImage: 'https://drive.google.com/uc?id=1iNyhFsaZM1alsoOqMntm8-i5PHxIle3Q',
-    urlCategoryIcon: 'BancosIcon.png',
-    type: 1,
+    urlCategoryImage: 'https://drive.google.com/uc?id=1clMTgv_8V3gQvhacKxeETtwBW5o221aL',
+    urlCategoryIcon1: 'https://drive.google.com/uc?id=1KZ1NJJs9cW1Shubz5vXtbV9NOY6Rn7iR',
+    urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
+    backgroundColor: '#39BFC2',
     order:2,
     lstStores:
     [
@@ -291,11 +291,10 @@ const dataCategories =
   {
     idCategory:3,
     categoryName: 'Entretenimiento',
-    urlCategoryImage:'https://drive.google.com/uc?id=11upZeqF2De1bVV8_zUQx_HDw7rzFSx8M',
+    urlCategoryImage:'https://drive.google.com/uc?id=1_KqdaI5VNLhyJegbSe7gjf_z74wQNerW',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=19WW6ORDtnjfyTKrh5que_mDyJDXOgFrx',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1PjEdPpTOnYhJ2F-knZhHtS7Vv61YyAtp',
     backgroundColor: '#D9E021',
-    type: 3,
     order:3,
     lstStores:
     [
@@ -372,11 +371,10 @@ const dataCategories =
   {
     idCategory:4,
     categoryName: 'Comidas',
-    urlCategoryImage: 'https://drive.google.com/uc?id=14HolMEjBah_GfsKb8PFSjN2-PBGnCnW6',
+    urlCategoryImage: 'https://drive.google.com/uc?id=13urKtHs4Fz9P5fwRMfbifE84GJWyM375',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=1tHvhFf3iGhBhXoWJGIF8ctGJO3vvaNJ2',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1o1YGD4fwqJbdS84H_LHpPEFRZzihGOlf',
     backgroundColor: '#ED3557',
-    type: 3,
     order:4,
     lstStores:
     [

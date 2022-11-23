@@ -22,7 +22,7 @@ const HistoryInvoices = ({ navigation, route }) =>
               <HStack justifyContent="space-between" height="100%" borderColor_="red.500" borderWidth_="1">
                 <VStack justifyContent="flex-end" height_="100%" p="3" borderColor_="black" borderWidth_="1">
                   <Text fontSize="18" fontWeight="700" color="white" letterSpacing="lg" borderColor_="gray.300" borderWidth_="3">
-                    Registra tus facturas
+                    Registra tus facturass
                   </Text>
                   <Text fontSize_="15" color="white">
                     Programa Unicentro Pasto
