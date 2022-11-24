@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { VStack, HStack, Box, Heading, Text, Icon, Avatar, Menu } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
+import { SimpleLineIcons } from "@expo/vector-icons";
 
 import AppContext from "../../contexts/AppContext";
 
@@ -27,10 +27,10 @@ const Settings = ({ navigation }) =>
       
       <Menu.Item px="0" mt="8" width="100%" borderColor_="blue.500" borderWidth_="3">
         <HStack alignItems="center" space={2}>
-          <Icon as={<MaterialIcons name="account-circle" />} size={7} mr="2" color="#6133E4" />
+          <Icon as={<SimpleLineIcons name="user" />} size={6} mr="2" color="#F18032" />
 
           <VStack>
-            <Text color="dark.500" fontSize="md" bold>
+            <Text color="dark.400" fontSize="md" bold>
               Perfil
             </Text>
             <Text color="light.400">
@@ -39,14 +39,23 @@ const Settings = ({ navigation }) =>
           </VStack>
         </HStack>
       </Menu.Item>
+
+      <Menu.Item px="0" mt="2" width="100%" borderColor_="blue.500" borderWidth_="3">
+        <HStack alignItems="center" space={2}>
+          <Icon as={<SimpleLineIcons name="lock" />} size={6} mr="2" color="#F18032" />
+          <Text color="dark.400" fontSize="md" bold>
+            Cambiar contraseña
+          </Text>
+        </HStack>
+      </Menu.Item>
       
-      <Menu.Item px="0" mt="3" width="100%" >
-          <HStack alignItems="center" space={2}>
-            <Icon as={<MaterialIcons name="exit-to-app" />} size={7} mr="2" color="#6133E4" />
-            <Text color="dark.500" fontSize="md" bold onPress={() => signOut()}>
-              Cerrar sesión
-            </Text>
-          </HStack>
+      <Menu.Item px="0" mt="2" width="100%" >
+        <HStack alignItems="center" space={2}>
+          <Icon as={<SimpleLineIcons name="logout" />} size={6} mr="2" color="#F18032" />
+          <Text color="dark.400" fontSize="md" bold onPress={() => signOut()}>
+            Cerrar sesión
+          </Text>
+        </HStack>
       </Menu.Item>
     </Box>
   );

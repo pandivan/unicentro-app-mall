@@ -105,7 +105,7 @@ const Home = ({ navigation, route }) =>
                 return (
                   <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
                     <VStack height="100%" justifyContent="space-between">
-                      <Text ml="2" fontSize="14" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
+                      <Text ml="2" fontSize="16" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
                         {lstCategories ? lstCategories[2].categoryName : null} 
                       </Text>
                       {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { VStack, HStack, Center, Box, Heading, Text, Pressable, Image, Icon, StatusBar, Button, Divider } from "native-base";
-import { FlatList } from "react-native";
+import { VStack, HStack, Center, Box, Heading, Text, Pressable, Icon } from "native-base";
+import { FlatList, Image } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Constants from "../../utilities/Constants";
@@ -100,7 +100,7 @@ const DrawerContentMenu = ({ navigation, route }) =>
           <Center backgroundColor={itemMenu.color} rounded="100" width="10" height="10">
             {
               (1 === itemMenu.idItemMenu) ?
-                <Image source={{uri: "https://drive.google.com/uc?id=1RxTiI3B_pBtZCvOqSHlnGru7Cx_3bkH6"}} resizeMode="contain" size="8" alt="A Text"/>
+                <Image source={{uri:"https://drive.google.com/uc?id=1RxTiI3B_pBtZCvOqSHlnGru7Cx_3bkH6"}} resizeMode="contain" style={{width:33, height:33}}/>
               :
                 <Icon as={<SimpleLineIcons name={itemMenu.urlItemImage} />} size="21" color="white" />
             }

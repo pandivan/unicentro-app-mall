@@ -68,6 +68,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
     order:1,
+    type:'D',
     lstStores:
     [
       {
@@ -182,6 +183,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
     order:2,
+    type:null,
     lstStores:
     [
       {
@@ -236,23 +238,6 @@ const dataCategories =
         }
       },
       {
-        idStore:10,
-        name:'Colpatria',
-        description:'Banca',
-        storeNumber:'1-46',
-        urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
-        urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
-        storeLocation:'Pasillo 5 - Piso 1',
-        phone:'3014317636',
-        socialNetworks:
-        {
-          website:'www.arturocalle.com',
-          instagram:'elcristian_gonzalez',
-          facebook:'elcristiangonzalez1',
-          whatsapp:'3014317636'
-        }
-      },
-      {
         idStore:11,
         name:'BBVA',
         description:'Banca',
@@ -296,6 +281,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1PjEdPpTOnYhJ2F-knZhHtS7Vv61YyAtp',
     backgroundColor: '#D9E021',
     order:3,
+    type:'D',
     lstStores:
     [
       {
@@ -376,6 +362,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1o1YGD4fwqJbdS84H_LHpPEFRZzihGOlf',
     backgroundColor: '#ED3557',
     order:4,
+    type:'D',
     lstStores:
     [
       {

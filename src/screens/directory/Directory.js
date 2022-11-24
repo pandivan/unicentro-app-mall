@@ -33,6 +33,7 @@ const Directory = ({ navigation, route }) =>
     {
       try 
       {
+        console.log("route.params: " + route.params);
         let category = lstCategories.filter(category => (route.params === category.idCategory))[0]
         
         // Se obtiene de listado de tiendas de la primera categoria
@@ -112,24 +113,27 @@ const Directory = ({ navigation, route }) =>
    */
   const renderCategories = (category) => 
   {
-    // Tarjetas de tiendas segun la categoria seleccionada
-    return(
-      <VStack mt="2" alignItems="center" width="110px" height="24" borderColor_="red.600" borderWidth_="1">
-        <Pressable onPress={() => loadStores(category.idCategory)}>
-        {
-          ({ isPressed }) => 
+    if("D" === category.type)
+    {
+      // Tarjetas de tiendas segun la categoria seleccionada
+      return(
+        <VStack mt="2" alignItems="center" width="110px" height="24" borderColor_="red.600" borderWidth_="1">
+          <Pressable onPress={() => loadStores(category.idCategory)}>
           {
-            return (
-              <Center bg={categoryBackgroundColor(category, "white")} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
-                <Image source={{uri:categoryIcon(category)}} style={{width:60, height:60}}/>
-              </Center>
-            )
+            ({ isPressed }) => 
+            {
+              return (
+                <Center bg={categoryBackgroundColor(category, "white")} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
+                  <Image source={{uri:categoryIcon(category)}} style={{width:60, height:60}}/>
+                </Center>
+              )
+            }
           }
-        }
-        </Pressable>
-        <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
-      </VStack>
-    )
+          </Pressable>
+          <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
+        </VStack>
+      )
+    }
   }
 
   
@@ -154,7 +158,7 @@ const Directory = ({ navigation, route }) =>
                 </Center>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
-                  <Text fontSize="20" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
+                  <Text fontSize="19" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
                     {store.name}
                   </Text>
                   <Text fontSize="12" color="#f18032">
