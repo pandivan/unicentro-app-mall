@@ -10,7 +10,6 @@ import Contact from "../screens/directory/Contact";
 import RegisterInvoices from "../screens/directory/RegisterInvoices";
 import HistoryInvoices from "../screens/directory/HistoryInvoices";
 import SendInvoice from "../screens/directory/SendInvoice";
-import TakePicture from "../screens/directory/TakePicture";
 import RouteDirectory from "./RouteDirectory";
 import { Image } from "native-base";
 
@@ -44,7 +43,7 @@ const RouteHome = ({ navigation, route }) =>
         component={Invoices}
         options=
         {{
-          tabBarLabel:"Registrar Facturas",
+          tabBarLabel:"Facturas",
           tabBarIcon:({ color, size }) => (<SimpleLineIcons name="camera" color={color} size={size} />)
         }}
       />
@@ -110,15 +109,6 @@ const RouteHome = ({ navigation, route }) =>
       <Tab.Screen 
         name="HistoryInvoices" 
         component={HistoryInvoices}
-        options=
-        {{
-          tabBarButton: () => <View style={{ width: 0 }} />
-        }}
-      />
-
-      <Tab.Screen 
-        name="TakePicture" 
-        component={TakePicture}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />

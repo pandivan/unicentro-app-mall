@@ -3,6 +3,7 @@ import { VStack, HStack, Center, Text, Pressable, Image, Icon, Input, Box } from
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { Camera, CameraType } from 'expo-camera';
 import { Button, StyleSheet, TouchableOpacity, View } from 'react-native';
+import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -15,6 +16,11 @@ const RegisterInvoices = ({ navigation, route }) =>
   const [permission, requestPermission] = Camera.useCameraPermissions();
 
   //Registra tus facturas
+
+  useEffect(() => 
+  {
+    HeaderTitle.unsubscribe(navigation, "Registrar Facturas");
+  }, [navigation]);
 
   /**
    * Funcion que permite cargar u obtener la información del cliente

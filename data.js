@@ -82,8 +82,8 @@ const dataCategories =
         socialNetworks:
         {
           website:'www.arturocalle.com',
-          instagram:'elcristian_gonzalez',
-          facebook:'elcristiangonzalez1',
+          instagram:'arturocalleoficial',
+          facebook:'arturocalleoficial',
           whatsapp:'3014317636'
         }
       },
@@ -98,9 +98,9 @@ const dataCategories =
         phone:'3014317636',
         socialNetworks:
         {
-          website:'www.arturocalle.com',
-          instagram:'elcristian_gonzalez',
-          facebook:'elcristiangonzalez1',
+          website:'http://shop.azucaryazuquita.com/',
+          instagram:'azucaryazuquita',
+          facebook:'azucaryazuquita',
           whatsapp:'3014317636'
         }
       },
@@ -166,9 +166,9 @@ const dataCategories =
         phone:'3014317636',
         socialNetworks:
         {
-          website:'www.arturocalle.com',
-          instagram:'elcristian_gonzalez',
-          facebook:'elcristiangonzalez1',
+          website:'https://icomm.link/pepe-ganga',
+          instagram:'pepeganga_co',
+          facebook:'PepeGangaColombia',
           whatsapp:'3014317636'
         }
       }
@@ -473,27 +473,27 @@ const dataOffers =
     idOffer:1,
     store:
     {
-      idStore:1,
-      name:'El Corral',
-      description:'Gourmet',
-      storeNumber:'1-41',
-      urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
-      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      idStore:6,
+      name:'Pepe Ganga',
+      description:'Ropa Infantil, Juguetería',
+      storeNumber:'1-64',
+      urlStoreLogo: 'https://drive.google.com/uc?id=1Zdmmovgsh2KvFhIg7bsH7YPPYDZVLeRj',
+      urlStoreImage:'https://drive.google.com/uc?id=1HlsWMCskWmpUglvJvHDr-d0mhASToROX',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
       socialNetworks:
       {
-        website:'www.arturocalle.com',
-        instagram:'elcristian_gonzalez',
-        facebook:'elcristiangonzalez1',
+        website:'https://icomm.link/pepe-ganga',
+        instagram:'pepeganga_co',
+        facebook:'PepeGangaColombia',
         whatsapp:'3014317636'
       }
     },
-    name:'Cole Haan - 50% de descuento',
-    description:'Parece una sencilla pero viene cargada de queso :). Disfrutala con papas y gaseosa en #ElCorralGourmet :) :)',
+    name:'Baby Gangazo 40% dto',
+    description:'¡Llego Baby Gangazo a Pepe Ganga! Aprovecha hasta 40% de descuento en referencias seleccionadas para tu bebé y no dejes pasar esta oportunidad',
     startDate:'20221024',
     endDate:'20221025',
-    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+    urlImage:'https://drive.google.com/uc?id=1wQUE1h5UiWmrJ37XEC02ASFi1pcyP5nq'
   },
   {
     idOffer:2,
@@ -503,23 +503,23 @@ const dataOffers =
       name:'Arturo Calle',
       description:'Ropa Casual y Formal',
       storeNumber:'1-41',
-      urlStoreLogo:'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
-      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      urlStoreLogo:'https://drive.google.com/uc?id=10jSOt56CQ6BGoltKX2GYKLi7860bT_Pd',
+      urlStoreImage:'https://drive.google.com/uc?id=1wPHBUKFkk7xQJz0eIAeDm3cYIwYtW3fU',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
       socialNetworks:
       {
         website:'www.arturocalle.com',
-        instagram:'elcristian_gonzalez',
-        facebook:'elcristiangonzalez1',
+        instagram:'arturocalleoficial',
+        facebook:'arturocalleoficial',
         whatsapp:'3014317636'
       }
     },
-    name:'Cruz Verde Dermocosmética',
-    description:'Aprovecha una oferta terrorifica 5 x 2',
+    name:'FDS Fuera de Serie',
+    description:'DENIM DAYS, todos los jeans FDS Fuera de Serie a $99.900 por tiempo limitado en nuestras tiendas físicas. 06/10/22 al 10/10/22. Aplican TyC.',
     startDate:'20221024',
     endDate:'20221025',
-    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+    urlImage:'https://drive.google.com/uc?id=1lp2hSJp2CuNuEvCzX1epKezWY-6SWb47'
   },
   {
     idOffer:3,
@@ -541,37 +541,37 @@ const dataOffers =
         whatsapp:'3014317636'
       }
     },
-    name:'Ofertas Imperdibles',
-    description:'Aprovecha una oferta terrorifica aprende mucha mas!!!',
+    name:'Comodísimo',
+    description:'Hoy y siempre vibra tan alto como puedas. 🤩 Te presentamos esta nueva colección que te hará sentir cada día más fuerte y feliz. 🌈✌🏻 #PolitoKids #PolitoEsColombia #VibraAlto #NuevaColeccion',
     startDate:'20221024',
     endDate:'20221025',
-    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+    urlImage:'https://drive.google.com/uc?id=13IAsH4reuibQA10ixplQbPOFqIZzhxPe'
   },
   {
     idOffer:4,
     store:
     {
-      idStore:21,
-      name:'El Molino',
-      description:'Panadería',
-      storeNumber:'1-46',
-      urlStoreLogo: 'https://drive.google.com/uc?id=1YW-KgxgMjqUP1aapxUTb73r7ASEcep-C',
-      urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
+      idStore:6,
+      name:'Pepe Ganga',
+      description:'Ropa Infantil, Juguetería',
+      storeNumber:'1-64',
+      urlStoreLogo: 'https://drive.google.com/uc?id=1Zdmmovgsh2KvFhIg7bsH7YPPYDZVLeRj',
+      urlStoreImage:'https://drive.google.com/uc?id=1HlsWMCskWmpUglvJvHDr-d0mhASToROX',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
       socialNetworks:
       {
-        website:'www.arturocalle.com',
-        instagram:'elcristian_gonzalez',
-        facebook:'elcristiangonzalez1',
+        website:'https://icomm.link/pepe-ganga',
+        instagram:'pepeganga_co',
+        facebook:'PepeGangaColombia',
         whatsapp:'3014317636'
       }
     },
-    name:'El Corral - Antójate',
-    description:'Estamos de aniversario y queremos darte lo mejor, pan arabe con la mejor calidad, precio y sabor, acercate!!!',
+    name:'Pepe Ganga Halloween',
+    description:'Expresa tu imaginación',
     startDate:'20221024',
     endDate:'20221025',
-    urlImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL'
+    urlImage:'https://drive.google.com/uc?id=1Lghp_kbeH2iMzcb7CjRuUvgF0DVYJzqC'
   }
 ]
 

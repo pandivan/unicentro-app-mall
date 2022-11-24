@@ -5,6 +5,7 @@ import { MaterialCommunityIcons, SimpleLineIcons } from '@expo/vector-icons';
 
 import GenericFunctions from "../../utilities/GenericFunctions";
 import HeaderTitle from "../../components/HeaderTitle";
+import SocialNetworks from "../../components/SocialNetworks";
 
 
 /**
@@ -130,16 +131,8 @@ const StoreInformation = ({ navigation, route }) =>
           </HStack>
         </Box>
 
-        <Center my="5" p="2" width="100%" shadow="2" backgroundColor="white" borderRadius="10" borderColor="light.300" borderWidth="1">
-          <Text bold>
-            Redes Sociales:
-          </Text>
-          <HStack mt="4" space={6} borderColor_="red.500" borderWidth_="1">
-            <Icon as={<SimpleLineIcons name="social-instagram"/>} size={6} color="secondary.500" onPress={() => GenericFunctions.openApp("instagram://user?username=" + store.socialNetworks.instagram)}/>
-            <Icon as={<SimpleLineIcons name="social-facebook"/>} size={6} color="darkBlue.400" onPress={() => GenericFunctions.openApp("fb://facewebmodal/f?href=https://www.facebook.com/" + store.socialNetworks.facebook)}/>
-            <Icon as={<MaterialCommunityIcons name="whatsapp"/>} size={7} color="green.400" onPress={() => GenericFunctions.openApp("whatsapp://send?text=Hola &phone=" + store.socialNetworks.whatsapp)}/>
-          </HStack>
-        </Center>
+        <SocialNetworks store={store} />
+        
       </Center>
     </ScrollView>
   );

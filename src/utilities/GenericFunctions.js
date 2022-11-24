@@ -42,6 +42,7 @@ const openApp = async (urlApp) =>
   } 
   else 
   {
+    console.log("no puedo abrir url")
     return null;
   }
 }

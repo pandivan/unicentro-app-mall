@@ -19,7 +19,7 @@ const Directory = ({ navigation, route }) =>
   const { lstCategories }  = useContext(AppContext);
 
   const [lstStores, setLstStores] = useState([]);
-  const [idCategory, setIdCategory] = useState(route.params ? route.params : 1);
+  const [idCategory, setIdCategory] = useState(route.params);
   const [search, setSearch] = useState("");
 
 
@@ -104,6 +104,34 @@ const Directory = ({ navigation, route }) =>
     return category.urlCategoryIcon2;
   }
 
+
+  /**
+   * Visualización de las categorias en el header
+   * @param {*} category 
+   * @returns 
+   */
+  const renderCategories = (category) => 
+  {
+    // Tarjetas de tiendas segun la categoria seleccionada
+    return(
+      <VStack mt="2" alignItems="center" width="110px" height="24" borderColor_="red.600" borderWidth_="1">
+        <Pressable onPress={() => loadStores(category.idCategory)}>
+        {
+          ({ isPressed }) => 
+          {
+            return (
+              <Center bg={categoryBackgroundColor(category, "white")} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
+                <Image source={{uri:categoryIcon(category)}} style={{width:60, height:60}}/>
+              </Center>
+            )
+          }
+        }
+        </Pressable>
+        <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
+      </VStack>
+    )
+  }
+
   
   /**
    * Funcion que permite listar las tiendas segun la categoria seleccionada
@@ -126,7 +154,7 @@ const Directory = ({ navigation, route }) =>
                 </Center>
 
                 <VStack height="100%" width="48" borderColor_="green.500" borderWidth_="1">
-                  <Text fontSize="21" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
+                  <Text fontSize="20" fontWeight="700" color="black" borderColor_="gray.300" borderWidth_="3">
                     {store.name}
                   </Text>
                   <Text fontSize="12" color="#f18032">
@@ -149,32 +177,16 @@ const Directory = ({ navigation, route }) =>
 
 
   return(
-    <Center flex={1} backgroundColor_="white" borderColor_="red.600" borderWidth_="1">
-      <HStack mt="5" justifyContent="center" space={5} width="100%" borderColor_="red.600" borderWidth_="1">
-      {
-        // Visualización de las categorias en el header
-        lstCategories.map((category, index)=>
-        {
-          return (
-            <VStack key={index} alignItems="center">
-              <Pressable onPress={() => loadStores(category.idCategory)}>
-              {
-                ({ isPressed }) => 
-                {
-                  return (
-                    <Center bg={categoryBackgroundColor(category, "white")} shadow="3" rounded="100" width="16" height="16" style={{transform: [{scale: isPressed ? 0.96 : 1}]}}>
-                      <Image source={{uri:categoryIcon(category)}} style={{width:60, height:60}}/>
-                    </Center>
-                  )
-                }
-              }
-              </Pressable>
-              <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
-            </VStack>
-          )        
-        })
-      }
-      </HStack>
+    <Center flex={1} backgroundColor="white" borderColor_="red.600" borderWidth_="1">
+
+      <FlatList
+        data={lstCategories}
+        renderItem={ ({ item }) => renderCategories(item) }
+        horizontal={ true }
+        keyExtractor={ (item) => item.idCategory.toString() }
+        style={{flexGrow:0}}
+        showsHorizontalScrollIndicator={false}
+      />
 
       {/* Buscador de tiendas */}
       <Input 
@@ -182,7 +194,7 @@ const Directory = ({ navigation, route }) =>
         variant="filled" 
         width="90%" 
         borderColor="#f18032" 
-        backgroundColor_="white"
+        backgroundColor="white"
         _focus={{borderColor:"#f18032", backgroundColor:"white"}} 
         borderRadius="10" mt="8" mb="5" py="1" px="2" 
         InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />}

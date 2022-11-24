@@ -14,6 +14,7 @@ import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
 import clientServices from "./src/services/ClientServices";
 import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
+import TakePicture from "./src/screens/directory/TakePicture";
 
 
 
@@ -248,6 +249,12 @@ export default function App()
               <Drawer.Screen 
                 name="RouteHome" 
                 component={RouteHome}
+                options={{headerTitle:""}}
+              />
+
+              <Drawer.Screen 
+                name="TakePicture" 
+                component={TakePicture}
                 options={{headerTitle:""}}
               />
               

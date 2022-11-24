@@ -60,33 +60,32 @@ const TakePicture = ({ navigation, route }) =>
   }
 
   return(
-    <Center flex={1} backgroundColor="white" justifyContent="flex-start" p="3">
-    {
+    
       photo ?
       (
-        <Box height="100%" width="100%" backgroundColor_="black" rounded="10">
-          <HStack justifyContent="space-between" pt="4">
-            <IconButton icon={<CloseIcon size={5} color="black"/>} borderRadius="full" height="10%" onPress={() => setPhoto(null)}/>
-            <IconButton icon={<CheckIcon size={6} color="black"/>} borderRadius="full" height="10%" onPress={() => navigation.navigate("SendInvoice", photo)}/>
+        <Box flex_={1} mt="1" backgroundColor="black">
+          <HStack justifyContent="space-between" py="2" borderColor_="red.500" borderWidth_="2">
+            <IconButton icon={<CloseIcon size={6} color="white"/>} ml="2" onPress={() => setPhoto(null)}/>
+            <IconButton icon={<CheckIcon size={7} color="white"/>} mr="2" onPress={() => navigation.navigate("SendInvoice", photo)}/>
           </HStack>
           
-          <Image source={{uri:photo}} alt="Imagen desactualizada" borderBottomRadius="10" resizeMode="contain" width="100%" height="90%"/>
+          <Image source={{uri:photo}} alt="Imagen desactualizada" resizeMode_="contain" width="100%" height="90%"/>
         </Box>
       )
       :
       (
-        <Box height="90%" width="100%" mt="1" borderColor_="red.500" borderWidth_="2" > 
-          <Camera style={{height:"100%", width:"100%"}} type={type} ref={cameraRef} ></Camera>
+        <Center flex={1} width="100%" mt="1" backgroundColor="black" borderColor_="red.500" borderWidth_="2"> 
+          <Box height="60%" width="100%" bg="white">
+            <Camera style={{height:"100%", width:"100%"}} type={type} ref={cameraRef} ></Camera>
+          </Box>
 
-          <Button width="100%" rounded="15" mt="4" backgroundColor="#2cbec3" _pressed={{backgroundColor:"#2d9997"}} onPress={takePhoto}>
-            <Text fontSize="md" color="white" letterSpacing="xl" bold>
-              tomar foto
-            </Text>
-          </Button>
-        </Box>
+          <Text mt="10" fontSize="md" color="white" letterSpacing="xl" bold>
+            FOTO
+          </Text>
+          <Button width="20" height="20" rounded="full" mt="4" backgroundColor="white" _pressed={{backgroundColor:"#DAD2BD"}} onPress={takePhoto} />
+        </Center>
       )
-    }
-    </Center>
+   
   )
 }
 

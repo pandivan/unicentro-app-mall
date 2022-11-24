@@ -25,12 +25,7 @@ const SendInvoice = ({ navigation, route }) =>
           ENVIAR FACTURA
         </Text>
       </Button>
-    
-      {/* <Button width="100%" rounded="15" mt="5" backgroundColor="#2cbec3" _pressed={{backgroundColor:"#2d9997"}} onPress={() => navigation.navigate("TakePicture")}>
-        <Text fontSize="md" color="white" letterSpacing="xl" bold>
-          TOMAR FOTO NUEVAMENTE
-        </Text>
-      </Button> */}
+      
     </Center>
   )
 }

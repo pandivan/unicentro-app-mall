@@ -98,7 +98,7 @@ const Offers = ({ navigation, route }) =>
   {
 
     return(
-      <Pressable height="180px" width="40" m="1" borderColor_="green.500" borderWidth_="1" onPress={() => navigation.navigate("OfferDetail", offer)}>
+      <Pressable height="48" width="40" m="1" borderColor_="green.500" borderWidth_="1" onPress={() => navigation.navigate("OfferDetail", offer)}>
       {
         ({ isPressed }) => 
         {
@@ -106,7 +106,7 @@ const Offers = ({ navigation, route }) =>
             <Box background={isPressed ? "#F2F2F2" : "white"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} rounded="15" height="100%" width="100%" shadow="2">
               <VStack space={2} p="4">
                 <Center borderColor_="blue.500" borderWidth_="1">
-                  <Image source={{uri:offer.urlImage}} resizeMode="cover" style={{width:64, height:64}}/>
+                  <Image source={{uri:offer.urlImage}} resizeMode_="contain" style={{width:80, height:80}}/>
                 </Center>
                 <Text mt="2" letterSpacing_="sm" lineHeight="xs" height="10" fontSize_="14" fontWeight="700" color="muted.500" borderColor_="red.300" borderWidth_="1">
                   {offer.name}
