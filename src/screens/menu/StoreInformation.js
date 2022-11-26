@@ -42,10 +42,10 @@ const StoreInformation = ({ navigation, route }) =>
   }, [route.params]);
 
   
-  useEffect(() => 
-  {
-    HeaderTitle.unsubscribe(navigation, "");
-  }, [navigation]);
+  // useEffect(() => 
+  // {
+  //   HeaderTitle.unsubscribe(navigation, "");
+  // }, [navigation]);
   
 
 

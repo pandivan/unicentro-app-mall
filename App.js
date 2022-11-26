@@ -1,12 +1,12 @@
 import React, { useReducer, useMemo, useEffect } from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NativeBaseProvider, Image, Box, HamburgerIcon, Center } from "native-base";
 import { Alert } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import "react-native-gesture-handler";
 
-import RouteHome from "./src/routes/RouteHome";
+import RouteMenu from "./src/routes/RouteMenu";
 import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
 import AppContext from "./src/contexts/AppContext"
@@ -14,7 +14,7 @@ import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
 import clientServices from "./src/services/ClientServices";
 import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
-import TakePicture from "./src/screens/directory/TakePicture";
+import TakePicture from "./src/screens/menu/TakePicture";
 
 
 
@@ -206,6 +206,57 @@ export default function App()
   }), [state.lstCategories]);
 
 
+
+  const getHeaderTitle = (route) =>
+  {
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+    console.log("routeName--> " + getFocusedRouteNameFromRoute(route));
+  
+    switch (routeName) 
+    {
+      case 'Invoices':
+        return 'My Facturas';
+
+      case 'Home':
+        return 'My Home';
+
+      case 'Settings':
+        return 'My Ajustes';
+
+      case 'RouteHome':
+        let routeNameChild = JSON.stringify(route);
+        console.log(routeNameChild)
+
+        let indexRouteNameChild = routeNameChild.indexOf("StoreInformation");
+      
+        var title = 'Pandi';
+  
+        if (-1 !== indexRouteNameChild)
+        {
+          title = 'Detalle Tienda';
+        }
+
+        return title;
+  
+      case 'Offers':
+        return '';
+
+      case 'OfferDetail':
+        return '';
+    }
+  }
+
+
+  const getHeaderRight = (route) =>
+  {
+    console.log("getHeaderRight --> " + route)
+    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+
+    return routeName;
+  }
+
+
   return (
     <NativeBaseProvider>
       <AppContext.Provider value={appContext}>
@@ -222,7 +273,7 @@ export default function App()
 
             <Drawer.Navigator 
               id="NavigatorDrawer"
-              initialRouteName="RouteHome" 
+              initialRouteName="RouteMenu" 
               drawerContent={props => <DrawerContentMenu {...props} />} 
               screenOptions=
               {
@@ -234,7 +285,7 @@ export default function App()
                     headerLeft:() => 
                     (
                       <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
-                        <HamburgerIcon onPress={navigation.toggleDrawer} size="md" color="#f18032"/>
+                        <HamburgerIcon onPress={navigation.openDrawer} size="md" color="#f18032"/>
                       </Center>
                     ),
                     // headerRight:() => 
@@ -247,9 +298,20 @@ export default function App()
               }
             >
               <Drawer.Screen 
-                name="RouteHome" 
-                component={RouteHome}
-                options={{headerTitle:""}}
+                name="RouteMenu" 
+                component={RouteMenu}
+                options=
+                {
+                  ({ route }) => 
+                  ({
+                    headerShown_:false,  
+                    headerTitle: getHeaderTitle(route),
+                    // headerRight:() =>
+                    // (
+                    //   <Text>{getHeaderRight(route)}</Text>
+                    // )
+                  })
+                }
               />
 
               <Drawer.Screen 

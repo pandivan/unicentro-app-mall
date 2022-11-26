@@ -17,10 +17,10 @@ const RegisterInvoices = ({ navigation, route }) =>
 
   //Registra tus facturas
 
-  useEffect(() => 
-  {
-    HeaderTitle.unsubscribe(navigation, "Registrar Facturas");
-  }, [navigation]);
+  // useEffect(() => 
+  // {
+  //   HeaderTitle.unsubscribe(navigation, "Registrar Facturas");
+  // }, [navigation]);
 
   /**
    * Funcion que permite cargar u obtener la información del cliente

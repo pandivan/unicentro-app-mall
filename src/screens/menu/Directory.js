@@ -50,10 +50,10 @@ const Directory = ({ navigation, route }) =>
   }, []);
 
 
-  useEffect(() => 
-  {
-    HeaderTitle.unsubscribe(navigation, "Directorio");
-  }, [navigation]);
+  // useEffect(() => 
+  // {
+  //   HeaderTitle.unsubscribe(navigation, "Directorio");
+  // }, [navigation]);
 
 
   /**

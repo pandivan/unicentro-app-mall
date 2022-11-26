@@ -48,10 +48,10 @@ const Home = ({ navigation, route }) =>
   /**
    * Funcion que permite cargar la data inicial para el screen del home
    */
-  useEffect(() => 
-  {
-    HeaderTitle.unsubscribe(navigation, "");
-  }, [navigation]);
+  // useEffect(() => 
+  // {
+  //   HeaderTitle.unsubscribe(navigation, "");
+  // }, [navigation]);
 
 
 

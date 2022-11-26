@@ -94,7 +94,7 @@ const dataCategories =
         description:'Ropa Casual y Formal',
         storeNumber:'1-19',
         urlStoreLogo: 'https://drive.google.com/uc?id=1TyDzfXWHB9Hnu-2LWcCAHj4sxrgirI0m',
-        urlStoreImage:'https://drive.google.com/uc?id=1q1onZR_zEbyGJgnsfiiuxdX_dMEHbviP',
+        urlStoreImage:'https://drive.google.com/uc?id=1TyDzfXWHB9Hnu-2LWcCAHj4sxrgirI0m',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
         socialNetworks:

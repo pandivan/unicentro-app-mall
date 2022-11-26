@@ -64,10 +64,10 @@ const Offers = ({ navigation, route }) =>
 
 
 
-  useEffect(() => 
-  {
-    HeaderTitle.unsubscribe(navigation, "Promociones");
-  }, [navigation]);
+  // useEffect(() => 
+  // {
+  //   HeaderTitle.unsubscribe(navigation, "Promociones");
+  // }, [navigation]);
 
 
   /**
