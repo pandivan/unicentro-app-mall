@@ -1,8 +1,8 @@
-import React, { useReducer, useMemo, useEffect } from "react";
+import React, { useReducer, useMemo, useEffect, useState } from "react";
 import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NativeBaseProvider, Image, Box, HamburgerIcon, Center } from "native-base";
-import { Alert } from "react-native";
+import { NativeBaseProvider, Box, HamburgerIcon, Center } from "native-base";
+import { Alert, Image } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import "react-native-gesture-handler";
 
@@ -18,13 +18,13 @@ import TakePicture from "./src/screens/menu/TakePicture";
 
 
 
+
 //Creando Menu de Navegación
 const Drawer = createDrawerNavigator();
 
 
 export default function App() 
 {
-
   // console.log("useEffect App");
 
   //Valores iniciales del state
@@ -35,6 +35,12 @@ export default function App()
     userToken:null,
     lstCategories:[]
   }
+
+  // const [headerTitleAlign, setHeaderTitleAlign] = useState("center");
+  var icon = null;
+  var align = null;
+  var widthImage = null;
+  var widthBox = null;
 
 
   /**
@@ -209,49 +215,77 @@ export default function App()
 
   const getHeaderTitle = (route) =>
   {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+    const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
 
-    console.log("routeName--> " + getFocusedRouteNameFromRoute(route));
+    // console.log("routeName--> " + getFocusedRouteNameFromRoute(route));
+    
+    let routeNameChild = JSON.stringify(route);
+    // console.log("routeNameChild---> " + routeNameChild);
+
+    icon = require('./assets/logo_fullcolor.png');
+    align = "center";
+    widthImage = 80;
+    widthBox = null;
   
     switch (routeName) 
     {
-      case 'Invoices':
-        return 'My Facturas';
+      case "Home":
+        icon = require('./assets/logo_header.png');
+        align = null;
+        widthImage = 128;
+        widthBox = "90%";
+        return "";
 
-      case 'Home':
-        return 'My Home';
+      case "Settings":
+        return "Ajustes";
 
-      case 'Settings':
-        return 'My Ajustes';
+      case "Directory":
+        return "Directorio";
 
-      case 'RouteHome':
-        let routeNameChild = JSON.stringify(route);
-        console.log(routeNameChild)
+      case "StoreInformation":
+        return "Tienda";
+
+      case "RouteDirectory":
+        var title = "Directorio";
 
         let indexRouteNameChild = routeNameChild.indexOf("StoreInformation");
-      
-        var title = 'Pandi';
   
         if (-1 !== indexRouteNameChild)
         {
-          title = 'Detalle Tienda';
+          title = "Detalle Tienda";
         }
 
         return title;
   
-      case 'Offers':
-        return '';
+      case "RoutePromotions":
+        return "Promociones";
 
-      case 'OfferDetail':
-        return '';
+      case "PromotionDetail":
+        return "Detalle Promoción";
+
+      case "Invoices":
+        return "Mis Facturas";
+
+      case "RegisterInvoices":
+        return "Registra tus facturas";
+      
+      case "SendInvoice":
+        return "Enviar factura"
+
+      case "Contact":
+        return "Contacto";
     }
   }
 
+  const getHeaderTitleAlign = (route) =>
+  {
+
+  }
 
   const getHeaderRight = (route) =>
   {
     console.log("getHeaderRight --> " + route)
-    const routeName = getFocusedRouteNameFromRoute(route) ?? 'Home';
+    const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
 
     return routeName;
   }
@@ -287,13 +321,7 @@ export default function App()
                       <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
                         <HamburgerIcon onPress={navigation.openDrawer} size="md" color="#f18032"/>
                       </Center>
-                    ),
-                    // headerRight:() => 
-                    // (
-                    //   <Box width="90%" borderColor_="green.500" borderWidth_="1">
-                    //     <Image source={require('./assets/logo_header.png')} alt="Alternate Text" resizeMode="contain" width={32} height={20}/>
-                    //   </Box>
-                    // )
+                    )
                 })
               }
             >
@@ -304,15 +332,20 @@ export default function App()
                 {
                   ({ route }) => 
                   ({
-                    headerShown_:false,  
-                    headerTitle: getHeaderTitle(route),
-                    // headerRight:() =>
-                    // (
-                    //   <Text>{getHeaderRight(route)}</Text>
-                    // )
-                  })
+                      headerShown_:false,  
+                      headerTitle: getHeaderTitle(route),
+                      headerTitleAlign:align,
+                      headerTitleStyle:{fontWeight:"700"},
+                      headerRight:() =>
+                      (
+                        <Box width={widthBox} mr="1" borderColor_="green.500" borderWidth_="1">
+                          <Image resizeMode={"contain"} style={{width:widthImage, height:80}} source={icon} />
+                        </Box>
+                      )
+                    })
                 }
               />
+
 
               <Drawer.Screen 
                 name="TakePicture" 

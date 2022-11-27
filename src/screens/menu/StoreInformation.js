@@ -7,6 +7,8 @@ import GenericFunctions from "../../utilities/GenericFunctions";
 import HeaderTitle from "../../components/HeaderTitle";
 import SocialNetworks from "../../components/SocialNetworks";
 
+import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
+
 
 /**
  * Componente funcional que contiene el directorio por categorías y productos
@@ -29,6 +31,11 @@ const StoreInformation = ({ navigation, route }) =>
     // {
     //   try 
     //   {
+        // navigation.getParent("NavigatorDrawer").setOptions(
+        // { 
+        //   headerTitle:getHeaderTitle(route)
+        // });
+
         setStore(route.params);
     //   }
     //   catch (error) 
@@ -47,6 +54,14 @@ const StoreInformation = ({ navigation, route }) =>
   //   HeaderTitle.unsubscribe(navigation, "");
   // }, [navigation]);
   
+
+  const getHeaderTitle = (route) =>
+  {
+    // const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
+
+    console.log("StoreInformation routeName--> " + getFocusedRouteNameFromRoute(route));
+    
+  }
 
 
   return(

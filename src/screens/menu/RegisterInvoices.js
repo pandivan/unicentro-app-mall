@@ -46,13 +46,13 @@ const RegisterInvoices = ({ navigation, route }) =>
     //  loadData();
   //  }, []);
  
-  const openCamera = () => 
+  const openCamera = (parametro) => 
   {
     // if (!permission.granted) 
     // {
       requestPermission();
       console.log("openCamera.. " + permission.granted);
-      navigation.navigate("TakePicture");
+      navigation.navigate("TakePicture", parametro);
     // }
   }
 
@@ -66,7 +66,7 @@ const RegisterInvoices = ({ navigation, route }) =>
         La factura debe quedar completa en la foto
       </Text>
     
-      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress={openCamera}>
+      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress={() => openCamera(1)}>
       {
         ({ isPressed }) => 
         {
@@ -82,7 +82,7 @@ const RegisterInvoices = ({ navigation, route }) =>
       }
       </Pressable>
 
-      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress_={() => navigation.navigate("StoreInformation", store)}>
+      <Pressable height="20" width="100%" my="5" borderColor_="red.500" borderWidth_="1" onPress={() => openCamera(2)}>
       {
         ({ isPressed }) => 
         {

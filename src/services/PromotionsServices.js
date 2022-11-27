@@ -9,7 +9,7 @@ import data from "../../data";
 /**
  * Función que permite obtener todas las ofertas de las tiendas
  */
-const getAllOffers = async () => 
+const getAllPromotions = async () => 
 {
   try
   {
@@ -20,7 +20,7 @@ const getAllOffers = async () =>
     let result = 
     {
       status: 200,
-      data: data.dataOffers
+      data: data.dataPromotions
     };
 
     // console.log("Respuesta API-REST getAllPointsOfSale");
@@ -30,7 +30,7 @@ const getAllOffers = async () =>
     // console.log(a);
 
 
-    return { status: result.status, lstOffersBD: result.data };
+    return { status: result.status, lstPromotionsBD: result.data };
   }
 	catch(error)
   {
@@ -44,5 +44,5 @@ const getAllOffers = async () =>
 
 export default 
 {
-  getAllOffers
+  getAllPromotions
 };

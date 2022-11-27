@@ -3,7 +3,7 @@ import { FlatList, Image } from "react-native";
 import { Box, Center, Text, Pressable, Icon, Input, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
-import offersServices from "../../services/OffersServices";
+import promotionsServices from "../../services/PromotionsServices";
 import Constants from "../../utilities/Constants"; 
 import HeaderTitle from "../../components/HeaderTitle";
 
@@ -13,10 +13,10 @@ import HeaderTitle from "../../components/HeaderTitle";
  * Componente funcional que contiene las ofertas publicadas de las tiendas
  * @returns Screen Ofertas
  */
-const Offers = ({ navigation, route }) =>
+const Promotions = ({ navigation, route }) =>
 {
-  const [lstOffers, setLstOffers] = useState([]);
-  const [lstFilteredOffers, setLstFilteredOffers] = useState([]);
+  const [lstPromotions, setLstPromotions] = useState([]);
+  const [lstFilteredPromotions, setLstFilteredPromotions] = useState([]);
   const [search, setSearch] = useState("");
 
 
@@ -25,37 +25,37 @@ const Offers = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect Offers");
+    console.log("useEffect Promotions");
 
     const loadData = async () => 
     {
       try 
       {
         //Se obtiene las ofertas de las tiendas a traves del api-rest
-        let {status, lstOffersBD} = await offersServices.getAllOffers();
+        let {status, lstPromotionsBD} = await promotionsServices.getAllPromotions();
 
         switch (status)
         {
           case Constants.STATUS_OK:
-            setLstOffers(lstOffersBD);
-            setLstFilteredOffers(lstOffersBD);
+            setLstPromotions(lstPromotionsBD);
+            setLstFilteredPromotions(lstPromotionsBD);
           break;
 
           case Constants.STATUS_ACCESO_DENEGADO:
             // El usuario tiene el token vencido y debe loguearse nuevamente
             
-            console.log("case Offers STATUS_ACCESO_DENEGADO")
+            console.log("case Promotions STATUS_ACCESO_DENEGADO")
           break;
 
           default:
             
-            console.log("case Offers default acceso denegado")
+            console.log("case Promotions default acceso denegado")
           break;
         }
       }
       catch (error) 
       {
-        console.log("Error al cargar las ofertas (Offers) " + error)
+        console.log("Error al cargar las ofertas (Promotions) " + error)
       }
     }
 
@@ -74,15 +74,15 @@ const Offers = ({ navigation, route }) =>
    * Función que permite buscar una oferta por nombre de la tienda, oferta o descripción, en el listado de ofertas
    * @param search Oferta a buscar
    */
-  const searchOffers = (search) => 
+  const searchPromotions = (search) => 
   {
     // Se busca la oferta en el listado de ofertas
-    setLstFilteredOffers(lstOffers.filter(offer => offer.name.concat(offer.store.name).concat(offer.description).toLowerCase().includes(search.toLowerCase())));
+    setLstFilteredPromotions(lstPromotions.filter(offer => offer.name.concat(offer.store.name).concat(offer.description).toLowerCase().includes(search.toLowerCase())));
 
     // Si el input de busqueda está vacío, se vuelve a cargar el listado original de ofertas
     if(!search)
     {
-      setLstFilteredOffers(lstOffers);
+      setLstFilteredPromotions(lstPromotions);
     }
     
     // Se actualiza el estado de search
@@ -94,11 +94,11 @@ const Offers = ({ navigation, route }) =>
    * @param offer Oferta
    * @returns Componente que visualiza las ofertas
    */
-  const renderOffers = (offer) => 
+  const renderPromotions = (offer) => 
   {
 
     return(
-      <Pressable height="48" width="40" m="1" borderColor_="green.500" borderWidth_="1" onPress={() => navigation.navigate("OfferDetail", offer)}>
+      <Pressable height="48" width="40" m="1" borderColor_="green.500" borderWidth_="1" onPress={() => navigation.navigate("PromotionDetail", offer)}>
       {
         ({ isPressed }) => 
         {
@@ -136,13 +136,13 @@ const Offers = ({ navigation, route }) =>
         borderRadius="10" mt="3" mb="5" py="1" px="2" 
         InputRightElement={<Icon mr="2" size="4" color="gray.400" as={<Ionicons name="ios-search" />} />}
         value={search} 
-        onChangeText={(search) => searchOffers(search)}
+        onChangeText={(search) => searchPromotions(search)}
       />
 
       <Center flex={1}>
         <FlatList
-          data={lstFilteredOffers} 
-          renderItem={({item}) => renderOffers(item)} 
+          data={lstFilteredPromotions} 
+          renderItem={({item}) => renderPromotions(item)} 
           keyExtractor={item => item.idOffer} 
           showsVerticalScrollIndicator ={false}
           numColumns={2}
@@ -152,4 +152,4 @@ const Offers = ({ navigation, route }) =>
   );
 }
 
-export default Offers;
+export default Promotions;

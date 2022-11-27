@@ -5,7 +5,7 @@ const dataMenu =
   description: 'Tiendas, entretenimiento y gastronomía',
   urlItemImage: 'storefront-outline',
   color: '#F18032',
-  redirect: 'Directory'
+  redirect: null
 }, 
 {
   idItemMenu: 2,
@@ -13,7 +13,7 @@ const dataMenu =
   description: 'Registra tus facturas',
   urlItemImage: 'camera',
   color: '#39BFC2',
-  redirect: 'Invoices'
+  redirect: null
 }, 
 {
   idItemMenu: 3,
@@ -21,7 +21,7 @@ const dataMenu =
   description: 'Disfruta increíbles descuentos',
   urlItemImage: 'handbag',
   color: '#F05642',
-  redirect: 'Offers'
+  redirect: null
 }, 
 {
   idItemMenu: 4,
@@ -45,7 +45,7 @@ const dataMenu =
   description: 'Rutas y parqueaderos',
   urlItemImage: 'location-pin',
   color: '#39BFC2',
-  redirect: 'Offers'
+  redirect: null
 }
 ,
 {
@@ -54,7 +54,7 @@ const dataMenu =
   description: 'Queremos saber que piensas',
   urlItemImage: 'call-out',
   color: '#F18032',
-  redirect: 'Contact'
+  redirect: null
 }
 ];
 
@@ -454,7 +454,7 @@ const dataCategories =
   }
 ];
 
-const dataOffers = 
+const dataPromotions = 
 [
   {
     idOffer:1,
@@ -663,7 +663,7 @@ export default
 {
   dataMenu,
   dataCategories,
-  dataOffers,
+  dataPromotions,
   dataBarrio,
   dataClientes
 };

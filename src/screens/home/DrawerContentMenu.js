@@ -72,17 +72,25 @@ const DrawerContentMenu = ({ navigation, route }) =>
    */
   const redirect = (itemMenu) =>
   {
-    // Se valida si es un screen de la app, en caso contrario redirecciona a una url
-    if(1 === itemMenu.idItemMenu || 2 === itemMenu.idItemMenu || 3 === itemMenu.idItemMenu || 7 === itemMenu.idItemMenu)
-    { 
-      navigation.navigate(itemMenu.redirect, 1);
-    }
-    else
+    // Se valida si es un screen del navegator, en caso contrario redirecciona a una url
+    switch(itemMenu.idItemMenu)
     {
-      console.log(itemMenu.redirect);
-      
-      let redirect = GenericFunctions.openApp(itemMenu.redirect);
-      console.log("redirect--> "+redirect);
+      case 1:
+        navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:1 } });
+      break;
+      case 2:
+        navigation.navigate("Invoices");
+      break;
+      case 3:
+        navigation.navigate("RoutePromotions", { screen:"Promotions" });
+      break;
+      case 7:
+        navigation.navigate("Contact");
+      break;
+      default:  
+        let redirect = GenericFunctions.openApp(itemMenu.redirect);
+        console.log("redirect--> "+redirect);
+      break;
     }
   }
 

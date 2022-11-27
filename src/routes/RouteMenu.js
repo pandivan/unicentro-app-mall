@@ -1,18 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons, SimpleLineIcons } from "@expo/vector-icons";
 import { View } from "react-native";
+import { Image } from "native-base";
 
 import Settings from "../screens/configuration/Settings";
-import Offers from "../screens/menu/Offers";
-import OfferDetail from "../screens/menu/OfferDetail";
 import Invoices from "../screens/menu/Invoices";
 import Contact from "../screens/menu/Contact";
 import RegisterInvoices from "../screens/menu/RegisterInvoices";
 import HistoryInvoices from "../screens/menu/HistoryInvoices";
 import SendInvoice from "../screens/menu/SendInvoice";
-import RouteHome from "./RouteHome";
-import { Image } from "native-base";
-
+import Home from "../screens/home/Home";
+import RouteDirectory from "./RouteDirectory";
+import RoutePromotions from "./RoutePromotions";
 
 
 const Tab = createBottomTabNavigator();
@@ -29,10 +28,10 @@ const RouteMenu = ({ navigation, route }) =>
 
   return (
     <Tab.Navigator
-      initialRouteName="RouteHome"
+      initialRouteName="Home"
       screenOptions=
       {{
-        headerShown:true,
+        headerShown:false,
         tabBarActiveTintColor:"#f18032",
         tabBarInactiveTintColor:"#5d5d5d",
         tabBarLabelStyle:{fontSize: 14, fontWeight_:"700"},
@@ -51,8 +50,8 @@ const RouteMenu = ({ navigation, route }) =>
 
 
       <Tab.Screen
-        name="RouteHome"
-        component={RouteHome}
+        name="Home"
+        component={Home}
         options=
         {{
           tabBarLabel:"Home",
@@ -73,8 +72,8 @@ const RouteMenu = ({ navigation, route }) =>
 
 
       <Tab.Screen 
-        name="Offers" 
-        component={Offers}
+        name="RouteDirectory" 
+        component={RouteDirectory}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />
@@ -83,8 +82,8 @@ const RouteMenu = ({ navigation, route }) =>
 
 
       <Tab.Screen 
-        name="OfferDetail" 
-        component={OfferDetail}
+        name="RoutePromotions" 
+        component={RoutePromotions}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />

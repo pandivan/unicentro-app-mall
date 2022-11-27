@@ -23,21 +23,21 @@ const TakePicture = ({ navigation, route }) =>
   // useEffect(() => 
   // {
   //   console.log("useEffect TakePicture");
-  //   console.log(route);
+  //   console.log(cameraRef);
 
-  //   // const loadData = async () => 
-  //   // {
-  //   //   try 
-  //   //   {
-  //     setPhoto(route.params);
-  //   //   }
-  //   //   catch (error) 
-  //   //   {
-  //   //     console.log("Error al cargar el categories (Directory) " + error)
-  //   //   }
-  //   // }
+    // const loadData = async () => 
+    // {
+    //   try 
+    //   {
+      // cameraRef.current = null;
+    //   }
+    //   catch (error) 
+    //   {
+    //     console.log("Error al cargar el categories (Directory) " + error)
+    //   }
+    // }
 
-  //   // loadData();
+    // loadData();
   // }, [route.params]);
 
 
@@ -48,7 +48,7 @@ const TakePicture = ({ navigation, route }) =>
       try
       {
         const data = await cameraRef.current.takePictureAsync();
-        console.log(data);
+        console.log("takePhoto---> " + data);
         setPhoto(data.uri);
       }
       catch(error)

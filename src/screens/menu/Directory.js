@@ -14,12 +14,11 @@ import HeaderTitle from "../../components/HeaderTitle";
  */
 const Directory = ({ navigation, route }) =>
 {
-
   //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
   const { lstCategories }  = useContext(AppContext);
 
   const [lstStores, setLstStores] = useState([]);
-  const [idCategory, setIdCategory] = useState(route.params);
+  const [idCategory, setIdCategory] = useState(null);
   const [search, setSearch] = useState("");
 
 
@@ -33,12 +32,12 @@ const Directory = ({ navigation, route }) =>
     {
       try 
       {
-        console.log("route.params: " + route.params);
-        let category = lstCategories.filter(category => (route.params === category.idCategory))[0]
+        console.log("route.paramss: " + route.params.idCategory);
+        let category = lstCategories.filter(category => (route.params.idCategory === category.idCategory))[0]
         
         // Se obtiene de listado de tiendas de la primera categoria
-        // setLstStores(route.params ? lstCategories[2].lstStores : lstCategories[0].lstStores);
-        setLstStores(category.lstStores)
+        setIdCategory(route.params.idCategory);
+        setLstStores(category.lstStores);
       }
       catch (error) 
       {
@@ -47,7 +46,7 @@ const Directory = ({ navigation, route }) =>
     }
 
     loadData();
-  }, []);
+  }, [route.params.idCategory]);
 
 
   // useEffect(() => 

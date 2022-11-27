@@ -74,7 +74,7 @@ const Home = ({ navigation, route }) =>
 
           <VStack alignItems="center" width="50%" space={3} borderColor_="red.600" borderWidth_="1">
             {/* Tarjeta Tiendas */}
-            <Pressable onPress={() => navigation.navigate("Directory", 1)}>
+            <Pressable onPress={() => navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:1 } })}>
             {
               ({ isPressed }) => 
               {
@@ -98,7 +98,7 @@ const Home = ({ navigation, route }) =>
             </Pressable>
             
             {/* Tarjeta Entretenimiento */}
-            <Pressable onPress={() => navigation.navigate("Directory", 3)}>
+            <Pressable onPress={() => navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:3 } })}>
             {
               ({ isPressed }) => 
               {
@@ -124,7 +124,7 @@ const Home = ({ navigation, route }) =>
 
           <VStack alignItems="center" width="50%" space={3} borderColor_="blue.600" borderWidth_="1">
             {/* Tarjeta de Bancos */}
-            <Pressable onPress={() => navigation.navigate("Directory", 2)}>
+            <Pressable onPress={() => navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:2 } })}>
             {
               ({ isPressed }) => 
               {
@@ -150,7 +150,7 @@ const Home = ({ navigation, route }) =>
             </Pressable>
             
             {/* Tarjeta de comidas */}
-            <Pressable onPress={() => navigation.navigate("Directory", 4)}>
+            <Pressable onPress={() => navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:4 } })}>
             {
               ({ isPressed }) => 
               {

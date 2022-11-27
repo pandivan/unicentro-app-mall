@@ -10,10 +10,10 @@ import SocialNetworks from "../../components/SocialNetworks";
  * Componente funcional que contiene el detalle de la oferta
  * @returns Screen Detalle de la oferta
  */
-const OfferDetail = ({ navigation, route }) =>
+const PromotionDetail = ({ navigation, route }) =>
 {
 
-  const [offerDetail, setOfferDetail] = useState(route.params);
+  const [promotionDetail, setPromotionDetail] = useState(route.params);
 
 
   /**
@@ -21,13 +21,13 @@ const OfferDetail = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    console.log("useEffect OfferDetail");
+    console.log("useEffect PromotionDetail");
 
     // const loadData = async () => 
     // {
     //   try 
     //   {
-      setOfferDetail(route.params);
+      setPromotionDetail(route.params);
     //   }
     //   catch (error) 
     //   {
@@ -44,18 +44,18 @@ const OfferDetail = ({ navigation, route }) =>
     <ScrollView showsVerticalScrollIndicator ={false}>
       <Center flex={1} px="3" justifyContent="flex-start" backgroundColor="white" borderColor_="blue.500" borderWidth_="1">
         <Box width="100%" height="325px" borderRadius="10" borderColor_="blue.500" borderWidth_="1">
-          <Image source={{uri:offerDetail.urlImage}} alt="Imagen desactualizada" borderRadius="10" resizeMode_="cover" width="100%" height="100%"/>
+          <Image source={{uri:promotionDetail.urlImage}} alt="Imagen desactualizada" borderRadius="10" resizeMode_="cover" width="100%" height="100%"/>
         </Box>
 
         <Box mt="5" mb="2" width="100%" height="40" shadow_="2" backgroundColor="white" borderColor_="red.600" borderWidth_="1">
           <Text fontSize="xl" color_="coolGray.800" bold>
-            {offerDetail.name}
+            {promotionDetail.name}
           </Text>
           <Text fontSize="sm" color="#f18032" mt="1">
-            {offerDetail.store.name}
+            {promotionDetail.store.name}
           </Text>
           <Text fontSize="md" color="coolGray.500" mt="5" textAlign="justify" letterSpacing="xs" lineHeight="md">
-            {offerDetail.description}
+            {promotionDetail.description}
           </Text>
         </Box>
 
@@ -65,17 +65,17 @@ const OfferDetail = ({ navigation, route }) =>
             <Text fontSize="sm" color="#f18032" bold>
               Teléfono
             </Text>
-            <Text fontSize="xs" color="#f18032" onPress={() => GenericFunctions.openApp("tel:"+offerDetail.store.phone)}>
-              {offerDetail.store.phone}
+            <Text fontSize="xs" color="#f18032" onPress={() => GenericFunctions.openApp("tel:"+promotionDetail.store.phone)}>
+              {promotionDetail.store.phone}
             </Text>
           </VStack>
         </HStack>
 
-        <SocialNetworks store={offerDetail.store} />
+        <SocialNetworks store={promotionDetail.store} />
 
       </Center>
     </ScrollView>
   );
 }
 
-export default OfferDetail;
+export default PromotionDetail;
