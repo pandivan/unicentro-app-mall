@@ -68,7 +68,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
     order:1,
-    type:'D',
+    type:'DIRECTORY',
     lstStores:
     [
       {
@@ -183,7 +183,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
     order:2,
-    type:null,
+    type:'HOME',
     lstStores:
     [
       {
@@ -281,7 +281,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1PjEdPpTOnYhJ2F-knZhHtS7Vv61YyAtp',
     backgroundColor: '#D9E021',
     order:3,
-    type:'D',
+    type:'DIRECTORY',
     lstStores:
     [
       {
@@ -362,7 +362,7 @@ const dataCategories =
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1o1YGD4fwqJbdS84H_LHpPEFRZzihGOlf',
     backgroundColor: '#ED3557',
     order:4,
-    type:'D',
+    type:'DIRECTORY',
     lstStores:
     [
       {

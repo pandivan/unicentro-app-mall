@@ -16,7 +16,7 @@ import SocialNetworks from "../../components/SocialNetworks";
 
 
 /**
- * Componente funcional que contiene los indicadores del home
+ * Componente funcional que contiene las categorías del home
  * @returns Screen Home
  */
 const Home = ({ navigation, route }) =>
@@ -82,14 +82,9 @@ const Home = ({ navigation, route }) =>
                   <Box background={isPressed ? "#78C9CC" : "#39BFC2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40">
                     <VStack height="100%" justifyContent="space-between">
                       <Text ml="2" fontSize="16" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                        {lstCategories ? lstCategories[0].categoryName : null} 
+                        {lstCategories[0].categoryName} 
                       </Text>
-                      {
-                        lstCategories ?
-                          <Image mb="-0.5" source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
-                        :
-                        null
-                      }
+                      <Image mb="-0.5" source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
                     </VStack>
                   </Box>
                 );
@@ -106,14 +101,9 @@ const Home = ({ navigation, route }) =>
                   <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
                     <VStack height="100%" justifyContent="space-between">
                       <Text ml="2" fontSize="16" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                        {lstCategories ? lstCategories[2].categoryName : null} 
+                        {lstCategories[2].categoryName} 
                       </Text>
-                      {
-                        lstCategories ?
-                          <Image ml="-1" source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={24} height={20}/>
-                        :
-                        null
-                      }
+                      <Image ml="-1" source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={24} height={20}/>
                     </VStack>
                   </Box>
                 );
@@ -132,16 +122,11 @@ const Home = ({ navigation, route }) =>
                   <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
                     <VStack height="100%" justifyContent="space-between">
                       <Text ml="2" fontSize="15" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                        {lstCategories ? lstCategories[1].categoryName : null} 
+                        {lstCategories[1].categoryName} 
                       </Text>
-                      <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1">
-                      {
-                        lstCategories ?
-                          <Image mr="-1" source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomRightRadius="20" width={24} height={20}/>
-                        :
-                        null
-                      }
-                      </Box>
+                      {/* <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1"> */}
+                      <Image mr="-1" source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomRightRadius="20" width={24} height={20}/>
+                      {/* </Box> */}
                     </VStack>
                   </Box>
                 );
@@ -158,14 +143,9 @@ const Home = ({ navigation, route }) =>
                   <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
                     <VStack height="100%" justifyContent="space-between">
                       <Text ml="2" fontSize="15" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                        {lstCategories ? lstCategories[3].categoryName : null} 
+                        {lstCategories[3].categoryName} 
                       </Text>
-                      {
-                        lstCategories ?
-                          <Image mb="-1" source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
-                        :
-                        null
-                      }
+                      <Image mb="-1" source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
                     </VStack>
                   </Box>
                 );

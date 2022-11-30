@@ -6,7 +6,7 @@ import Checkbox from "expo-checkbox";
 
 import AppContext from "../../contexts/AppContext";
 import GenericFunctions from "../../utilities/GenericFunctions";
-import clientServices from "../../services/ClientServices";
+import clientServices from "../../services/CustomerServices";
 import Constants from "../../utilities/Constants";
 
 

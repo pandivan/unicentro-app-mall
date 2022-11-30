@@ -1,6 +1,6 @@
-import { VStack, HStack, Center, Text, Pressable, Image, Icon, Input, Box } from "native-base";
-import { SimpleLineIcons } from '@expo/vector-icons';
+import { VStack, HStack, Center, Text, Pressable, Image, Box } from "native-base";
 
+import authenticationServices from "../../services/AuthenticationServices";
 
 
 
@@ -11,9 +11,33 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 const Invoices = ({ navigation, route }) =>
 {
 
+  /**
+   * Función que permite redireccionar al screen de registro de facturas siempre y cuando el usuario este logueado
+   */
+  const registerInvoice = async () =>
+  {
+    try
+    {
+      let {status} = await authenticationServices.validateToken();
+
+      if(Constants.STATUS_OK === status)
+      {
+        navigation.navigate("RegisterInvoices");
+      }
+      else
+      {
+        Alert.alert("Información", "No es posible registrar la factura en este momento, favor intentarlo en unos minutos.");
+      }
+    }
+    catch (error)
+    {
+      Alert.alert("Información", "No es posible registrar la factura en este momento, favor intentarlo en unos minutos.");
+    }
+  }
+
   return(
     <Center flex={1} backgroundColor="white" justifyContent="flex-start" p="3">
-      <Pressable height="110px" width="100%" mt="5" mb="6" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("RegisterInvoices")}>
+      <Pressable height="110px" width="100%" mt="5" mb="6" borderColor_="red.500" borderWidth_="1" onPress={registerInvoice}>
       {
         ({ isPressed }) => 
         {

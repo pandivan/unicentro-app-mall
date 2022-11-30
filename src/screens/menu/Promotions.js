@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, Image } from "react-native";
+import { FlatList, Image, Alert } from "react-native";
 import { Box, Center, Text, Pressable, Icon, Input, VStack } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 
 import promotionsServices from "../../services/PromotionsServices";
 import Constants from "../../utilities/Constants"; 
-import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -21,73 +20,65 @@ const Promotions = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar la data inicial para el screen de ofertas
+   * Funcion que permite cargar la data inicial para el screen de promociones
    */
   useEffect(() => 
   {
+    const unsubscribe = navigation.addListener("focus", loadData);
+
+    return unsubscribe;
+  }, [navigation]);
+
+
+  /**
+   * Función que permite cargar las promociones de la BD
+   */
+  const loadData = async () => 
+  {
     console.log("useEffect Promotions");
-
-    const loadData = async () => 
+    try 
     {
-      try 
+      //Se obtiene las ofertas de las tiendas a traves del api-rest
+      let {status, lstPromotionsBD} = await promotionsServices.getAllPromotions();
+
+      if(Constants.STATUS_OK === status)
       {
-        //Se obtiene las ofertas de las tiendas a traves del api-rest
-        let {status, lstPromotionsBD} = await promotionsServices.getAllPromotions();
-
-        switch (status)
-        {
-          case Constants.STATUS_OK:
-            setLstPromotions(lstPromotionsBD);
-            setLstFilteredPromotions(lstPromotionsBD);
-          break;
-
-          case Constants.STATUS_ACCESO_DENEGADO:
-            // El usuario tiene el token vencido y debe loguearse nuevamente
-            
-            console.log("case Promotions STATUS_ACCESO_DENEGADO")
-          break;
-
-          default:
-            
-            console.log("case Promotions default acceso denegado")
-          break;
-        }
+        setLstPromotions(lstPromotionsBD);
+        setLstFilteredPromotions(lstPromotionsBD);
       }
-      catch (error) 
+      else
       {
-        console.log("Error al cargar las ofertas (Promotions) " + error)
+        Alert.alert("Información", "En el momento no es posible cargar las promociones,\nfavor intentarlo más tarde.");
       }
     }
+    catch (error) 
+    {
+      Alert.alert("Información", "En el momento no es posible cargar las promociones,\nfavor intentarlo más tarde.");
+    }
+  }
 
-    loadData();
-  }, []);
-
-
-
-  // useEffect(() => 
-  // {
-  //   HeaderTitle.unsubscribe(navigation, "Promociones");
-  // }, [navigation]);
 
 
   /**
    * Función que permite buscar una oferta por nombre de la tienda, oferta o descripción, en el listado de ofertas
-   * @param search Oferta a buscar
+   * @param searchOffer Oferta a buscar
    */
-  const searchPromotions = (search) => 
+  const searchPromotions = (searchOffer) => 
   {
     // Se busca la oferta en el listado de ofertas
-    setLstFilteredPromotions(lstPromotions.filter(offer => offer.name.concat(offer.store.name).concat(offer.description).toLowerCase().includes(search.toLowerCase())));
+    setLstFilteredPromotions(lstPromotions.filter(offer => offer.name.concat(offer.store.name).concat(offer.description).toLowerCase().includes(searchOffer.toLowerCase())));
 
     // Si el input de busqueda está vacío, se vuelve a cargar el listado original de ofertas
-    if(!search)
+    if(!searchOffer)
     {
       setLstFilteredPromotions(lstPromotions);
     }
     
     // Se actualiza el estado de search
-    setSearch(search);
+    setSearch(searchOffer);
   }
+
+
 
   /**
    * Funcion que permite listar todas las ofertas

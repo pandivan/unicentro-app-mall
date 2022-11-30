@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FlatList, Image } from "react-native";
+import { Alert, FlatList, Image } from "react-native";
 import { VStack, HStack, Center, Text, Pressable, Icon, Input, Box } from "native-base";
 import { Ionicons } from '@expo/vector-icons';
 
@@ -17,6 +17,7 @@ const Directory = ({ navigation, route }) =>
   //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
   const { lstCategories }  = useContext(AppContext);
 
+  const [lstFilteredStores, setLstFilteredStores] = useState([]);
   const [lstStores, setLstStores] = useState([]);
   const [idCategory, setIdCategory] = useState(null);
   const [search, setSearch] = useState("");
@@ -24,7 +25,7 @@ const Directory = ({ navigation, route }) =>
 
 
   /**
-   * Funcion que permite cargar la data inicial para el screen directorio
+   * Funcion que permite cargar las tiendas en el screen directorio según la categoría seleccionada en el home
    */
   useEffect(() => 
   {
@@ -32,27 +33,23 @@ const Directory = ({ navigation, route }) =>
     {
       try 
       {
-        console.log("route.paramss: " + route.params.idCategory);
+        // Se obtiene la categoría seleccionada en el home del listado de categorías
         let category = lstCategories.filter(category => (route.params.idCategory === category.idCategory))[0]
         
-        // Se obtiene de listado de tiendas de la primera categoria
+        // Se obtiene de listado de tiendas de la primera categoría
         setIdCategory(route.params.idCategory);
         setLstStores(category.lstStores);
+        setLstFilteredStores(category.lstStores);
       }
       catch (error) 
       {
-        console.log("Error al cargar el categories (Directory) " + error)
+        Alert.alert("Información", "En el momento no es posible cargar la categoría seleccionada,\nfavor intentarlo más tarde.");
       }
     }
 
     loadData();
   }, [route.params.idCategory]);
 
-
-  // useEffect(() => 
-  // {
-  //   HeaderTitle.unsubscribe(navigation, "Directorio");
-  // }, [navigation]);
 
 
   /**
@@ -61,28 +58,41 @@ const Directory = ({ navigation, route }) =>
    */
   const loadStores = (idCategory) =>
   {
-    // Se obtiene de listado de categorias, la categoria selecconada
+    // Se obtiene de listado de categorías, la categoría selecconada
     let selectedCategory = lstCategories.filter(category => (idCategory === category.idCategory))[0];
     
     setIdCategory(idCategory);
     setLstStores(selectedCategory.lstStores);
+    setLstFilteredStores(selectedCategory.lstStores);
   }
 
 
   /**
    * Función que permite buscar la tienda en todo el listado de tiendas
-   * @param search Tienda a buscar
+   * @param searchStore Tienda a buscar
    */
-  const searchStore = (search) => 
+  const searchStore = (searchStore) => 
   {
     // Se busca la tienda en el listado de tiendas según la categoría seleccionada
-    setLstStores(lstStores.filter(store => store.name.toLowerCase().includes(search.toLowerCase())));
+    setLstFilteredStores(lstStores.filter(store => store.name.toLowerCase().includes(searchStore.toLowerCase())));
     
+    // Si el input de busqueda está vacío, se vuelve a cargar el listado original de tiendas
+    if(!searchStore)
+    {
+      setLstFilteredStores(lstStores);
+    }
+
     // Se actualiza el estado de search
-    setSearch(search);
+    setSearch(searchStore);
   }
 
 
+  /**
+   * Función que permite obtener el background de la categoría seleccionada
+   * @param category Categoría seleccionada
+   * @param backgroundColor Color de fondo de la categoría
+   * @returns Color de fondo
+   */
   const categoryBackgroundColor = (category, backgroundColor) => 
   {
     if (idCategory === category.idCategory)
@@ -94,6 +104,11 @@ const Directory = ({ navigation, route }) =>
   }
 
 
+  /**
+   * Función que permite obtener el icono de la categoría seleccionada
+   * @param category Categoría seleccionada
+   * @returns Icono de la categoría
+   */
   const categoryIcon = (category) => 
   {
     if (idCategory === category.idCategory)
@@ -106,15 +121,15 @@ const Directory = ({ navigation, route }) =>
 
 
   /**
-   * Visualización de las categorias en el header
-   * @param {*} category 
-   * @returns 
+   * Función que permite listar las categorías en el header
+   * @param category Categoría seleccionada
+   * @returns Componente que visualiza las categorías del header
    */
   const renderCategories = (category) => 
   {
-    if("D" === category.type)
+    if("DIRECTORY" === category.type)
     {
-      // Tarjetas de tiendas segun la categoria seleccionada
+      // Tarjetas de tiendas segun la categoría seleccionada
       return(
         <VStack mt="2" alignItems="center" width="110px" height="24" borderColor_="red.600" borderWidth_="1">
           <Pressable onPress={() => loadStores(category.idCategory)}>
@@ -137,13 +152,13 @@ const Directory = ({ navigation, route }) =>
 
   
   /**
-   * Funcion que permite listar las tiendas segun la categoria seleccionada
+   * Funcion que permite listar las tiendas segun la categoría seleccionada
    * @param store Tienda
-   * @returns Componente que visualiza las tiendas
+   * @returns Componente que visualiza la información de la tienda
    */
   const renderStores = (store) => 
   {
-    // Tarjetas de tiendas segun la categoria seleccionada
+    // Tarjetas de tiendas segun la categoría seleccionada
     return(
       <Pressable height="32" width="80" mb="5" borderColor_="red.500" borderWidth_="1" onPress={() => navigation.navigate("StoreInformation", store)}>
       {
@@ -208,7 +223,7 @@ const Directory = ({ navigation, route }) =>
       {/* Se lita las tarjetas con la informacion de cada tienda */}
       <Center flex={1}>
         <FlatList
-          data={lstStores} 
+          data={lstFilteredStores} 
           renderItem={({item}) => renderStores(item)} 
           keyExtractor={item => item.idStore} 
           showsVerticalScrollIndicator ={false}
