@@ -13,8 +13,8 @@ import AppContext from '../../contexts/AppContext';
  */
 const Login = ({navigation}) =>
 {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("a");
+  const [password, setPassword] = useState("a");
   const [errorMessageEmail, setErrorMessageEmail] = useState("");
   const [isRequiredEmail, setIsRequiredEmail] = useState(false);
   const [isRequiredPassword, setIsRequiredPassword] = useState(false);
@@ -58,16 +58,16 @@ const Login = ({navigation}) =>
   return (
     <Box flex={1}>
       <StatusBar barStyle_="light-content" backgroundColor_="#1B2028" />
-      <Center flex={1} backgroundColor_="#1b2028" borderColor_="green.500" borderWidth_="3">
+      <Center flex={1} backgroundColor="white" borderColor_="green.500" borderWidth_="3">
         <Box safeArea p="2" width="90%" mb="20" maxW="290" borderColor_="red.500" borderWidth_="1">
           
-          <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
+          {/* <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
             <Image source={require('../../../assets/logo_login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={20}/>
             
             <Heading fontSize={22} mt="6" fontWeight="600">
               Iniciar Sesión
             </Heading>
-          </Center>
+          </Center> */}
 
           <VStack space={3} mt="6" borderColor_="blue.500" borderWidth_="3">
             <FormControl isRequired={isRequiredEmail} isInvalid={isRequiredEmail}>

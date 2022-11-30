@@ -77,8 +77,6 @@ const Registration = ({navigation}) =>
     {
       try 
       {
-        // Se habilita la cabecera del react navigation de la pantalla
-        navigation.setOptions({ headerShown:true });
 
         //Se obtiene los barrios a traves del api-rest
         let {status, lstNeighborhoodsBD} = await clientServices.getAllNeighborhoods();

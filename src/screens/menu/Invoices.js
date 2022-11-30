@@ -1,6 +1,8 @@
+import { Alert } from "react-native";
 import { VStack, HStack, Center, Text, Pressable, Image, Box } from "native-base";
 
 import authenticationServices from "../../services/AuthenticationServices";
+import Constants from "../../utilities/Constants";
 
 
 
@@ -14,11 +16,13 @@ const Invoices = ({ navigation, route }) =>
   /**
    * Función que permite redireccionar al screen de registro de facturas siempre y cuando el usuario este logueado
    */
-  const registerInvoice = async () =>
+  const registerInvoice =  () =>
   {
     try
     {
-      let {status} = await authenticationServices.validateToken();
+      // TODO: Habilitar la linea de abajo cuando tenga el api y colocar async en el metodo... por ahora se quita para evitar el AWAIT
+      // let {status} = await authenticationServices.validateToken();
+      let {status} = authenticationServices.validateToken();
 
       if(Constants.STATUS_OK === status)
       {
@@ -26,7 +30,7 @@ const Invoices = ({ navigation, route }) =>
       }
       else
       {
-        Alert.alert("Información", "No es posible registrar la factura en este momento, favor intentarlo en unos minutos.");
+        navigation.navigate("RouteAuthentication", { screen:"Login" });
       }
     }
     catch (error)

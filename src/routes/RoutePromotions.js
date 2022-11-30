@@ -8,8 +8,7 @@ const Stack = createStackNavigator();
 
 const RoutePromotions = ({ navigation, route }) =>
 {
-  // console.log("useEffect RouteDirectory");
-
+  
   return (
     <Stack.Navigator 
       initialRouteName="Promotions"

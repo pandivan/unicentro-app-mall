@@ -30,7 +30,7 @@ const signIn = async (customer) =>
     // console.log("result API-REST Consultar Cliente ");
     // console.log(JSON.stringify(result));
 
-    return { status: result.status, userToken: result.data };
+    return { status: result.status };
   }
   catch(error)
   {
@@ -79,14 +79,14 @@ const setToken = async (userToken) =>
 /**
  * Función que permite validar si el token está activo
  */
-const validateToken = async () => 
+const validateToken = () => 
 {
   try
   {
     // let result = await axios.get(`${Constants.BACKEND_URL}/info`, { headers: authenticationHeader() });
     let result = 
     {
-      status: 200,
+      status: 2000,
       data: 'token_pandi'
     };
 

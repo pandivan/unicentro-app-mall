@@ -24,7 +24,7 @@ const signUp = async (customer) =>
     // console.log("result API-REST Cliente. ");
     // console.log(JSON.stringify(result));
 
-    return { status: result.status, userToken: result.data };
+    return { status: result.status };
   }
   catch(error)
   {

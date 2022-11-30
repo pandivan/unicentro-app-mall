@@ -12,6 +12,7 @@ import SendInvoice from "../screens/menu/SendInvoice";
 import Home from "../screens/home/Home";
 import RouteDirectory from "./RouteDirectory";
 import RoutePromotions from "./RoutePromotions";
+import RouteAuthentication from "./RouteAuthentication";
 
 
 const Tab = createBottomTabNavigator();
@@ -124,6 +125,15 @@ const RouteMenu = ({ navigation, route }) =>
       <Tab.Screen 
         name="Contact" 
         component={Contact}
+        options=
+        {{
+          tabBarButton: () => <View style={{ width: 0 }} />
+        }}
+      />
+
+      <Tab.Screen 
+        name="RouteAuthentication" 
+        component={RouteAuthentication}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />

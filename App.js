@@ -6,7 +6,6 @@ import { Alert, Image } from "react-native";
 import "react-native-gesture-handler";
 
 import RouteMenu from "./src/routes/RouteMenu";
-import RouteAuthentication from "./src/routes/RouteAuthentication";
 import SplashScreen from "./src/components/SplashScreen";
 import AppContext from "./src/contexts/AppContext"
 import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
@@ -25,18 +24,14 @@ const Drawer = createDrawerNavigator();
 
 export default function App()
 {
-  // console.log("useEffect App");
-
   //Valores iniciales del state
   const inicializarState =
   {
     isLoading:true,
     isSignout:false,
-    userToken:null,
     lstCategories:[]
   }
 
-  // const [headerTitleAlign, setHeaderTitleAlign] = useState("center");
   var icon = null;
   var align = null;
   var widthImage = null;
@@ -44,7 +39,7 @@ export default function App()
 
 
   /**
-   * Funcion que permite validar el token del cliente despues de renderizar la pantalla
+   * Funcion que permite cargar las categorias del home
    */
   useEffect(() =>
   {
@@ -62,15 +57,9 @@ export default function App()
         {
           // Se almacenan las categorias en el contexto
           dispatch({ type: "LOAD_CATEGORIES", lstCategories: lstCategoriesBD });
-
-          //Se valida si hay un token en el storage
-          let userToken = authenticationServices.getToken();
-          dispatch({ type: "RESTORE_TOKEN", token: userToken });
         }
         else
         {
-          // El usuario tiene el token vencido y debe loguearse nuevamente
-          // dispatch({ type: "RESTORE_TOKEN", token: null });
           // TODO: Validar q pasa cuando no carga las categorias
           console.log("Error al carga las categorias... ")
         }
@@ -96,10 +85,9 @@ export default function App()
     switch (action.type)
     {
       case "RESTORE_TOKEN":
-        // console.log("***** REDUCER RESTORE ***** ");
+        console.log("***** REDUCER RESTORE ***** ");
         return {
-          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading y userToken
-          userToken: action.token,
+          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading
           isLoading: false
         };
 
@@ -107,22 +95,21 @@ export default function App()
         console.log("***** REDUCER SIGN_IN *****");
         return {
           ...prevState,
-          isSignout: false,
-          userToken: action.token
+          isSignout: false
         };
 
       case "SIGN_OUT":
         console.log("***** REDUCER SIGN_OUT *****");
         return {
           ...prevState,
-          isSignout: true,
-          userToken: null
+          isSignout: true
         };
 
       case "LOAD_CATEGORIES":
-        // console.log("*** REDUCER LOAD_CATEGORIES *** ");
+        console.log("*** REDUCER LOAD_CATEGORIES *** ");
         return {
           ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad lstCategories
+          isLoading: false,
           lstCategories: action.lstCategories
         };
 
@@ -147,11 +134,11 @@ export default function App()
       try
       {
         console.log("***** SIGN_IN MEMO *****");
-        let {status, userToken} = await authenticationServices.signIn(customer);
+        let {status} = await authenticationServices.signIn(customer);
 
         if(Constants.STATUS_OK === status)
         {
-          dispatch({ type: "SIGN_IN", token: userToken });
+          dispatch({ type: "SIGN_IN" });
         }
         else
         {
@@ -167,7 +154,7 @@ export default function App()
     signOut: () =>
     {
       console.log("***** SIGN_OUT MEMO *****");
-      authenticationServices.removerToken();
+      authenticationServices.signOut();
       dispatch({ type: "SIGN_OUT" });
     },
 
@@ -176,11 +163,11 @@ export default function App()
       try
       {
         console.log("***** SIGN_UP MEMO *****");
-        let {status, userToken} = await customerServices.signUp(customer);
+        let {status} = await customerServices.signUp(customer);
 
         if(Constants.STATUS_OK === status)
         {
-          dispatch({ type: "SIGN_IN", token: userToken });
+          dispatch({ type: "SIGN_IN" });
         }
         else
         {
@@ -260,6 +247,13 @@ export default function App()
 
       case "Contact":
         return "Contacto";
+      
+      case "RouteAuthentication":
+        icon = require('./assets/logo_header.png');
+        align = null;
+        widthImage = 128;
+        widthBox = "90%";
+        return "";
     }
   }
 
@@ -268,69 +262,61 @@ export default function App()
     <NativeBaseProvider>
       <AppContext.Provider value={appContext}>
         <NavigationContainer>
-        {
-          (state.userToken !== null) ?
-          (
-            // El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
-            // de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
+          {/* El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
+          de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
 
-            // Cuando se implementa DrawerContentMenu los Drawer.Screen quedan funcionando de manera logica para navegar entre ellos pero
-            // ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
-            // y es desde ahí q podremos acceder de manera logica a los Drawer.Screen
+          Cuando se implementa DrawerContentMenu los Drawer.Screen quedan funcionando de manera logica para navegar entre ellos pero
+          ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
+          y es desde ahí q podremos acceder de manera logica a los Drawer.Screen */}
 
-            <Drawer.Navigator
-              id="NavigatorDrawer"
-              initialRouteName="RouteMenu"
-              drawerContent={props => <DrawerContentMenu {...props} />}
-              screenOptions=
+          <Drawer.Navigator
+            id="NavigatorDrawer"
+            initialRouteName="RouteMenu"
+            drawerContent={props => <DrawerContentMenu {...props} />}
+            screenOptions=
+            {
+              ({ navigation }) =>
+              ({
+                  headerShown:true,
+                  drawerStyle:{width:305},
+                  headerStyle:{height:120},
+                  headerLeft:() =>
+                  (
+                    <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
+                      <HamburgerIcon onPress={navigation.openDrawer} size="md" color="#f18032"/>
+                    </Center>
+                  )
+              })
+            }
+          >
+            <Drawer.Screen
+              name="RouteMenu"
+              component={RouteMenu}
+              options=
               {
-                ({ navigation }) =>
+                ({ route }) =>
                 ({
-                    headerShown:true,
-                    drawerStyle:{width:305},
-                    headerStyle:{height:120},
-                    headerLeft:() =>
+                    headerShown_:false,
+                    headerTitle: getHeaderTitle(route),
+                    headerTitleAlign:align,
+                    headerTitleStyle:{fontWeight:"700"},
+                    headerRight:() =>
                     (
-                      <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
-                        <HamburgerIcon onPress={navigation.openDrawer} size="md" color="#f18032"/>
-                      </Center>
+                      <Box width={widthBox} mr="1" borderColor_="green.500" borderWidth_="1">
+                        <Image resizeMode={"contain"} style={{width:widthImage, height:80}} source={icon} />
+                      </Box>
                     )
-                })
+                  })
               }
-            >
-              <Drawer.Screen
-                name="RouteMenu"
-                component={RouteMenu}
-                options=
-                {
-                  ({ route }) =>
-                  ({
-                      headerShown_:false,
-                      headerTitle: getHeaderTitle(route),
-                      headerTitleAlign:align,
-                      headerTitleStyle:{fontWeight:"700"},
-                      headerRight:() =>
-                      (
-                        <Box width={widthBox} mr="1" borderColor_="green.500" borderWidth_="1">
-                          <Image resizeMode={"contain"} style={{width:widthImage, height:80}} source={icon} />
-                        </Box>
-                      )
-                    })
-                }
-              />
+            />
 
+            <Drawer.Screen
+              name="TakePicture"
+              component={TakePicture}
+              options={{headerTitle:""}}
+            />
 
-              <Drawer.Screen
-                name="TakePicture"
-                component={TakePicture}
-                options={{headerTitle:""}}
-              />
-
-            </Drawer.Navigator>
-          )
-          :
-          <RouteAuthentication />
-        }
+          </Drawer.Navigator>
         </NavigationContainer>
       </AppContext.Provider>
     </NativeBaseProvider>
