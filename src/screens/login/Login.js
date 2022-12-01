@@ -1,8 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+import { Alert } from "react-native";
 import { Box, Icon, Image, Pressable, Heading, VStack, FormControl, Input, Link, Button, HStack, Center, StatusBar, WarningOutlineIcon, Text } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
-
-import AppContext from '../../contexts/AppContext';
+import authenticationServices from "../../services/AuthenticationServices";
+import Constants from "../../utilities/Constants";
 
 
 
@@ -11,7 +12,7 @@ import AppContext from '../../contexts/AppContext';
  * @param navigation Componente de navegación
  * @returns Scren Login
  */
-const Login = ({navigation}) =>
+const Login = ({navigation, route}) =>
 {
   const [email, setEmail] = useState("a");
   const [password, setPassword] = useState("a");
@@ -20,9 +21,41 @@ const Login = ({navigation}) =>
   const [isRequiredPassword, setIsRequiredPassword] = useState(false);
   const [show, setShow] = useState(false);
   
-  //Hook que permite invocar al metodo signIn(useMemo) del App.js
-  const { signIn } = useContext(AppContext);
 
+
+  /**
+   * Función que permite loguear al cliente en la aplicación
+   * @param customer Cliente a loguear
+   */
+  const signIn = async () =>
+  {
+    
+    try
+    {
+      let {status} = await authenticationServices.signIn({ email, password });
+
+      if(Constants.STATUS_OK === status)
+      {
+        // console.log("params " + JSON.stringify(route.params.screen))
+        if("Settings" === route.params.screen)
+        {
+          navigation.navigate("Home");
+        }
+        else
+        {
+          navigation.navigate("RegisterInvoices");
+        }
+      }
+      else
+      {
+        Alert.alert("Información", "Usuario o Clave invalida.");
+      }
+    }
+    catch (error)
+    {
+      Alert.alert("Información", "No es posible acceder en este momento, favor intentarlo en unos minutos.");
+    }
+  }
 
 
   /**
@@ -50,7 +83,7 @@ const Login = ({navigation}) =>
     if(isValidForm)
     {
       console.log("**** LOGIN OK *****");
-      signIn({ email, password });
+      signIn();
     }
   }
 

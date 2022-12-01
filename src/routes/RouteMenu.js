@@ -12,7 +12,7 @@ import SendInvoice from "../screens/menu/SendInvoice";
 import Home from "../screens/home/Home";
 import RouteDirectory from "./RouteDirectory";
 import RoutePromotions from "./RoutePromotions";
-import RouteAuthentication from "./RouteAuthentication";
+
 
 
 const Tab = createBottomTabNavigator();

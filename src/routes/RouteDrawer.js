@@ -1,18 +1,20 @@
-import React, { useReducer, useMemo, useEffect } from "react";
-import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { createStackNavigator } from '@react-navigation/stack';
-import { NativeBaseProvider, Box, HamburgerIcon, Center } from "native-base";
-import { Alert, Image } from "react-native";
+import { Box, HamburgerIcon, Center } from "native-base";
+import { Image } from "react-native";
 import "react-native-gesture-handler";
+
 import RouteMenu from "./RouteMenu";
-import TakePicture from "../screens/menu/TakePicture";
 import DrawerContentMenu from "../screens/home/DrawerContentMenu";
 
 
 const Drawer = createDrawerNavigator();
 
 
+/**
+ * Componente Funcional que se encarga de crear el menú drawer
+ * @returns Componente menú drawer
+ */
 const RouteDrawer = () =>
 {
 
@@ -21,6 +23,12 @@ const RouteDrawer = () =>
   var widthImage = null;
   var widthBox = null;
 
+
+  /**
+   * Función que permite obtener el nombre del screen en la que se encuentra el cliente
+   * @param route Ruta de navegación
+   * @returns Nombre del screen
+   */
   const getHeaderTitle = (route) =>
   {
     const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
@@ -34,6 +42,7 @@ const RouteDrawer = () =>
     align = "center";
     widthImage = 80;
     widthBox = null;
+
 
     switch (routeName)
     {
@@ -91,7 +100,17 @@ const RouteDrawer = () =>
         return "";
     }
   }
-  
+
+
+  {/* 
+    El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
+    de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
+
+    Cuando se implementa DrawerContentMenu los Drawer.Screen quedan funcionando de manera logica para navegar entre ellos pero
+    ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
+    y es desde ahí q podremos acceder de manera logica a los Drawer.Screen 
+  */}
+
   return (
     <Drawer.Navigator
       id="NavigatorDrawer"
@@ -132,12 +151,6 @@ const RouteDrawer = () =>
               )
             })
         }
-      />
-
-      <Drawer.Screen
-        name="TakePicture"
-        component={TakePicture}
-        options={{headerTitle:""}}
       />
 
     </Drawer.Navigator>

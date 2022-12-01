@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { Text, ScrollView,Alert } from "react-native";
-import { Box, Icon, CheckIcon, ChevronDownIcon, Heading, VStack, FormControl, Input, Button, Pressable, Center, Select, WarningOutlineIcon, Image } from "native-base";
+import React, { useState, useEffect } from "react";
+import { Text, ScrollView, Alert } from "react-native";
+import { Box, Icon, CheckIcon, ChevronDownIcon, Heading, VStack, FormControl, Input, Button, Pressable, Center, Select, WarningOutlineIcon } from "native-base";
 import { SimpleLineIcons, MaterialIcons } from '@expo/vector-icons';
 import Checkbox from "expo-checkbox";
 
-import AppContext from "../../contexts/AppContext";
+
 import GenericFunctions from "../../utilities/GenericFunctions";
-import clientServices from "../../services/CustomerServices";
 import Constants from "../../utilities/Constants";
+import customerServices from "../../services/CustomerServices";
 
 
 
@@ -18,19 +18,19 @@ import Constants from "../../utilities/Constants";
  */
 const Registration = ({navigation}) =>
 {
-  const [identification, setIdentification] = useState("");
-  const [names, setNames] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [birthday, setBirthday] = useState("");
-  const [gender, setGender] = useState("");
-  const [neighborhood, setNeighborhood] = useState("");
+  const [identification, setIdentification] = useState("identification");
+  const [names, setNames] = useState("names");
+  const [lastName, setLastName] = useState("lastName");
+  const [phone, setPhone] = useState("phone");
+  const [email, setEmail] = useState("email");
+  const [password, setPassword] = useState("password");
+  const [confirmPassword, setConfirmPassword] = useState("confirmPassword");
+  const [birthday, setBirthday] = useState("1981/12/01");
+  const [gender, setGender] = useState("M");
+  const [neighborhood, setNeighborhood] = useState(1);
 
-  const [isPet, setIsPet] = useState(false);
-  const [isTermsConditions, setIsTermsConditions] = useState(false);
+  const [isPet, setIsPet] = useState(true);
+  const [isTermsConditions, setIsTermsConditions] = useState(true);
   
   const [isRequiredIdentification, setIsRequiredIdentification] = useState(false);
   const [isRequiredNames, setIsRequiredNames] = useState(false);
@@ -61,8 +61,6 @@ const Registration = ({navigation}) =>
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
-  //Hook que permite invocar al metodo signIn(useMemo) del App.js
-  const { signIn } = useContext(AppContext);
 
 
 
@@ -79,7 +77,7 @@ const Registration = ({navigation}) =>
       {
 
         //Se obtiene los barrios a traves del api-rest
-        let {status, lstNeighborhoodsBD} = await clientServices.getAllNeighborhoods();
+        let {status, lstNeighborhoodsBD} = await customerServices.getAllNeighborhoods();
 
         if(Constants.STATUS_OK == status)
         {
@@ -93,6 +91,7 @@ const Registration = ({navigation}) =>
       }
       catch (error) 
       {
+        console.log(error)
         Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
       }
     }
@@ -100,6 +99,32 @@ const Registration = ({navigation}) =>
     loadData();
   }, []);
 
+
+  /**
+   * Función que permite registrar un cliente en el sistema y lo loguea automaticamente en la aplicación
+   */
+  const signUp = async () =>
+  {
+    try 
+    {
+      //Se registra un cliente a traves del api-rest
+      let {status} = await customerServices.signUp({identification, names, lastName, phone, email, password, confirmPassword, birthday, gender, neighborhood});
+
+      if(Constants.STATUS_OK == status)
+      {
+        navigation.navigate("Home");
+      }
+      else
+      {
+        Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+      }
+    }
+    catch (error)
+    {
+      console.log(error)
+      Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+    }
+  }
 
 
   /**
@@ -190,6 +215,7 @@ const Registration = ({navigation}) =>
       else
       {
         isValidForm = false;
+        setIsRequiredConfirmPassword(true);
         setErrorMessageConfirmPassword("Las contraseñas no son iguales");
       }
     }
@@ -229,8 +255,7 @@ const Registration = ({navigation}) =>
     // Se valida que todos los campos obligatorios esté diligenciados
     if(isValidForm)
     {
-      // Función que es pasada por contexto y pertenece a la clase App.js, esta funcion permite redireccionar al home de la aplicación
-      signIn({ email, password });
+      signUp();
     }
   }
 
@@ -265,7 +290,6 @@ const Registration = ({navigation}) =>
     // value = el.value;       
     let value_ = value.replace(/^([\d]{4})([\d]{2})([\d]{2})$/,"$1/$2/$3"); 
 
-    console.log(value_)
 
     // if(value.length === 2)
     // {
@@ -295,7 +319,7 @@ const Registration = ({navigation}) =>
         setBirthday(clientBD.birthday);
         setGender(clientBD.gender);
         setNeighborhood(clientBD.neighborhood.idNeighborhood);
-        setIsPet(clientBD.isPet === 1 ? true : false); console.log(clientBD.isPet === 1 ? true : false)
+        setIsPet(clientBD.isPet === 1 ? true : false);
       }
     }
     catch (error) 

@@ -1,340 +1,40 @@
-import React, { useReducer, useMemo, useEffect } from "react";
-import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
-import { NativeBaseProvider, Box, HamburgerIcon, Center } from "native-base";
-import { Alert, Image } from "react-native";
+import { NativeBaseProvider } from "native-base";
 import "react-native-gesture-handler";
 
-import RouteMenu from "./src/routes/RouteMenu";
 import SplashScreen from "./src/components/SplashScreen";
-import AppContext from "./src/contexts/AppContext"
-import DrawerContentMenu from "./src/screens/home/DrawerContentMenu";
-import customerServices from "./src/services/CustomerServices";
-import categoriesServices from "./src/services/CategoriesServices";
-import Constants from "./src/utilities/Constants";
-import TakePicture from "./src/screens/menu/TakePicture";
-import authenticationServices from "./src/services/AuthenticationServices";
 import Login from "./src/screens/login/Login";
 import Registration from "./src/screens/login/Registration";
 import RouteDrawer from "./src/routes/RouteDrawer";
+import TakePicture from "./src/screens/menu/TakePicture";
 
 
 
 
 //Creando Menu de Navegación
-const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
 
 export default function App()
 {
-  //Valores iniciales del state
-  const inicializarState =
-  {
-    isLoading:true,
-    isSignout:false,
-    lstCategories:[]
-  }
-
-  var icon = null;
-  var align = null;
-  var widthImage = null;
-  var widthBox = null;
-
-
-  /**
-   * Funcion que permite cargar las categorias del home
-   */
-  useEffect(() =>
-  {
-
-    const loadData = async () =>
-    {
-      try
-      {
-        console.log("*** UseEffect APP ****");
-
-        //Se obtiene las categorias y sus tiendas a traves del api-rest
-        let {status, lstCategoriesBD} = await categoriesServices.getAllCategories();
-
-        if(Constants.STATUS_OK === status)
-        {
-          // Se almacenan las categorias en el contexto
-          dispatch({ type: "LOAD_CATEGORIES", lstCategories: lstCategoriesBD });
-        }
-        else
-        {
-          // TODO: Validar q pasa cuando no carga las categorias
-          console.log("Error al carga las categorias... ")
-        }
-      }
-      catch (e)
-      {
-        Alert.alert("Información", "En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
-      }
-    };
-
-    loadData();
-  }, []);
-
-
-  /**
-   * Funcion que permite el manejo del state
-   * @param prevState
-   * @param action
-   * @returns State
-   */
-  const stateReducer = (prevState, action) =>
-  {
-    switch (action.type)
-    {
-      case "RESTORE_TOKEN":
-        console.log("***** REDUCER RESTORE ***** ");
-        return {
-          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad isLoading
-          isLoading: false
-        };
-
-      case "SIGN_IN":
-        console.log("***** REDUCER SIGN_IN *****");
-        return {
-          ...prevState,
-          isSignout: false
-        };
-
-      case "SIGN_OUT":
-        console.log("***** REDUCER SIGN_OUT *****");
-        return {
-          ...prevState,
-          isSignout: true
-        };
-
-      case "LOAD_CATEGORIES":
-        console.log("*** REDUCER LOAD_CATEGORIES *** ");
-        return {
-          ...prevState, //Retorna todas las propiedades del objeto inicializarState y ACTUALIZA solo la propiedad lstCategories
-          isLoading: false,
-          lstCategories: action.lstCategories
-        };
-
-      default:
-        console.log("switch default");
-        return state;
-    }
-  };
-
-
-  //Creando state....
-  const [state, dispatch] = useReducer(stateReducer, inicializarState);
-
-
-  /**
-   * Hook que contiene las funciones de inicio, cierre y restauración de sesión
-   */
-  const appContext = useMemo(() => (
-  {
-    signIn: async (customer) =>
-    {
-      try
-      {
-        console.log("***** SIGN_IN MEMO *****");
-        let {status} = await authenticationServices.signIn(customer);
-
-        if(Constants.STATUS_OK === status)
-        {
-          dispatch({ type: "SIGN_IN" });
-        }
-        else
-        {
-          Alert.alert("Información", "Usuario o Clave invalida.");
-        }
-      }
-      catch (error)
-      {
-        Alert.alert("Información", "No es posible acceder en este momento, favor intentarlo en unos minutos.");
-      }
-    },
-
-    signOut: () =>
-    {
-      console.log("***** SIGN_OUT MEMO *****");
-      authenticationServices.signOut();
-      dispatch({ type: "SIGN_OUT" });
-    },
-
-    signUp: async (customer) =>
-    {
-      try
-      {
-        console.log("***** SIGN_UP MEMO *****");
-        let {status} = await customerServices.signUp(customer);
-
-        if(Constants.STATUS_OK === status)
-        {
-          dispatch({ type: "SIGN_IN" });
-        }
-        else
-        {
-          Alert.alert("Información", "Ingresaste una direccion de email que ya esta registrada en el sistema,\nsi ya eres miembro, haz clic en Iniciar sesion");
-        }
-      }
-      catch (error)
-      {
-        Alert.alert("Información", "No fue posible registrarte, favor intentarlo en unos minutos.");
-      }
-    },
-
-    lstCategories: state.lstCategories,
-
-  }), [state.lstCategories]);
-
-
-
-  const getHeaderTitle = (route) =>
-  {
-    const routeName = getFocusedRouteNameFromRoute(route) ?? "Home";
-
-    // console.log("routeName--> " + getFocusedRouteNameFromRoute(route));
-
-    let routeNameChild = JSON.stringify(route);
-    // console.log("routeNameChild---> " + routeNameChild);
-
-    icon = require('./assets/logo_fullcolor.png');
-    align = "center";
-    widthImage = 80;
-    widthBox = null;
-
-    switch (routeName)
-    {
-      case "Home":
-        icon = require('./assets/logo_header.png');
-        align = null;
-        widthImage = 128;
-        widthBox = "90%";
-        return "";
-
-      case "Settings":
-        return "Ajustes";
-
-      case "Directory":
-        return "Directorio";
-
-      case "StoreInformation":
-        return "Tienda";
-
-      case "RouteDirectory":
-        var title = "Directorio";
-
-        let indexRouteNameChild = routeNameChild.indexOf("StoreInformation");
-
-        if (-1 !== indexRouteNameChild)
-        {
-          title = "Detalle Tienda";
-        }
-
-        return title;
-
-      case "RoutePromotions":
-        return "Promociones";
-
-      case "PromotionDetail":
-        return "Detalle Promoción";
-
-      case "Invoices":
-        return "Mis Facturas";
-
-      case "RegisterInvoices":
-        return "Registra tus facturas";
-
-      case "SendInvoice":
-        return "Enviar factura"
-
-      case "Contact":
-        return "Contacto";
-      
-      case "RouteAuthentication":
-        icon = require('./assets/logo_header.png');
-        align = null;
-        widthImage = 128;
-        widthBox = "90%";
-        return "";
-    }
-  }
-
 
   return (
     <NativeBaseProvider>
-      <AppContext.Provider value={appContext}>
-        <NavigationContainer>
+      <NavigationContainer>
 
-          {/* El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
-          de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
+        <Stack.Navigator 
+          initialRouteName="RouteDrawer"
+          screenOptions={{headerShown:false}}>
 
-          Cuando se implementa DrawerContentMenu los Drawer.Screen quedan funcionando de manera logica para navegar entre ellos pero
-          ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
-          y es desde ahí q podremos acceder de manera logica a los Drawer.Screen */}
+          <Stack.Screen name="RouteDrawer" component={RouteDrawer}/>
+          <Stack.Screen name="Login" component={Login}/>
+          <Stack.Screen name="Registration" component={Registration}/>
+          <Stack.Screen name="TakePicture"component={TakePicture}/>
+          <Stack.Screen name="SplashScreen"component={SplashScreen}/>
 
-          <Stack.Navigator 
-            initialRouteName="RouteDrawer"
-            screenOptions={{headerShown:false}}>
-
-            <Stack.Screen name="RouteDrawer" component={RouteDrawer}/>
-            <Stack.Screen name="Login" component={Login}/>
-            <Stack.Screen name="Registration" component={Registration}/>
-            
-          </Stack.Navigator>
-
-          {/* <Drawer.Navigator
-            id="NavigatorDrawer"
-            initialRouteName="RouteMenu"
-            drawerContent={props => <DrawerContentMenu {...props} />}
-            screenOptions=
-            {
-              ({ navigation }) =>
-              ({
-                  headerShown:true,
-                  drawerStyle:{width:305},
-                  headerStyle:{height:120},
-                  headerLeft:() =>
-                  (
-                    <Center ml="3" backgroundColor="white" borderColor_="red.500" borderWidth_="1" shadow="3" rounded="100" width="9" height="9">
-                      <HamburgerIcon onPress={navigation.openDrawer} size="md" color="#f18032"/>
-                    </Center>
-                  )
-              })
-            }
-          >
-            <Drawer.Screen
-              name="RouteMenu"
-              component={RouteMenu}
-              options=
-              {
-                ({ route }) =>
-                ({
-                    headerShown_:false,
-                    headerTitle: getHeaderTitle(route),
-                    headerTitleAlign:align,
-                    headerTitleStyle:{fontWeight:"700"},
-                    headerRight:() =>
-                    (
-                      <Box width={widthBox} mr="1" borderColor_="green.500" borderWidth_="1">
-                        <Image resizeMode={"contain"} style={{width:widthImage, height:80}} source={icon} />
-                      </Box>
-                    )
-                  })
-              }
-            />
-
-            <Drawer.Screen
-              name="TakePicture"
-              component={TakePicture}
-              options={{headerTitle:""}}
-            />
-
-          </Drawer.Navigator> */}
-        </NavigationContainer>
-      </AppContext.Provider>
+        </Stack.Navigator>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }

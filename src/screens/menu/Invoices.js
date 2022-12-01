@@ -23,6 +23,7 @@ const Invoices = ({ navigation, route }) =>
       // TODO: Habilitar la linea de abajo cuando tenga el api y colocar async en el metodo... por ahora se quita para evitar el AWAIT
       // let {status} = await authenticationServices.validateToken();
       let {status} = authenticationServices.validateToken();
+      // console.log(status);
 
       if(Constants.STATUS_OK === status)
       {
@@ -31,7 +32,7 @@ const Invoices = ({ navigation, route }) =>
       else
       {
         // navigation.navigate("RouteAuthentication", { screen:"Login" });
-        navigation.navigate("Login");
+        navigation.navigate("Login", { screen:"Invoices" });
       }
     }
     catch (error)

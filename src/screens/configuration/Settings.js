@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import { Alert } from "react-native";
 import { VStack, HStack, Box, Heading, Text, Icon, Avatar, Menu } from "native-base";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
-import AppContext from "../../contexts/AppContext";
+import authenticationServices from "../../services/AuthenticationServices";
 
 
 /**
@@ -12,8 +12,21 @@ import AppContext from "../../contexts/AppContext";
 const Settings = ({ navigation }) =>
 {
 
-  //Hook que permite invocar al metodo signIn(useMemo) del App.js
-  const { signOut } = useContext(AppContext);
+  /**
+   * Funcion que permite desloguear al cliente de la aplicación
+   */
+  const signOut = () =>
+  {
+    try
+    {
+      authenticationServices.signOut();
+      navigation.navigate("RouteMenu", { screen:"Home" });
+    }
+    catch (error)
+    {
+      Alert.alert("Información", "No fue posible cerrar la sesión, favor intentarlo en unos minutos.");
+    }
+  }
 
 
   return (
@@ -24,6 +37,15 @@ const Settings = ({ navigation }) =>
           Ivan Hernandez
         </Heading>
       </HStack>
+
+      <Menu.Item px="0" mt="2" width="100%" >
+        <HStack alignItems="center" space={2}>
+          <Icon as={<SimpleLineIcons name="logout" />} size={6} mr="2" color="#F18032" />
+          <Text color="dark.400" fontSize="md" bold onPress={() => navigation.navigate("Login", { screen:"Settings" })}> 
+            Iniciar sesión
+          </Text>
+        </HStack>
+      </Menu.Item>
       
       <Menu.Item px="0" mt="8" width="100%" borderColor_="blue.500" borderWidth_="3">
         <HStack alignItems="center" space={2}>

@@ -86,7 +86,7 @@ const validateToken = () =>
     // let result = await axios.get(`${Constants.BACKEND_URL}/info`, { headers: authenticationHeader() });
     let result = 
     {
-      status: 2000,
+      status: 200,
       data: 'token_pandi'
     };
 

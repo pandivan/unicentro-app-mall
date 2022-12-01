@@ -3,7 +3,7 @@ import axios from "axios";
 import Constants from "../utilities/Constants";
 import authenticationServices from "./AuthenticationServices"; 
 
-
+import data from "../../data";
 
 
 /**
@@ -14,8 +14,18 @@ const signUp = async (customer) =>
 {
   try
   {
-    let result = await axios.post(`${Constants.BACKEND_URL}/signup`, customer);
+    // console.log("Cliente... ");
+    // console.log(customer);
 
+    // TODO: Habilitar esta linea cuando tenga el api
+    // let result = await axios.post(`${Constants.BACKEND_URL}/signup`, customer);
+
+    let result = 
+    {
+      status: 200,
+      data: 'token_pandi'
+    };
+    
     if (result.data) 
     {
       authenticationServices.setToken(result.data);
@@ -88,10 +98,35 @@ const getCustomerEmail = async () =>
 }
 
 
+/**
+ * Función que permite obtener todos los barrios de la ciudad
+ * @returns Listado de barrios
+ */
+const getAllNeighborhoods = async () => 
+{
+  try
+  {
+    // let result = await axios.get(`${Constants.BACKEND_URL}/neighborhoods`, { headers: authenticationServices.authenticationHeader() });
+    let result = 
+    {
+      status: 200,
+      data: data.dataBarrio
+    };
+
+    return { status: result.status, lstNeighborhoodsBD: result.data };
+  }
+  catch(error)
+  {
+    return { status: error.request.status };
+  }
+}
+
+
 export default 
 {
   signUp,
   updateCustomer,
   getCustomer,
-  getCustomerEmail
+  getCustomerEmail,
+  getAllNeighborhoods
 };

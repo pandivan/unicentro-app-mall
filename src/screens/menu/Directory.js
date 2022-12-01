@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, FlatList, Image } from "react-native";
 import { VStack, HStack, Center, Text, Pressable, Icon, Input, Box } from "native-base";
 import { Ionicons } from '@expo/vector-icons';
-
-import AppContext from '../../contexts/AppContext';
-import HeaderTitle from "../../components/HeaderTitle";
 
 
 
@@ -14,9 +11,7 @@ import HeaderTitle from "../../components/HeaderTitle";
  */
 const Directory = ({ navigation, route }) =>
 {
-  //Hook que permite invocar al metodo loadCategories(useMemo) del App.js
-  const { lstCategories }  = useContext(AppContext);
-
+  const [lstCategories, setLstCategories] = useState(route.params.lstCategories);
   const [lstFilteredStores, setLstFilteredStores] = useState([]);
   const [lstStores, setLstStores] = useState([]);
   const [idCategory, setIdCategory] = useState(null);
@@ -33,6 +28,7 @@ const Directory = ({ navigation, route }) =>
     {
       try 
       {
+        console.log("Tamaño categorias " + lstCategories.length);
         // Se obtiene la categoría seleccionada en el home del listado de categorías
         let category = lstCategories.filter(category => (route.params.idCategory === category.idCategory))[0]
         
