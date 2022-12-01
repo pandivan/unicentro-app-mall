@@ -30,7 +30,8 @@ const Invoices = ({ navigation, route }) =>
       }
       else
       {
-        navigation.navigate("RouteAuthentication", { screen:"Login" });
+        // navigation.navigate("RouteAuthentication", { screen:"Login" });
+        navigation.navigate("Login");
       }
     }
     catch (error)

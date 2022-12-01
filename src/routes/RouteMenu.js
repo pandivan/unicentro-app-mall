@@ -131,14 +131,14 @@ const RouteMenu = ({ navigation, route }) =>
         }}
       />
 
-      <Tab.Screen 
+      {/* <Tab.Screen 
         name="RouteAuthentication" 
         component={RouteAuthentication}
         options=
         {{
           tabBarButton: () => <View style={{ width: 0 }} />
         }}
-      />
+      /> */}
           
     </Tab.Navigator>
   );

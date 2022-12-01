@@ -61,13 +61,13 @@ const Login = ({navigation}) =>
       <Center flex={1} backgroundColor="white" borderColor_="green.500" borderWidth_="3">
         <Box safeArea p="2" width="90%" mb="20" maxW="290" borderColor_="red.500" borderWidth_="1">
           
-          {/* <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
+          <Center mt="10" borderColor_="yellow.500" borderWidth_="1">
             <Image source={require('../../../assets/logo_login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={20}/>
             
             <Heading fontSize={22} mt="6" fontWeight="600">
               Iniciar Sesión
             </Heading>
-          </Center> */}
+          </Center>
 
           <VStack space={3} mt="6" borderColor_="blue.500" borderWidth_="3">
             <FormControl isRequired={isRequiredEmail} isInvalid={isRequiredEmail}>

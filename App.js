@@ -1,6 +1,7 @@
 import React, { useReducer, useMemo, useEffect } from "react";
 import { NavigationContainer, getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createStackNavigator } from '@react-navigation/stack';
 import { NativeBaseProvider, Box, HamburgerIcon, Center } from "native-base";
 import { Alert, Image } from "react-native";
 import "react-native-gesture-handler";
@@ -14,12 +15,16 @@ import categoriesServices from "./src/services/CategoriesServices";
 import Constants from "./src/utilities/Constants";
 import TakePicture from "./src/screens/menu/TakePicture";
 import authenticationServices from "./src/services/AuthenticationServices";
+import Login from "./src/screens/login/Login";
+import Registration from "./src/screens/login/Registration";
+import RouteDrawer from "./src/routes/RouteDrawer";
 
 
 
 
 //Creando Menu de Navegación
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
 
 export default function App()
@@ -262,6 +267,7 @@ export default function App()
     <NativeBaseProvider>
       <AppContext.Provider value={appContext}>
         <NavigationContainer>
+
           {/* El DrawerContentMenu nace debido a la necesidad de personalizar el icono del drawer y a la necesidad
           de que las opciones q estoy colocando en Drawer.Screen NO me aparezcan como item del Drawer.
 
@@ -269,7 +275,17 @@ export default function App()
           ya No se visualizaran como un item en el drawer ya q nuestros items del drawer serán diseñados en DrawerContentMenu
           y es desde ahí q podremos acceder de manera logica a los Drawer.Screen */}
 
-          <Drawer.Navigator
+          <Stack.Navigator 
+            initialRouteName="RouteDrawer"
+            screenOptions={{headerShown:false}}>
+
+            <Stack.Screen name="RouteDrawer" component={RouteDrawer}/>
+            <Stack.Screen name="Login" component={Login}/>
+            <Stack.Screen name="Registration" component={Registration}/>
+            
+          </Stack.Navigator>
+
+          {/* <Drawer.Navigator
             id="NavigatorDrawer"
             initialRouteName="RouteMenu"
             drawerContent={props => <DrawerContentMenu {...props} />}
@@ -316,7 +332,7 @@ export default function App()
               options={{headerTitle:""}}
             />
 
-          </Drawer.Navigator>
+          </Drawer.Navigator> */}
         </NavigationContainer>
       </AppContext.Provider>
     </NativeBaseProvider>

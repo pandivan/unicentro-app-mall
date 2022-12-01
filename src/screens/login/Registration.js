@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Text, ScrollView,Alert } from "react-native";
-import { Box, Icon, CheckIcon, ChevronDownIcon, Heading, VStack, FormControl, Input, Button, Pressable, Center, Select, WarningOutlineIcon } from "native-base";
+import { Box, Icon, CheckIcon, ChevronDownIcon, Heading, VStack, FormControl, Input, Button, Pressable, Center, Select, WarningOutlineIcon, Image } from "native-base";
 import { SimpleLineIcons, MaterialIcons } from '@expo/vector-icons';
 import Checkbox from "expo-checkbox";
 
@@ -312,6 +312,13 @@ const Registration = ({navigation}) =>
     <ScrollView showsVerticalScrollIndicator ={false}>
       <Center flex={1} px="3" backgroundColor="white" borderColor_="red.500" borderWidth_="2">
         <Box safeArea p="2" width="100%" mb="8">
+          <Center my="5" borderColor_="yellow.500" borderWidth_="1">
+            {/* <Image source={require('../../../assets/logo_login.png')} alt="Alternate Text" resizeMode="contain" width={48} height={20}/> */}
+            
+            <Heading fontSize={19} my_="2" fontWeight="600">
+              Registrarme
+            </Heading>
+          </Center>
           <VStack space={4}>
             <FormControl pt="3" isRequired={isRequiredIdentification} isInvalid={isRequiredIdentification}>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
