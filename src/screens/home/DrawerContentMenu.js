@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { VStack, HStack, Center, Box, Heading, Text, Pressable, Icon } from "native-base";
-import { FlatList, Image } from "react-native";
+import { FlatList, Image, Alert } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
 
 import Constants from "../../utilities/Constants";
@@ -24,40 +24,26 @@ const DrawerContentMenu = ({ navigation, route }) =>
    */
   useEffect(() => 
   {
-    // console.log("useEffect DrawerContentMenu");
 
     const loadData = async () => 
     {
       try 
       {
         //Se obtiene los item del menú a traves del api-rest
-        let {status, lstMenuBD} = await menuServices.getMenu();
+        let { response_code, lstMenuBD } = await menuServices.getMenu();
 
-        switch (status)
+        if(Constants.RESPONSE_OK_CODE == response_code)
         {
-          case Constants.STATUS_OK:            
-            setLstMenu(lstMenuBD);
-          break;
-
-          case Constants.STATUS_ACCESO_DENEGADO:
-            console.log("acceso denegado ap")
-          break;
-
-          default:
-            //Valida si hubo un error en el api-rest
-            //Si tiene token es porque estoy logueado y debo informar que hubo un error en el backend
-          //  if(autenticacionServices.getToken())
-          //  {
-          //    setMensajePopup("En el momento no es posible acceder a la\ninformación, favor intentarlo más tarde.");
-          //    setMostrarPopup(true);
-          //  }
-            console.log("default acceso denegado")
-          break;
+          setLstMenu(lstMenuBD);
+        }
+        else
+        {
+          Alert.alert("Información", Constants.MESSAGE_ERROR_ACCESSING_CUSTOMER);
         }
       }
       catch (error) 
       {
-        console.log("Error al cargar el menu (DrawerContentMenu)")
+        Alert.alert("Información", Constants.MESSAGE_ERROR_ACCESSING_CUSTOMER);
       }
     }
 
@@ -68,12 +54,12 @@ const DrawerContentMenu = ({ navigation, route }) =>
   
   /**
    * Función que permite redireccionar a un screen de la app oh a una url
-   * @param itemMenu Item del menú
+   * @param menuOption Item del menú
    */
-  const redirect = (itemMenu) =>
+  const redirect = (menuOption) =>
   {
     // Se valida si es un screen del navegator, en caso contrario redirecciona a una url
-    switch(itemMenu.idItemMenu)
+    switch(menuOption.idMenuOption)
     {
       case 1:
         navigation.navigate("RouteDirectory", { screen:"Directory", params:{ idCategory:1 } });
@@ -88,7 +74,7 @@ const DrawerContentMenu = ({ navigation, route }) =>
         navigation.navigate("Contact");
       break;
       default:  
-        let redirect = GenericFunctions.openApp(itemMenu.redirect);
+        let redirect = GenericFunctions.openApp(menuOption.redirect);
         console.log("redirect--> "+redirect);
       break;
     }
@@ -97,28 +83,28 @@ const DrawerContentMenu = ({ navigation, route }) =>
 
   /**
    * Función que permite previsualizar los item del menú desplegable
-   * @param itemMenu Item del menú
+   * @param menuOption Item del menú
    * @returns Lista de items del menú
    */
-  const previewMenu = (itemMenu) => 
+  const previewMenu = (menuOption) => 
   {
     return(
-      <Pressable borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" onPress={() => redirect(itemMenu)} borderColor_="blue.500" borderWidth_="1">
+      <Pressable borderBottomWidth="1" borderColor="muted.200" mx="3" py="2" onPress={() => redirect(menuOption)} borderColor_="blue.500" borderWidth_="1">
         <HStack space={3} justifyContent_="space-between">
-          <Center backgroundColor={itemMenu.color} rounded="100" width="10" height="10">
+          <Center backgroundColor={menuOption.color} rounded="100" width="10" height="10">
             {
-              (1 === itemMenu.idItemMenu) ?
+              (1 === menuOption.idMenuOption) ?
                 <Image source={{uri:"https://drive.google.com/uc?id=1RxTiI3B_pBtZCvOqSHlnGru7Cx_3bkH6"}} resizeMode="contain" style={{width:33, height:33}}/>
               :
-                <Icon as={<SimpleLineIcons name={itemMenu.urlItemImage} />} size="21" color="white" />
+                <Icon as={<SimpleLineIcons name={menuOption.urlMenuOptionImage} />} size="21" color="white" />
             }
           </Center>
           <VStack>
             <Text fontSize="md" color="coolGray.800" bold>
-              {itemMenu.itemName}
+              {menuOption.menuOption}
             </Text>
             <Text fontSize="xs" color="coolGray.400">
-              {itemMenu.description}
+              {menuOption.description}
             </Text>
           </VStack>
         </HStack>
@@ -134,8 +120,8 @@ const DrawerContentMenu = ({ navigation, route }) =>
       </Heading>
       <FlatList 
         data={lstMenu} 
-        renderItem={({item}) => previewMenu(item)} 
-        keyExtractor={item => item.idItemMenu} />
+        renderItem={({item}) => previewMenu(item.menuOption)} 
+        keyExtractor={item => item.menuOption.idMenuOption} />
     </Box>
   );
 }

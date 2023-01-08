@@ -18,16 +18,16 @@ import customerServices from "../../services/CustomerServices";
  */
 const Registration = ({navigation}) =>
 {
-  const [identification, setIdentification] = useState("identification");
-  const [names, setNames] = useState("names");
-  const [lastName, setLastName] = useState("lastName");
-  const [phone, setPhone] = useState("phone");
-  const [email, setEmail] = useState("email");
-  const [password, setPassword] = useState("password");
-  const [confirmPassword, setConfirmPassword] = useState("confirmPassword");
+  const [identificationDocument, setIdentificationDocument] = useState("13072207");
+  const [firstName, setFirstName] = useState("Ivan");
+  const [lastName, setLastName] = useState("Hernnandez");
+  const [phone, setPhone] = useState("3014317636");
+  const [email, setEmail] = useState("ivan.hernandez.coral@gmail.com");
+  const [password, setPassword] = useState("123");
+  const [confirmPassword, setConfirmPassword] = useState("123");
   const [birthday, setBirthday] = useState("1981/12/01");
   const [gender, setGender] = useState("M");
-  const [neighborhood, setNeighborhood] = useState(1);
+  const [idNeighborhood, setIdNeighborhood] = useState(1);
 
   const [isPet, setIsPet] = useState(true);
   const [isTermsConditions, setIsTermsConditions] = useState(true);
@@ -77,22 +77,21 @@ const Registration = ({navigation}) =>
       {
 
         //Se obtiene los barrios a traves del api-rest
-        let {status, lstNeighborhoodsBD} = await customerServices.getAllNeighborhoods();
+        let { response_code, lstNeighborhoodsBD } = await customerServices.getAllNeighborhoods();
 
-        if(Constants.STATUS_OK == status)
+        if(Constants.RESPONSE_OK_CODE == response_code)
         {
           setLstNeighborhoods(lstNeighborhoodsBD);
         }
         else
         {
-          Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+          Alert.alert("Información", Constants.MESSAGE_ERROR_CREATING_CUSTOMER);
         }
-
       }
       catch (error) 
       {
         console.log(error)
-        Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+        Alert.alert("Información", Constants.MESSAGE_ERROR_CREATING_CUSTOMER);
       }
     }
 
@@ -107,22 +106,47 @@ const Registration = ({navigation}) =>
   {
     try 
     {
-      //Se registra un cliente a traves del api-rest
-      let {status} = await customerServices.signUp({identification, names, lastName, phone, email, password, confirmPassword, birthday, gender, neighborhood});
+      // Creando el entity customer
+      let customer = 
+      {
+        idCustomer: null,
+        idIdentificationType: Constants.ID_IDENTIFICATION_TYPE_SISBOL, 
+        identificationDocument, 
+        firstName, 
+        lastName,
+        address: "calle 45",
+        phone, 
+        birthday, 
+        gender, 
+        email, 
+        idNeighborhood,
+        customerType: Constants.CUSTOMER_TYPE,
+        password, 
+        idRole: Constants.ID_ROLE_CUSTOMER
+      };
 
-      if(Constants.STATUS_OK == status)
+      //Se registra un cliente a traves del api-rest
+      let {response_code} = await customerServices.signUp(customer);
+
+      if(Constants.RESPONSE_OK_CODE === response_code)
       {
         navigation.navigate("Home");
       }
       else
       {
-        Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+        if(Constants.RESPONSE_FAILED_VALIDATION_CODE === response_code)
+        {
+          Alert.alert("Información", Constants.VALIDATING_EMAIL_CUSTOMER);
+        }
+        else
+        {
+          Alert.alert("Información", Constants.MESSAGE_ERROR_CREATING_CUSTOMER);
+        }
       }
     }
     catch (error)
     {
-      console.log(error)
-      Alert.alert("Información", "No es posible registrarte en este momento, favor intentarlo en unos minutos.");
+      Alert.alert("Información", Constants.MESSAGE_ERROR_CREATING_CUSTOMER);
     }
   }
 
@@ -134,7 +158,7 @@ const Registration = ({navigation}) =>
   {
     let isValidForm = true;
 
-    if("" === names)
+    if("" === firstName)
     {
       isValidForm = false;
       setIsRequiredNames(true);
@@ -156,7 +180,7 @@ const Registration = ({navigation}) =>
       setIsRequiredLastName(false);
     }
 
-    if("" === identification)
+    if("" === identificationDocument)
     {
       isValidForm = false;
       setIsRequiredIdentification(true);
@@ -268,13 +292,13 @@ const Registration = ({navigation}) =>
   {
     if("" === value)
     {
-      setIdentification(value);
+      setIdentificationDocument(value);
     }
     else
     {
       if(GenericFunctions.validateMumber(value))
       {
-        setIdentification(value);
+        setIdentificationDocument(value);
       }
     }
   }
@@ -307,18 +331,18 @@ const Registration = ({navigation}) =>
     try 
     {
       //Se obtiene los datos del cliente a traves del api-rest
-      let {status, clientBD} = await clientServices.getClientByIdentification(identification);
+      let {status, clientBD} = await clientServices.getClientByIdentification(identificationDocument);
 
-      if(Constants.STATUS_OK == status)
+      if(Constants.RESPONSE_OK_CODE == status)
       {
         // setIdentification(clientBD.identification);
-        setNames(clientBD.name);
+        setFirstName(clientBD.name);
         setLastName(clientBD.lastName);
         setPhone(clientBD.phone);
         setEmail(clientBD.email);
         setBirthday(clientBD.birthday);
         setGender(clientBD.gender);
-        setNeighborhood(clientBD.neighborhood.idNeighborhood);
+        setIdNeighborhood(clientBD.neighborhood.idNeighborhood);
         setIsPet(clientBD.isPet === 1 ? true : false);
       }
     }
@@ -348,7 +372,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Cédula
               </Text>
-              <Input value={identification} onChangeText={onChangeTextIdentification} onEndEditing={onEndEditingIdentification} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
+              <Input value={identificationDocument} onChangeText={onChangeTextIdentification} onEndEditing={onEndEditingIdentification} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageIdentification}
               </FormControl.ErrorMessage>
@@ -358,7 +382,7 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Nombres
               </Text>
-              <Input value={names} onChangeText={setNames} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
+              <Input value={firstName} onChangeText={setFirstName} height="9" borderRadius="15" shadow="2" backgroundColor="white" InputLeftElement={<Icon as={SimpleLineIcons} name="user" size="4" ml="3" color="#F18032"/>}/>
               <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
                 {errorMessageNames}
               </FormControl.ErrorMessage>
@@ -466,17 +490,17 @@ const Registration = ({navigation}) =>
               <Text style={{position:"absolute", top:0, left:24, zIndex:100, backgroundColor:"white", paddingHorizontal:10, fontSize:12}}>
                 Barrio
               </Text>
-              <Select height="9" borderRadius="15" shadow="2" selectedValue={neighborhood}
+              <Select height="9" borderRadius="15" shadow="2" selectedValue={idNeighborhood}
                 InputLeftElement={<Icon as={SimpleLineIcons} name="home" size="4" ml="3" color="#F18032"/>}
                 dropdownIcon={<ChevronDownIcon mr="3"/>}
                 _selectedItem={{backgroundColor:"#FF984F", height:9, justifyContent:"center", endIcon: <CheckIcon size={5}/>}}
                 _actionSheetContent={{}}
-                onValueChange={selectedNeighborhood => setNeighborhood(selectedNeighborhood)}
+                onValueChange={selectedNeighborhood => setIdNeighborhood(selectedNeighborhood)}
               >
                 {
                   lstNeighborhoods.map(neighborhood => 
                   (
-                    <Select.Item key={neighborhood.idNeighborhood} label={neighborhood.description} _text={{fontSize:14}} borderRadius="10" value={neighborhood.idNeighborhood} />
+                    <Select.Item key={neighborhood.idNeighborhood} label={neighborhood.neighborhood} _text={{fontSize:14}} borderRadius="10" value={neighborhood.idNeighborhood} />
                   ))
                 }
               </Select>

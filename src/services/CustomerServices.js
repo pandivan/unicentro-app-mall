@@ -3,8 +3,6 @@ import axios from "axios";
 import Constants from "../utilities/Constants";
 import authenticationServices from "./AuthenticationServices"; 
 
-import data from "../../data";
-
 
 /**
  * Función que permite registrar un nuevo cliente
@@ -14,31 +12,18 @@ const signUp = async (customer) =>
 {
   try
   {
-    // console.log("Cliente... ");
-    // console.log(customer);
-
-    // TODO: Habilitar esta linea cuando tenga el api
-    // let result = await axios.post(`${Constants.BACKEND_URL}/signup`, customer);
-
-    let result = 
-    {
-      status: 200,
-      data: 'token_pandi'
-    };
+    let result = await axios.post(`${Constants.BACKEND_URL}/customers/signup`, customer);
     
-    if (result.data) 
+    if (result.data.RESPONSE_TOKEN) 
     {
-      authenticationServices.setToken(result.data);
+      authenticationServices.setToken(result.data.RESPONSE_TOKEN);
     }
 
-    // console.log("result API-REST Cliente. ");
-    // console.log(JSON.stringify(result));
-
-    return { status: result.status };
+    return { response_code: result.data.RESPONSE_CODE };
   }
   catch(error)
   {
-    return { status: error.request.status };
+    return { response_code: error.request.status };
   }
 }
 
@@ -106,14 +91,9 @@ const getAllNeighborhoods = async () =>
 {
   try
   {
-    // let result = await axios.get(`${Constants.BACKEND_URL}/neighborhoods`, { headers: authenticationServices.authenticationHeader() });
-    let result = 
-    {
-      status: 200,
-      data: data.dataBarrio
-    };
+    let result = await axios.get(`${Constants.BACKEND_URL}/neighborhoods`);
 
-    return { status: result.status, lstNeighborhoodsBD: result.data };
+    return { response_code: result.data.RESPONSE_CODE, lstNeighborhoodsBD: result.data.RESPONSE_DATA };
   }
   catch(error)
   {

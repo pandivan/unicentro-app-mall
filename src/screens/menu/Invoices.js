@@ -22,10 +22,10 @@ const Invoices = ({ navigation, route }) =>
     {
       // TODO: Habilitar la linea de abajo cuando tenga el api y colocar async en el metodo... por ahora se quita para evitar el AWAIT
       // let {status} = await authenticationServices.validateToken();
-      let {status} = authenticationServices.validateToken();
+      let { response_code } = authenticationServices.validateToken();
       // console.log(status);
 
-      if(Constants.STATUS_OK === status)
+      if(Constants.RESPONSE_OK_CODE === response_code)
       {
         navigation.navigate("RegisterInvoices");
       }
@@ -37,7 +37,7 @@ const Invoices = ({ navigation, route }) =>
     }
     catch (error)
     {
-      Alert.alert("Información", "No es posible registrar la factura en este momento, favor intentarlo en unos minutos.");
+      Alert.alert("Información", Constants.MESSAGE_ERROR_REGISTERING_INVOICE);
     }
   }
 

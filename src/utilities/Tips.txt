@@ -213,3 +213,7 @@ Es mejor descarga el instalador de la pagina y next next
 
 https://formulae.brew.sh/formula/node  (veo las versiones actuales de nodejs LTS)
 brew install node node@16
+
+
+Permisos Recursivos
+sudo chmod -R 777 node_modules

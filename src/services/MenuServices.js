@@ -1,9 +1,6 @@
-// const BACKEND_URL = "https://api-rest-retail.herokuapp.com/api/cliente/barrio";
-const BACKEND_URL = "http://192.168.1.8:7788/api/cliente/barrio";
-
 import axios from "axios";
 
-import data from "../../data";
+import Constants from "../utilities/Constants";
 
 
 /**
@@ -13,26 +10,14 @@ const getMenu = async () =>
 {
   try
   {
-    // console.log(JSON.stringify(cliente));
-    // En el token debe estar el cliente
-    // let respuesta = await axios.get(`${Constantes.BACKEND_URL}/pointsofsale`, { headers: tokenServices.autenticacionHeader() });
+    let result = await axios.get(`${Constants.BACKEND_URL}/menuoptions/${Constants.ID_ROLE_CUSTOMER}`);
 
-    let result = 
-    {
-      status: 200,
-      data: data.dataMenu
-    };
-
-    // console.log("Respuesta API-REST getAllPointsOfSale");
-    // console.log(JSON.stringify(respuesta));
-
-    return { status: result.status, lstMenuBD: result.data };
+    return { response_code: result.data.RESPONSE_CODE, lstMenuBD: result.data.RESPONSE_DATA };
   }
 	catch(error)
   {
     //TODO: Guardar log en BD
-    console.log(`Error al consultar el menú: ${error}`);
-    return { status: error.request.status };
+    return { response_code: error.request.status };
   }
 }
 

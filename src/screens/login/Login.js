@@ -14,8 +14,8 @@ import Constants from "../../utilities/Constants";
  */
 const Login = ({navigation, route}) =>
 {
-  const [email, setEmail] = useState("a");
-  const [password, setPassword] = useState("a");
+  const [email, setEmail] = useState("ivan.hernandez.coral@gmail.com");
+  const [password, setPassword] = useState("12");
   const [errorMessageEmail, setErrorMessageEmail] = useState("");
   const [isRequiredEmail, setIsRequiredEmail] = useState(false);
   const [isRequiredPassword, setIsRequiredPassword] = useState(false);
@@ -32,9 +32,9 @@ const Login = ({navigation, route}) =>
     
     try
     {
-      let {status} = await authenticationServices.signIn({ email, password });
+      let { response_code } = await authenticationServices.signIn({ email, password });
 
-      if(Constants.STATUS_OK === status)
+      if(Constants.RESPONSE_OK_CODE === response_code)
       {
         // console.log("params " + JSON.stringify(route.params.screen))
         if("Settings" === route.params.screen)
@@ -48,12 +48,12 @@ const Login = ({navigation, route}) =>
       }
       else
       {
-        Alert.alert("Información", "Usuario o Clave invalida.");
+        Alert.alert("Información", Constants.MESSAGE_INVALID_CUSTOMER_ERROR);
       }
     }
     catch (error)
     {
-      Alert.alert("Información", "No es posible acceder en este momento, favor intentarlo en unos minutos.");
+      Alert.alert("Información", Constants.MESSAGE_ERROR_ACCESSING_CUSTOMER);
     }
   }
 

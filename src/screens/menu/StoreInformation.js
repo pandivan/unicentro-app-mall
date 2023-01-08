@@ -139,8 +139,8 @@ const StoreInformation = ({ navigation, route }) =>
               <Text fontSize="md" color_="coolGray.800" bold>
                 Sitio Web
               </Text>
-              <Text fontSize="sm" color_="coolGray.400" onPress={() => GenericFunctions.openApp("https://"+store.socialNetworks.website)}>
-                {store.socialNetworks.website}
+              <Text fontSize="sm" color_="coolGray.400" onPress={() => GenericFunctions.openApp("https://"+store.website)}>
+                {store.website}
               </Text>
             </VStack>
           </HStack>

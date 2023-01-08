@@ -140,7 +140,7 @@ const Directory = ({ navigation, route }) =>
             }
           }
           </Pressable>
-          <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.categoryName}</Text>
+          <Text mt="2" bold color={categoryBackgroundColor(category, "#b5b5b5")}>{category.name}</Text>
         </VStack>
       )
     }

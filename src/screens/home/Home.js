@@ -52,23 +52,22 @@ const Home = ({ navigation, route }) =>
         console.log("*** UseEffect Home ****");
 
         //Se obtiene las categorias y sus tiendas a traves del api-rest
-        let {status, lstCategoriesBD} = await categoriesServices.getAllCategories();
+        let { response_code, lstCategoriesBD } = await categoriesServices.getAllCategories();
 
-        if(Constants.STATUS_OK === status)
+        if(Constants.RESPONSE_OK_CODE === response_code)
         {
-          // Se almacenan las categorias en el contexto
+          // Se almacenan las categorias en el hook
           setLstCategories(lstCategoriesBD);
         }
         else
         {
-          Alert.alert("Información", "En el momento no es posible acceder a la información,\nfavor intentarlo más tarde.");
+          Alert.alert("Información", Constants.MESSAGE_ERROR_ACCESSING_CUSTOMER);
           navigation.navigate("SplashScreen");
         }
       }
       catch (error)
       {
-        console.log(error);
-        Alert.alert("Información", "En el momento no es posible acceder a la información,\nfavor intentarlo más tarde.");
+        Alert.alert("Información", Constants.MESSAGE_ERROR_ACCESSING_CUSTOMER);
         navigation.navigate("SplashScreen");
       }
     };
@@ -108,7 +107,7 @@ const Home = ({ navigation, route }) =>
                       <Box background={isPressed ? "#78C9CC" : "#39BFC2"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40">
                         <VStack height="100%" justifyContent="space-between">
                           <Text ml="2" fontSize="16" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                            {lstCategories[0].categoryName} 
+                            {lstCategories[0].name} 
                           </Text>
                           <Image mb="-0.5" source={{uri:lstCategories[0].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
                         </VStack>
@@ -127,7 +126,7 @@ const Home = ({ navigation, route }) =>
                       <Box background={isPressed ? "#E1E667" : "#d9e022"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40">
                         <VStack height="100%" justifyContent="space-between">
                           <Text ml="2" fontSize="16" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                            {lstCategories[2].categoryName} 
+                            {lstCategories[2].name} 
                           </Text>
                           <Image ml="-1" source={{uri:lstCategories[2].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={24} height={20}/>
                         </VStack>
@@ -148,7 +147,7 @@ const Home = ({ navigation, route }) =>
                       <Box background={isPressed ? "#8965A4" : "#662e91"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="120" width="40" borderColor_="blue.500" borderWidth_="1">
                         <VStack height="100%" justifyContent="space-between">
                           <Text ml="2" fontSize="15" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                            {lstCategories[1].categoryName} 
+                            {lstCategories[1].name} 
                           </Text>
                           {/* <Box alignItems="flex-end" p="0" borderColor_="black" borderWidth_="1"> */}
                           <Image mr="-1" source={{uri:lstCategories[1].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomRightRadius="20" width={24} height={20}/>
@@ -169,7 +168,7 @@ const Home = ({ navigation, route }) =>
                       <Box background={isPressed ? "#F07F94" : "#ec3657"} style={{ transform: [{ scale: isPressed ? 0.96 : 1 }]}} pt="2" rounded="20" height="210" width="40" borderColor_="blue.500" borderWidth_="1">
                         <VStack height="100%" justifyContent="space-between">
                           <Text ml="2" fontSize="15" fontWeight="700" color="white" borderColor_="gray.300" borderWidth_="3">
-                            {lstCategories[3].categoryName} 
+                            {lstCategories[3].name} 
                           </Text>
                           <Image mb="-1" source={{uri:lstCategories[3].urlCategoryImage}} alt="Alternate Text" resizeMode_="contain" borderBottomLeftRadius="20" width={32} height={32}/>
                         </VStack>

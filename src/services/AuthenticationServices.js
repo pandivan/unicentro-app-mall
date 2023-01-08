@@ -14,27 +14,19 @@ const signIn = async (customer) =>
 {
   try
   {
-    // let result = await axios.post(`${Constants.BACKEND_URL}/signin`, customer);
-    let result = 
-    {
-      status: 200,
-      data: 'token_pandi'
-    };
+    let result = await axios.post(`${Constants.BACKEND_URL}/customers/signin`, customer);
 
-    if (result.data) 
+    if (result.data.RESPONSE_TOKEN) 
     {
       // El cliente se registro exitosamente y se guarda el token en SecureStore
-      setToken(result.data);
+      setToken(result.data.RESPONSE_TOKEN);
     }
 
-    // console.log("result API-REST Consultar Cliente ");
-    // console.log(JSON.stringify(result));
-
-    return { status: result.status };
+    return { response_code: result.data.RESPONSE_CODE };
   }
   catch(error)
   {
-    return { status: error.request.status };
+    return { response_code: error.request.status };
   }
 }
 
@@ -79,18 +71,13 @@ const setToken = async (userToken) =>
 /**
  * Función que permite validar si el token está activo
  */
-const validateToken = () => 
+const validateToken = async () => 
 {
   try
   {
-    // let result = await axios.get(`${Constants.BACKEND_URL}/info`, { headers: authenticationHeader() });
-    let result = 
-    {
-      status: 200,
-      data: 'token_pandi'
-    };
+    let result = await axios.get(`${Constants.BACKEND_URL}/customers/validations/tokens`, { headers: authenticationHeader() });
 
-    return { status: result.status };
+    return { response_code: result.RESPONSE_CODE };
   }
   catch(error)
   {

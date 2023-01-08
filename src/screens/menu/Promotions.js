@@ -41,7 +41,7 @@ const Promotions = ({ navigation, route }) =>
       //Se obtiene las ofertas de las tiendas a traves del api-rest
       let {status, lstPromotionsBD} = await promotionsServices.getAllPromotions();
 
-      if(Constants.STATUS_OK === status)
+      if(Constants.RESPONSE_OK_CODE === status)
       {
         setLstPromotions(lstPromotionsBD);
         setLstFilteredPromotions(lstPromotionsBD);
@@ -134,7 +134,7 @@ const Promotions = ({ navigation, route }) =>
         <FlatList
           data={lstFilteredPromotions} 
           renderItem={({item}) => renderPromotions(item)} 
-          keyExtractor={item => item.idOffer} 
+          keyExtractor={item => item.idPromotion} 
           showsVerticalScrollIndicator ={false}
           numColumns={2}
         />

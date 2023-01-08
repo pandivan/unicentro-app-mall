@@ -1,41 +1,50 @@
 /**
  * Constantes para el manejo de CRUD
  */
- const STATUS_OK = 200;
- const STATUS_CREATED = 201;
- const STATUS_INTERNAL_SERVER_ERROR = 500;
- const STATUS_UNAUTHORIZED = 203;
- const STATUS_NO_CONTENT = 204;
- const STATUS_ACCESO_DENEGADO = 403;
- const STATUS_SERVICE_UNAVAILABLE = 503;
- 
- 
- /**
-  * Constantes para el manejo de URL API-REST
-  */
- // const BACKEND_URL = "http://192.168.1.8:7788/v1";
- const BACKEND_URL = "https://acuatex-api-rest.herokuapp.com/v1";
- 
- const BACKEND_QLIK_URL = "https://83n21dw79d3imcg.us.qlikcloud.com/api/v1/users/me";
- 
- const WEBINTEGRATIONID = "uOc5HfBzK4KyF5--fxWe8tVufT-LxWtf";
+const ID_ROLE_CUSTOMER = 2;
+const CUSTOMER_TYPE = "web";
+const ID_IDENTIFICATION_TYPE_SISBOL = "01001";
 
- const IMAGE_REPOSITORY = "https://drive.google.com/drive/folders/1Z3TYivBDLcMuJby0z0VMz4J-sCicil4o?usp=share_link/Bancos.png"
+const RESPONSE_OK_CODE = 2000;
+const RESPONSE_ERROR_CODE = 3000;
+const RESPONSE_FAILED_VALIDATION_CODE = 4000;
+const ACCESS_DENIED = 403;
 
- const API_KEY = "AIzaSyAuVKhS0jW_jPz9nHoTLkyJycLrxvK8ygg"
+const OK_CREATED_CUSTOMER = "Tu registro fue exitoso";
+const VALIDATING_EMAIL_CUSTOMER = "El email ya se encuentra registrado en la plataforma.";
+
+const MESSAGE_ERROR_CREATING_CUSTOMER = "No es posible registrarte en este momento, favor intentarlo en unos minutos.";
+const MESSAGE_ERROR_UPDATING_CUSTOMER = "No es posible actualizar tu información en este momento, favor intentarlo en unos minutos.";
+const MESSAGE_ERROR_REMOVING_CUSTOMER = "Error al eliminar un cliente";
+const MESSAGE_ERROR_SEARCHING_CUSTOMER = "No es posible consultar tu información en este momento, favor intentarlo en unos minutos.";
+const MESSAGE_INVALID_CUSTOMER_ERROR =  "Usuario o Clave invalida.";
+const MESSAGE_ERROR_ACCESSING_CUSTOMER = "En el momento no es posible acceder a la información,\nfavor intentarlo más tarde.";
+const MESSAGE_ERROR_REGISTERING_INVOICE = "No es posible registrar la factura en este momento, favor intentarlo en unos minutos.";
 
 
- 
- export default 
- {
-   STATUS_OK,
-   STATUS_CREATED,
-   STATUS_INTERNAL_SERVER_ERROR,
-   BACKEND_URL,
-   STATUS_UNAUTHORIZED,
-   STATUS_NO_CONTENT,
-   STATUS_ACCESO_DENEGADO,
-   STATUS_SERVICE_UNAVAILABLE,
-   BACKEND_QLIK_URL,
-   WEBINTEGRATIONID
- };
+/**
+ * Constantes para el manejo de URL API-REST
+ */
+const BACKEND_URL = "http://192.168.1.8:7788/unicentro-service/v1";
+//  const BACKEND_URL = "https://acuatex-api-rest.herokuapp.com/unicentro-service/v1";
+
+export default 
+{
+  BACKEND_URL,
+  ID_ROLE_CUSTOMER,
+  CUSTOMER_TYPE,
+  ID_IDENTIFICATION_TYPE_SISBOL,
+  RESPONSE_OK_CODE,
+  RESPONSE_ERROR_CODE,
+  RESPONSE_FAILED_VALIDATION_CODE,
+  ACCESS_DENIED,
+  OK_CREATED_CUSTOMER,
+  VALIDATING_EMAIL_CUSTOMER,
+  MESSAGE_ERROR_CREATING_CUSTOMER,
+  MESSAGE_ERROR_UPDATING_CUSTOMER,
+  MESSAGE_ERROR_REMOVING_CUSTOMER,
+  MESSAGE_ERROR_SEARCHING_CUSTOMER,
+  MESSAGE_INVALID_CUSTOMER_ERROR,
+  MESSAGE_ERROR_ACCESSING_CUSTOMER,
+  MESSAGE_ERROR_REGISTERING_INVOICE
+};

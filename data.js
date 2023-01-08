@@ -1,58 +1,58 @@
 const dataMenu = 
 [{
-  idItemMenu: 1,
-  itemName: 'Directorio',
+  idMenuOption: 1,
+  menuOption: 'Directorio',
   description: 'Tiendas, entretenimiento y gastronomía',
-  urlItemImage: 'storefront-outline',
+  urlMenuOptionImage: 'storefront-outline',
   color: '#F18032',
   redirect: null
 }, 
 {
-  idItemMenu: 2,
-  itemName: 'Registrar Facturas',
+  idMenuOption: 2,
+  menuOption: 'Registrar Facturas',
   description: 'Registra tus facturas',
-  urlItemImage: 'camera',
+  urlMenuOptionImage: 'camera',
   color: '#39BFC2',
   redirect: null
 }, 
 {
-  idItemMenu: 3,
-  itemName: 'Promociones',
+  idMenuOption: 3,
+  menuOption: 'Promociones',
   description: 'Disfruta increíbles descuentos',
-  urlItemImage: 'handbag',
+  urlMenuOptionImage: 'handbag',
   color: '#F05642',
   redirect: null
 }, 
 {
-  idItemMenu: 4,
-  itemName: 'Agenda',
+  idMenuOption: 4,
+  menuOption: 'Agenda',
   description: 'Programación de eventos',
-  urlItemImage: 'calendar',
+  urlMenuOptionImage: 'calendar',
   color: '#DAD2BD',
   redirect: 'https://www.ccunicentropasto.com/cartelera/'
 }, 
 {
-  idItemMenu: 5,
-  itemName: 'Noticias',
+  idMenuOption: 5,
+  menuOption: 'Noticias',
   description: 'Información de servicios y eventos',
-  urlItemImage: 'bell',
+  urlMenuOptionImage: 'bell',
   color: '#F05642',
   redirect: 'https://www.ccunicentropasto.com/servicios/'
 },
 {
-  idItemMenu: 6,
-  itemName: 'Cómo llegar',
+  idMenuOption: 6,
+  menuOption: 'Cómo llegar',
   description: 'Rutas y parqueaderos',
-  urlItemImage: 'location-pin',
+  urlMenuOptionImage: 'location-pin',
   color: '#39BFC2',
   redirect: null
 }
 ,
 {
-  idItemMenu: 7,
-  itemName: 'Contacto',
+  idMenuOption: 7,
+  menuOption: 'Contacto',
   description: 'Queremos saber que piensas',
-  urlItemImage: 'call-out',
+  urlMenuOptionImage: 'call-out',
   color: '#F18032',
   redirect: null
 }
@@ -62,12 +62,12 @@ const dataCategories =
 [
   {
     idCategory:1,
-    categoryName: 'Tiendas',
+    name: 'Tiendas',
     urlCategoryImage: 'https://drive.google.com/uc?id=1VRnZHt4wIfbSMGGAII0st2NUKODVYOJd',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=1KZ1NJJs9cW1Shubz5vXtbV9NOY6Rn7iR',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
-    order:1,
+    order_category:1,
     type:'DIRECTORY',
     lstStores:
     [
@@ -80,13 +80,10 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1wPHBUKFkk7xQJz0eIAeDm3cYIwYtW3fU',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
-          website:'www.arturocalle.com',
-          instagram:'arturocalleoficial',
-          facebook:'arturocalleoficial',
-          whatsapp:'3014317636'
-        }
+        website:'www.arturocalle.com',
+        instagram:'arturocalleoficial',
+        facebook:'arturocalleoficial',
+        whatsapp:'3014317636'
       },
       {
         idStore:2,
@@ -97,13 +94,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1TyDzfXWHB9Hnu-2LWcCAHj4sxrgirI0m',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'http://shop.azucaryazuquita.com/',
           instagram:'azucaryazuquita',
           facebook:'azucaryazuquita',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:3,
@@ -114,13 +111,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1MzLMc-AvqH957EqSEfupWXip-HT8rZOW',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:4,
@@ -131,13 +128,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1JShUQl2_0ImV5EZl1bXnCEAHRPxbxWQQ',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:5,
@@ -148,13 +145,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1IRDrCuBl8dhDzdnHGxuO7EGpErby23o4',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:6,
@@ -165,24 +162,24 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1HlsWMCskWmpUglvJvHDr-d0mhASToROX',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'https://icomm.link/pepe-ganga',
           instagram:'pepeganga_co',
           facebook:'PepeGangaColombia',
           whatsapp:'3014317636'
-        }
+        
       }
     ]
   },
   {
     idCategory:2,
-    categoryName: 'Bancos',
+    name: 'Bancos',
     urlCategoryImage: 'https://drive.google.com/uc?id=1clMTgv_8V3gQvhacKxeETtwBW5o221aL',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=1KZ1NJJs9cW1Shubz5vXtbV9NOY6Rn7iR',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1IVk0fGlmN04EgJy4F35dP9U2JNfMJlGp',
     backgroundColor: '#39BFC2',
-    order:2,
+    order_category:2,
     type:'HOME',
     lstStores:
     [
@@ -195,13 +192,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1ekypQ4fRyE5MGd8TFDstNEQc077dA4M9',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:8,
@@ -212,13 +209,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=140CZEZfBsHX4cdWpowMKAzIwooroHpb3',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:9,
@@ -229,13 +226,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1eMFOP_8jVIYJp0aooFMPKHUPSC17TX1s',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:11,
@@ -246,13 +243,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=152PmUW6gItTBXj3szvpN9SlYHvwDtBYb',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:12,
@@ -263,24 +260,24 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1Ojx18dH8vOJht1d4bBuGT7SbloIjj21Z',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       }
     ]
   },
   {
     idCategory:3,
-    categoryName: 'Entretenimiento',
+    name: 'Entretenimiento',
     urlCategoryImage:'https://drive.google.com/uc?id=1_KqdaI5VNLhyJegbSe7gjf_z74wQNerW',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=19WW6ORDtnjfyTKrh5que_mDyJDXOgFrx',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1PjEdPpTOnYhJ2F-knZhHtS7Vv61YyAtp',
     backgroundColor: '#D9E021',
-    order:3,
+    order_category:3,
     type:'DIRECTORY',
     lstStores:
     [
@@ -293,13 +290,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1QpLilLykhN9Or8eq3FYcnUtkLxkAmU3x',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:14,
@@ -310,13 +307,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1nEt1jk6JHVpUn867mFTourVaI0u8pI8m',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:15,
@@ -327,13 +324,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=15SHmRy61jIOhaDJN2-bOV_ZtVJzze2Db',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:22,
@@ -344,24 +341,24 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1eODy7rHTRr56wbSxTm0AWTr2_DRJkZIr',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       }
     ]
   },
   {
     idCategory:4,
-    categoryName: 'Comidas',
+    name: 'Comidas',
     urlCategoryImage: 'https://drive.google.com/uc?id=13urKtHs4Fz9P5fwRMfbifE84GJWyM375',
     urlCategoryIcon1: 'https://drive.google.com/uc?id=1tHvhFf3iGhBhXoWJGIF8ctGJO3vvaNJ2',
     urlCategoryIcon2: 'https://drive.google.com/uc?id=1o1YGD4fwqJbdS84H_LHpPEFRZzihGOlf',
     backgroundColor: '#ED3557',
-    order:4,
+    order_category:4,
     type:'DIRECTORY',
     lstStores:
     [
@@ -374,13 +371,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1AzlqdQ6Sv8bPjAQ-dYOfAkHt1s_p2zIq',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:18,
@@ -391,13 +388,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=13k0WOrhSExf165Dan72Rm9qadquyDfsv',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:19,
@@ -408,13 +405,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1JR2uiEMn-OoKKsdL2FUWfdP_I2VesLDw',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:20,
@@ -425,13 +422,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=17DhZpTkM3DhiCyeNzaO-Bg7PJHocV9Bm',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       },
       {
         idStore:21,
@@ -442,13 +439,13 @@ const dataCategories =
         urlStoreImage:'https://drive.google.com/uc?id=1gRY_lijHaT1rZziwcbXhXRjWWtAAN5Ou',
         storeLocation:'Pasillo 5 - Piso 1',
         phone:'3014317636',
-        socialNetworks:
-        {
+        
+        
           website:'www.arturocalle.com',
           instagram:'elcristian_gonzalez',
           facebook:'elcristiangonzalez1',
           whatsapp:'3014317636'
-        }
+        
       }
     ]
   }
@@ -457,7 +454,7 @@ const dataCategories =
 const dataPromotions = 
 [
   {
-    idOffer:1,
+    idPromotion:1,
     store:
     {
       idStore:6,
@@ -468,13 +465,13 @@ const dataPromotions =
       urlStoreImage:'https://drive.google.com/uc?id=1HlsWMCskWmpUglvJvHDr-d0mhASToROX',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
-      socialNetworks:
-      {
+      
+      
         website:'https://icomm.link/pepe-ganga',
         instagram:'pepeganga_co',
         facebook:'PepeGangaColombia',
         whatsapp:'3014317636'
-      }
+      
     },
     name:'Baby Gangazo 40% dto',
     description:'¡Llego Baby Gangazo a Pepe Ganga! Aprovecha hasta 40% de descuento en referencias seleccionadas para tu bebé y no dejes pasar esta oportunidad',
@@ -483,7 +480,7 @@ const dataPromotions =
     urlImage:'https://drive.google.com/uc?id=1wQUE1h5UiWmrJ37XEC02ASFi1pcyP5nq'
   },
   {
-    idOffer:2,
+    idPromotion:2,
     store:
     {
       idStore:1,
@@ -494,13 +491,13 @@ const dataPromotions =
       urlStoreImage:'https://drive.google.com/uc?id=1wPHBUKFkk7xQJz0eIAeDm3cYIwYtW3fU',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
-      socialNetworks:
-      {
+      
+      
         website:'www.arturocalle.com',
         instagram:'arturocalleoficial',
         facebook:'arturocalleoficial',
         whatsapp:'3014317636'
-      }
+      
     },
     name:'FDS Fuera de Serie',
     description:'DENIM DAYS, todos los jeans FDS Fuera de Serie a $99.900 por tiempo limitado en nuestras tiendas físicas. 06/10/22 al 10/10/22. Aplican TyC.',
@@ -509,7 +506,7 @@ const dataPromotions =
     urlImage:'https://drive.google.com/uc?id=1lp2hSJp2CuNuEvCzX1epKezWY-6SWb47'
   },
   {
-    idOffer:3,
+    idPromotion:3,
     store:
     {
       idStore:2,
@@ -520,13 +517,13 @@ const dataPromotions =
       urlStoreImage:'https://drive.google.com/uc?id=1fnEX7Sp_TPgE77I9QxDMZQyQwKfF9LfL',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
-      socialNetworks:
-      {
+      
+      
         website:'www.arturocalle.com',
         instagram:'elcristian_gonzalez',
         facebook:'elcristiangonzalez1',
         whatsapp:'3014317636'
-      }
+      
     },
     name:'Comodísimo',
     description:'Hoy y siempre vibra tan alto como puedas. 🤩 Te presentamos esta nueva colección que te hará sentir cada día más fuerte y feliz. 🌈✌🏻 #PolitoKids #PolitoEsColombia #VibraAlto #NuevaColeccion',
@@ -535,7 +532,7 @@ const dataPromotions =
     urlImage:'https://drive.google.com/uc?id=13IAsH4reuibQA10ixplQbPOFqIZzhxPe'
   },
   {
-    idOffer:4,
+    idPromotion:4,
     store:
     {
       idStore:6,
@@ -546,13 +543,13 @@ const dataPromotions =
       urlStoreImage:'https://drive.google.com/uc?id=1HlsWMCskWmpUglvJvHDr-d0mhASToROX',
       storeLocation:'Pasillo 5 - Piso 1',
       phone:'3014317636',
-      socialNetworks:
-      {
+      
+      
         website:'https://icomm.link/pepe-ganga',
         instagram:'pepeganga_co',
         facebook:'PepeGangaColombia',
         whatsapp:'3014317636'
-      }
+      
     },
     name:'Pepe Ganga Halloween',
     description:'Expresa tu imaginación',
